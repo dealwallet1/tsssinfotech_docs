@@ -7,6 +7,7 @@
 [Integrate AI Effortlessly: A Beginner's Guide to Using CopilotKit](https://dev.to/niharikaa/integrate-ai-effortlessly-a-beginners-guide-to-using-copilotkit-1pgg)
 
 [Discord Developer Portal — API Docs for Bots and Developers](https://discord.com/developers/docs/resources/webhook)
+
 [Build a RAG Copilot (Anthropic, Pinecone, CopilotKit](https://dev.to/copilotkit/build-a-rag-copilot-on-your-own-knowledge-base-with-copilotkit-pinecone-anthropic-21m9)
 
 [(How I integrated an AI copilot into Dub.co (in a few minutes)](https://dev.to/copilotkit/how-i-integrated-an-ai-copilot-into-dubco-3lkj)
@@ -18,6 +19,7 @@
 [Learn how to embed custom UI components in the chat window](https://docs.copilotkit.ai/guides/generative-ui#render-custom-components-in-the-chat-ui)
 
 [How to build your first AI Agent in 30 minutes](https://dev.to/copilotkit/)
+
 [Saving and restoring messages](https://docs.copilotkit.ai/guides/messages-localstorage)
 
 
