@@ -25,3 +25,19 @@
 [# MACHINELEARNING](https://github.com/dealwallet1/docs_imp_url/blob/main/meachinelearning.md)
 
 [# EMBEDDINGS](https://github.com/dealwallet1/docs_imp_url/blob/main/embeddings.md)
+
+[# AI](https://github.com/dealwallet1/docs_imp_url/blob/main/ai.md)
+
+[# JAVASCRIPTS](https://github.com/dealwallet1/docs_imp_url/blob/main/javascripts.md)
+
+[# SCRAPE](https://github.com/dealwallet1/docs_imp_url/blob/main/scrape.md)
+
+[# OPENWEBUI](https://github.com/dealwallet1/docs_imp_url/blob/main/openwebui.md)
+
+[# RAG](https://github.com/dealwallet1/docs_imp_url/blob/main/rag.md)
+
+[# PAYLOAD](https://github.com/dealwallet1/docs_imp_url/blob/main/payload.md)
+
+[# LANGFUSE](https://github.com/dealwallet1/docs_imp_url/blob/main/langfuse.md)
+
+[# LLMS](https://github.com/dealwallet1/docs_imp_url/blob/main/llms.md)
