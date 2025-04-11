@@ -4,7 +4,7 @@ Index Creation
 ```sh
 curl --location 'https://meilisearch.dealwallet.com/indexes' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer diNupMWTaJtR1pluZfoNzA==' \
+--header 'Authorization: Bearer KEY' \
 --data '{
     "uid": "products",
     "primaryKey": "id"
@@ -15,7 +15,7 @@ Embeddings creation
 ```sh
 curl --location --request PATCH 'https://meilisearch.dealwallet.com/indexes/products/settings' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer diNupMWTaJtR1pluZfoNzA==' \
+--header 'Authorization: Bearer KEY' \
 --data '{
     "embedders":
     {
