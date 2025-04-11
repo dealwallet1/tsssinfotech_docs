@@ -83,4 +83,38 @@
    ```sh
    http://localhost:8000/docs
    ```
+
+# Dagster
+1. Git Clone 
+   ```sh
+   git clone https://github.com/dealwallet1/scrape_dagster
+   ``` 
+2. To install python 3.9 or higher.python 3.12 is recommended
+3. Go to the dagster folder
+4. Copy env.sample to .env
+5. Open the command prompt
+6. Create Virtual Environment
+   ```sh
+   python -m venv venv
+   venv\Scripts\activate
+   ``` 
+7. pip install requirements
+   ```sh
+   pip install  -r requirements.txt
+   ```
+8. Run the application
+   ```sh
+   dagster dev
+   ```
+9. Open the application in the web browser
+   ```sh
+   http://localhost:3000/docs
+   ```
+
+  
+
+   
+
+
+
  
