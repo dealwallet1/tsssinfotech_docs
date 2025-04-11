@@ -108,7 +108,7 @@
    ```
 9. Open the application in the web browser
    ```sh
-   http://localhost:3000/docs
+   http://localhost:3000
    ```
 
   
