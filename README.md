@@ -41,3 +41,6 @@
 [# LANGFUSE](https://github.com/dealwallet1/docs_imp_url/blob/main/langfuse.md)
 
 [# LLMS](https://github.com/dealwallet1/docs_imp_url/blob/main/llms.md)
+[#odoo](https://github.com/dealwallet1/docs_imp_url/blob/main/odoo.md)
+[#VLLM](https://github.com/dealwallet1/docs_imp_url/blob/main/VLLM.md)
+[#mcpserver](https://github.com/dealwallet1/docs_imp_url/blob/main/mcpserver.md)
