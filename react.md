@@ -9,3 +9,10 @@
 [How to Build a Reusable useSearch Hook in React](https://www.freecodecamp.org/news/how-to-build-a-reusable-usesearch-hook-in-react/)
 
 [Fix Your Slow React App With React-Scan](https://www.youtube.com/watch?v=3EnathFYgz8)
+
+
+[Optimizing Fonts in Next.js](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts)
+
+[allowedDevOrigins in next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins)
+
+[Next.js Framework Guide for Cloudflare Workers](https://developers.cloudflare.com/workers/frameworks/framework-guides/nextjs/)

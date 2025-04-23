@@ -14,3 +14,4 @@
 
 [Building Blocks of LangGraph - Hugging Face Agents Course](https://huggingface.co/learn/agents-course/unit2/langgraph/building_blocks)
 
+[Leveraging LLM Fine-Tuning and RAG for Advanced Recommendation Engines](https://medium.com/@shireenchand/leveraging-llm-fine-tuning-and-rag-for-advanced-recommendation-engines-a3d683e39976)

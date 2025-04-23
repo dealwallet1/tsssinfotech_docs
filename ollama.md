@@ -16,3 +16,6 @@
 [VLLM vs. Ollama: Choosing the Right Lightweight LLM Framework for Your AI Applications](https://blog.stackademic.com/vllm-vs-ollama-choosing-the-right-lightweight-llm-framework-for-your-ai-applications-a454e1b39322#:~:text=VLLM%20is%20an%20optimized%20inference,source%20LLMs%20on%20local%20machines)
 
 [First-Ever General AI Agent) = OpenManus](https://www.youtube.com/watch?v=2CgkJEXFYoU)
+
+[IBM Granite 2B and 8B models are 128K context length language model](https://ollama.com/library/granite3.3/blobs/3da071a01bbe)
+

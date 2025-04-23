@@ -17,3 +17,9 @@
 
 [Example: Monitoring LLM Security - Langfuse](https://langfuse.com/docs/security/example-python)
 
+
+[Langfuse Self-Hosting Deployment Strategies](https://langfuse.com/self-hosting/deployment-strategies?q=deployment)
+
+[Langfuse Python SDK (Low-level) - Initialize Client](https://langfuse.com/docs/sdk/python/low-level-sdk#initialize-client)
+
+[Single Langfuse Deployment](https://langfuse.com/self-hosting/deployment-strategies?q=deployment)

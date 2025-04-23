@@ -22,3 +22,11 @@
 
 [For developers who want to delve deeper into AI Agents or build their own Agent systems, OpenManus provides a great starting point](https://medium.com/@ai-data-drive/hacking-openmanus-inside-the-world-of-ai-agents-b18fe9aba571)
 
+[Innovative ERP Solutions in the Age of AI](https://www.youtube.com/watch?v=i8zXY3NxDJ0)
+
+[memo integration](https://mem0.ai/)
+
+[10 Prompt Engineering Tips to Get Better AI Responses](https://www.thedailystar.net/tech-startup/news/10-prompt-engineering-tips-get-better-ai-responses-3871506)
+
+[Build Autonomous Agents Using Prompt Chaining with AI Primitives](https://www.freecodecamp.org/news/build-autonomous-agents-using-prompt-chaining-with-ai-primitives/)
+
