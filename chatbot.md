@@ -31,3 +31,6 @@
 
 [Learn how to load chat messages and threads within the CopilotKit framework](https://docs.copilotkit.ai/coagents/persistence/loading-message-history)
 
+[Shared State in CopilotKit CoAgents](https://docs.copilotkit.ai/coagents/shared-state)
+
+[Automate 90% of Your Work with AI Agents](https://dev.to/copilotkit/automate-90-of-your-work-with-ai-agents-real-examples-code-inside-46ke)

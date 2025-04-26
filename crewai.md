@@ -20,3 +20,9 @@
 [Customer Support Automation with Multi-Agent AI | CrewAI Guide](https://www.youtube.com/watch?v=kPI5z0-h4qI)
 
 [How do you use new Deepseek-r1 LLM in CrewAI with OpenRouter](https://community.crewai.com/t/how-do-you-use-new-deepseek-r1-llm-in-crewai-with-openrouter/3094/3)
+
+
+[Build Full-Stack AI Agents with CrewAI and CopilotKit](https://www.copilotkit.ai/blog/how-to-build-full-stack-ai-agents-crewai-copilotkit)
+
+[How To Build Full-Stack AI Agent](https://www.youtube.com/watch?v=zoPHcZT4OeI)
+

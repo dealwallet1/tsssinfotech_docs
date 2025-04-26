@@ -54,3 +54,9 @@
 [Creating a LLM-as-a-Judge That Drives Business Results –](https://hamel.dev/blog/posts/llm-judge/)
 
 [A Visual Guide to LLM Agents](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-llm-agents)
+
+
+[primer-llm-embedding](https://huggingface.co/spaces/hesamation/primer-llm-embedding)
+
+[Large Language Models: The Next Generation of Recommendation Systems](https://www.linkedin.com/pulse/large-language-models-next-generation-recommendation-systems-premai-awyhf)
+[Preventing Fine-Tuned LLMs from Answering Outside of Scope](https://www.reddit.com/r/LangChain/comments/1h4po9o/preventing_finetuned_llm_to_answer_outside_of/?rdt=63645#:~:text=This%20shouldn't%20be%20too,llm%20with%20the%20rag%20capability)

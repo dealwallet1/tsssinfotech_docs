@@ -20,3 +20,10 @@
 
 [LettuceDetect: A Hallucination Detection Framework for RAG Applications | Towards Data Science](https://towardsdatascience.com/lettucedetect-a-hallucination-detection-framework-for-rag-applications/)
 
+[The Common Failure Points of LLM RAG Systems and How to Overcome Them](https://medium.com/@sahin.samia/the-common-failure-points-of-llm-rag-systems-and-how-to-overcome-them-926d9090a88f)
+
+[The Art and Science of RAG: Mastering Prompt Templates and Contextual Understanding](https://medium.com/@ajayverma23/the-art-and-science-of-rag-mastering-prompt-templates-and-contextual-understanding-a47961a57e27)
+
+[RAG for LLM-Based Recommendations – Squareboat Blog](https://squareboat.com/blog/rag-for-llm-based-recommendations)
+
+[Agentic RAG System Architectures – Analytics Vidhya](https://www.analyticsvidhya.com/blog/2025/01/agentic-rag-system-architectures/)
