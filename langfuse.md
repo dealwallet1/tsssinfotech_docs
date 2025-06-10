@@ -15,9 +15,12 @@
 [Fine-tuning - Langfuse](https://langfuse.com/docs/fine-tuning)
 
 [Example: Monitoring LLM Security - Langfuse](https://langfuse.com/docs/security/example-python)
-
 [Langfuse Self-Hosting Deployment Strategies](https://langfuse.com/self-hosting/deployment-strategies?q=deployment)
 
 [Langfuse Python SDK (Low-level) - Initialize Client](https://langfuse.com/docs/sdk/python/low-level-sdk#initialize-client)
 
 [Single Langfuse Deployment](https://langfuse.com/self-hosting/deployment-strategies?q=deployment)
+[Langfuse End to End Documentation](https://docs.google.com/document/d/1HfXszGab3nDLT54X9P6F1Zsj2HFVJW4jnbvqO6R-MXk/edit?usp=sharing)
+
+[Langfuse Dashboard Report](https://docs.google.com/document/d/1_7sfZhmXAkFG9Oz14jT_6KY2ZDpKXvHyuyMSV2Cg0I8/edit?tab=t.0#heading=h.xda3ddohfhg1)
+
