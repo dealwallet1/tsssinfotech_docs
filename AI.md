@@ -30,3 +30,9 @@
 
 [Build Autonomous Agents Using Prompt Chaining with AI Primitives](https://www.freecodecamp.org/news/build-autonomous-agents-using-prompt-chaining-with-ai-primitives/)
 
+
+[Building Full Stack AI Agent Apps with CopilotKit + CrewAI](https://www.youtube.com/watch?v=5Tg9_zoeJXY)
+[AI Engineering with AWS SageMaker: Crash Course for Beginners!](https://www.youtube.com/watch?v=Ld2oTLY47sA)
+[Deploy Generative AI Models with Amazon Bedrock & Python](https://www.youtube.com/watch?v=wLNBsr_JKuc)
+[How to Build an AI-based Real Estate Recommendation Agent](https://mindsdb.com/blog/how-to-choose-a-real-estate-investment-company-with-mindsdb-and-llamaindex)
+[AI Basics for Beginners](https://www.youtube.com/watch?v=VGFpV3Qj4as)

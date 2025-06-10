@@ -1,0 +1,3 @@
+[AWS’ Serverless MCP Server to aid agentic development of managed applications](https://www.infoworld.com/article/3999255/aws-serverless-mcp-server-to-aid-agentic-development-of-managed-applications.html)
+[ETL Service - Serverless Data Integration - AWS Glue - AWS](https://aws.amazon.com/glue/?ams%23interactive-card-vertical%23pattern-data.filter=%257B%2522filters%2522%253A%255B%255D%257D)
+[AI Engineering with AWS SageMaker: Crash Course for Beginners!](https://www.youtube.com/watch?v=Ld2oTLY47sA)

@@ -18,3 +18,4 @@
 
 [Introducing MCP Server](https://www.meilisearch.com/blog/introducing-mcp-server)
 
+[Filter search results - Meilisearch Documentation](https://www.meilisearch.com/docs/learn/filtering_and_sorting/filter_search_results)
