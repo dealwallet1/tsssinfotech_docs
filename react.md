@@ -16,3 +16,13 @@
 [allowedDevOrigins in next.config.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins)
 
 [Next.js Framework Guide for Cloudflare Workers](https://developers.cloudflare.com/workers/frameworks/framework-guides/nextjs/)
+[npm: react-floating-action-button](https://www.npmjs.com/package/react-floating-action-button)
+[Use daisyUI with HTMX — Tailwind CSS Components ( version 5 update is here )](https://daisyui.com/docs/install/htmx/)
+[Use daisyUI from CDN — Tailwind CSS Components ( version 5 update is here )](https://daisyui.com/docs/cdn/)
+[Try Tailwind CSS right in the browser without any build step.](https://tailwindcss.com/docs/installation/play-cdn)
+[How to Fix React useEffect running twice in React 18 ? - GeeksforGeeks](https://www.geeksforgeeks.org/how-to-fix-react-useeffect-running-twice/)
+[Prevent React from triggering useEffect twice](https://taig.medium.com/prevent-react-from-triggering-useeffect-twice-307a475714d7)
+[Custom Hook in React to solve useEffect double invocation](https://www.opcito.com/blogs/custom-hook-in-react-to-solve-useeffect-double-invocation)
+[Next.js 15.3](https://nextjs.org/blog/next-15-3#client-instrumentation-hook)
+[Build and Deploy a Unique 3D Web Developer Portfolio with React, Three JS & GSAP](https://www.youtube.com/watch?v=E-fdPfRxkzQ)
+[Build a 3d Ecommerce application using React Three Fiber and UIKit without writing HTML and CSS](https://www.youtube.com/watch?v=YiE5DWFqUR4)

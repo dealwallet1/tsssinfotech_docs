@@ -16,3 +16,4 @@
 
 [How to Make Your Python Docker Image 80% Smaller](https://arjan.codes/diagnosis)
 
+[How to Write Code the Pythonic Way (With 6 Examples)](https://www.howtogeek.com/how-to-write-code-the-pythonic-way-with-examples/)

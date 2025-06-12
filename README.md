@@ -44,3 +44,4 @@
 [#odoo](https://github.com/dealwallet1/docs_imp_url/blob/main/odoo.md)
 [#VLLM](https://github.com/dealwallet1/docs_imp_url/blob/main/VLLM.md)
 [#mcpserver](https://github.com/dealwallet1/docs_imp_url/blob/main/mcpserver.md)
+[#CLICKHOUSE](https://github.com/dealwallet1/docs_imp_url/blob/main/clickhouse.md)

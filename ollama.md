@@ -19,3 +19,4 @@
 
 [IBM Granite 2B and 8B models are 128K context length language model](https://ollama.com/library/granite3.3/blobs/3da071a01bbe)
 
+[How to use or disable Model Thinking in Ollama (Python Tutorial)](https://www.youtube.com/watch?v=JT-Ceq6kA5g)
