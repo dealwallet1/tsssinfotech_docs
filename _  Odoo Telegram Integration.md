@@ -17,8 +17,9 @@
 
 Install the ngrok for local testing to setup webhook setup for receiving messages
 
-Install ngrok   
-Run in command prompt with this ngrok http 8069  
+Install ngrok here: https://ngrok.com/downloads/windows?tab=download  
+Run in command prompt with this 
+ngrok http 8069  
 ![][image2]  
 Copy that forwarding url   
 **curl \-X POST "https://api.telegram.org/bot\<your\_token\>/setWebhook" \\**  
