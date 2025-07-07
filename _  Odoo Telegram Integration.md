@@ -9,8 +9,7 @@
 ### **2\. Setup Bot in Odoo**
 
 * Go to Telegram Integration  \>Configuration  
-* Fill in the token,name and chat id  
-*   
+* Fill in the token,name and chat id   
 * Click send message  
 * **![][image1]**
 
