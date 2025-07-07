@@ -11,7 +11,7 @@
 * Go to Telegram Integration  \>Configuration  
 * Fill in the token,name and chat id   
 * Click send message  
-* **![][image1]**
+ **![][image1]**
 
 ### 3\. Set Webhook
 
