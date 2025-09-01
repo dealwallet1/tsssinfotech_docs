@@ -55,10 +55,10 @@
 
 1. Git Clone
    ```sh
-   git clone https://github.com/dealwallet1/cs_agent-py
+   git clone https://github.com/dealwallet1/cs_agent_payments
    ```
 
-2. Go to the cs_agent-py folder
+2. Go to the cs_agent_payments folder
 3. Copy env.sample to .env
 4. Open the command prompt
 5. Create Virtual Environment
