@@ -1,0 +1,233 @@
+# Gemma3 RAG Chatbot
+## Technical Documentation & Code Walkthrough
+
+**Prepared On:** April 15, 2026  
+**Version:** 2.0.0  
+**Status:** Ready for Demo  
+**Classification:** Confidential  
+
+---
+
+# 1. Project Overview
+
+This project implements a **Retrieval-Augmented Generation (RAG) chatbot** using the **Gemma3 LLM**, running locally via Ollama.
+
+Unlike basic RAG systems, this implementation includes:
+- Custom context retrieval logic
+- Manual prompt engineering
+- Automated evaluation using AI-as-Judge
+- Real-time hallucination and confidence scoring
+- Fault-tolerant system with auto-recovery
+
+The chatbot can answer questions using both:
+- Knowledge Base (URLs + PDF)
+- General model knowledge
+
+---
+
+# 2. Technology Stack
+
+| Component | Technology | Purpose |
+|----------|----------|--------|
+| LLM | Gemma3 (Ollama) | Local language model inference |
+| Framework | Agno | Agent orchestration |
+| Vector DB | LanceDB | Stores embeddings |
+| Embedder | SentenceTransformers (MiniLM) | Text → vectors |
+| Evaluation | AgentAsJudge | Response scoring |
+| PDF Loader | pypdf | Document parsing |
+| Search Engine | tantivy | Fast retrieval |
+| Language | Python 3 | Core implementation |
+
+---
+
+# 3. System Architecture
+
+## Data Flow
+
+1. User enters a query
+2. System searches knowledge base (LanceDB)
+3. Top relevant chunks are retrieved
+4. Context is injected into prompt
+5. Prompt sent to Gemma3 via Ollama
+6. Model generates response
+7. Response evaluated (Hallucination + Confidence)
+8. Report displayed to user
+
+---
+
+# 4. RAG Pipeline (Custom Implementation)
+
+## Step-by-Step Flow
+
+1. **User Input**
+   - CLI accepts user question
+
+2. **Context Retrieval**
+   - `get_context()` searches LanceDB
+   - Returns top 5 relevant chunks
+
+3. **Prompt Augmentation**
+   - Context added as:
+     ```
+     === KNOWLEDGE BASE CONTEXT ===
+     ...
+     === END OF CONTEXT ===
+     ```
+
+4. **LLM Execution**
+   - Agno Agent sends prompt to Gemma3
+
+5. **Answer Generation**
+   - Output labeled as:
+     - From Knowledge Base
+     - From General Knowledge
+
+6. **Evaluation Layer**
+   - Two evaluations executed:
+     - Hallucination Check
+     - Confidence Check
+
+7. **Final Output**
+   - Answer + Evaluation Report
+
+---
+
+# 5. Knowledge Base
+
+## Data Sources
+
+- 8 Agno documentation URLs
+- 1 PDF document
+
+## Processing Steps
+
+- Content extraction
+- Chunking
+- Embedding generation
+- Storage in LanceDB
+
+---
+
+# 6. Evaluation System
+
+Each response is evaluated automatically using **Agent-as-Judge**.
+
+## Metrics
+
+### 1. Hallucination Score
+- Detects fabricated information
+- Scale: 0-10
+- Formula:
+  ```
+  Hallucination = 1 - (Score / 10)
+  ```
+
+### 2. Confidence Score
+- Measures clarity and certainty
+- Scale: 0-10
+- Formula:
+  ```
+  Confidence = Score / 10
+  ```
+
+---
+
+## Score Interpretation
+
+| Score | Hallucination Risk | Confidence | Status |
+|------|------------------|-----------|--------|
+| 8-10 | Low | High | PASS |
+| 7 | Moderate | Moderate | PASS |
+| 4-6 | High | Medium | FAIL |
+| 0-3 | Very High | Low | FAIL |
+
+---
+
+# 7. Error Handling & Recovery
+
+The system includes fault tolerance:
+
+- Detects Ollama failure
+- Automatically restarts server
+- Waits until service is ready
+- Continues execution without crash
+
+---
+
+# 8. Code Workflow Summary
+
+## Initialization
+- Install dependencies
+- Start Ollama server
+- Pull model if not available
+
+## Setup
+- Initialize embedder
+- Configure LanceDB
+- Create knowledge base
+- Initialize agent
+
+## Execution Loop
+- Accept user input
+- Retrieve context
+- Generate response
+- Evaluate output
+- Display report
+
+---
+
+# 9. Key Features
+
+- Fully offline AI system
+- Hybrid knowledge + general reasoning
+- Real-time evaluation
+- Structured output reporting
+- Custom RAG pipeline
+- Automatic system recovery
+
+---
+
+# 10. How to Run
+
+1. Install Python 3.8+
+2. Install Ollama
+3. Save script as:
+   ```
+   gemma_agent.py
+   ```
+4. Run:
+   ```
+   python gemma_agent.py
+   ```
+
+---
+
+# 11. Demo Instructions
+
+1. Start the script
+2. Wait for model + knowledge loading
+3. Ask questions
+4. Observe:
+   - Answer source labeling
+   - Evaluation scores
+   - Hallucination percentage
+   - Confidence percentage
+
+---
+
+# 12. Conclusion
+
+This system demonstrates a production-ready **RAG chatbot architecture** with integrated evaluation and reliability scoring.
+
+It goes beyond standard implementations by combining:
+- Custom retrieval logic
+- Prompt control
+- Automated evaluation
+- Fault tolerance
+
+This makes it suitable for real-world AI applications requiring **trust, transparency, and reliability**.
+
+---
+
+**End of Document**
+
