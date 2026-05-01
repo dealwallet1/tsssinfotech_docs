@@ -19,6 +19,28 @@ Implemented a Jira-style sprint management system in the Odoo Project module to 
 
 ---
 
+### 🎯 Sprint Goal
+
+The Sprint Goal represents the primary objective that the team aims to achieve during a sprint. It is displayed prominently in the sprint header to provide clear direction and alignment.
+
+#### 📌 Purpose
+- Defines the main focus of the sprint
+- Helps team members stay aligned with objectives
+- Improves clarity and decision-making during development
+
+#### ⚙️ Functionality
+- Users can set a sprint goal while creating or editing a sprint
+- The goal is shown in the sprint header section
+- Can be updated anytime based on sprint changes
+
+#### 🖥️ UI Behavior
+- Displayed below sprint title and duration
+- Editable using an inline edit (✏️ icon)
+- Supports short descriptive text
+
+#### 💡 Example
+Sprint Goal: Complete task workflow and integrate MCP tools
+
 ## 🔄 Sprint Workflow
 
 ### 1. Create Sprint
