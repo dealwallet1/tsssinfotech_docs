@@ -527,3 +527,182 @@ Set up a free trial ClickHouse database environment for the VPN Analytics projec
 3. Backend is able to connect without errors
 4. Test queries execute successfully
 5. Connection credentials are documented securely..
+
+
+**Bug -16** 
+**Title**
+Sidebar Navigation Alignment and Spacing Issue on Dashboard Page
+
+**Description:**
+On the Dashboard page, the left-side navigation panel inside the highlighted section has UI alignment and spacing inconsistencies. The sidebar menu items appear improperly spaced and visually unbalanced within the container.
+
+The navigation section does not maintain proper padding and alignment consistency between menu items such as:
+
+1. Dashboard
+2. Chart Explorer
+3. Data Sources
+4. Mobile Admin
+
+This affects the overall visual appearance and user experience of the sidebar navigation.
+
+**Steps to Reproduce:**
+
+1. Open the Dashboard page.
+2. Observe the left-side navigation panel.
+3. Check the spacing and alignment between sidebar menu items inside the highlighted section.
+
+**Expected Result:**
+
+1. Sidebar menu items should have consistent spacing, alignment, and padding.
+2. Navigation section should appear visually balanced and properly structured.
+
+**Actual Result:**
+
+1. Sidebar items appear misaligned with inconsistent spacing and layout presentation.
+
+Reason: The issue impacts UI consistency and user experience but does not block functionality.
+
+**Bug -17** 
+**Title**
+Swagger Query API Returns OPENAI_API_KEY not set Message Instead of Actual Response
+
+**Description:**
+While testing the /api/query endpoint in Swagger UI, the API is returning an environment configuration error instead of processing the user query.
+
+**Steps to Reproduce:**
+
+1. Open Swagger UI.
+2. Navigate to POST /api/query.
+3. Enter a valid query in the request body.
+
+**Example:**
+
+{
+  "query": "How many active users in express vpn in enterprise plan in Australia for February month in 2026?"
+}
+
+4.Click on Execute.
+
+
+**Actual Result:**
+
+API returns the following response:
+
+{
+  "content": "OPENAI_API_KEY not set. Please set the OPENAI_API_KEY environment variable."
+}
+
+**Expected Result:**
+
+The API should process the query successfully and return the requested analytics/data response instead of an environment variable error.
+
+
+**Impact:**
+
+1. Swagger API testing is blocked.
+2. Query endpoint is not functional due to missing backend environment configuration.
+3. Users cannot validate query responses.
+
+**Possible Cause:**
+
+OPENAI_API_KEY environment variable is missing or not configured in the backend/server environment.
+
+
+**Bug -18** 
+**Title**
+AI Assistant Chatbot Does Not Return Response After User Submits Query
+ 
+**Description:**
+When a user submits a question in the AI Assistant chatbot, the chatbot does not generate or display any response. After entering the query, the chat remains stuck in the “Analyzing historical dataset... Comparing growth vectors.” state without returning any result or error message to the user.
+
+Additionally, the dashboard displays the error message:
+Failed to load data: Request failed: 500
+
+This indicates a possible backend/API failure affecting chatbot response generation.
+
+
+**Steps to Reproduce:**
+
+1. Open the Dashboard page
+2. Launch the AI Assistant chatbot panel
+3. Enter a query (e.g., “How many active users in express vpn in enterprise plan in Australia for February month in 2026?”)
+4. Submit the question
+
+**Actual Result:**
+
+1. Chatbot does not provide any response
+2. Loading/analyzing message continues indefinitely
+3. Dashboard shows Request failed: 500 error
+
+**Expected Result:**
+
+1. Chatbot should process the query and return the requested analytics response successfully
+2. Proper error handling should be shown if the request fails
+
+**Possible Impact:**
+Users are unable to retrieve insights or analytics data through the AI Assistant chatbot.
+
+**Bug -19** 
+**Title**
+Connection Wizard Fields Remain Disabled and Database Selection State Is Not Visually Reflected in Data Sources page
+
+**Description:**
+In the Connection Wizard section, when a user selects a database type such as PostgreSQL, MongoDB, or BigQuery, the selected card does not display a clear active/selected state.
+
+Additionally, the related configuration input fields (Host Address, Port, Database Name, etc.) remain visually disabled or inactive, creating confusion about whether the fields are editable.
+
+This impacts user experience and makes the connection setup flow unclear.
+
+**Steps to Reproduce**
+
+1. Navigate to Data Sources page
+2. Open Connection Wizard
+3. Select any database type (PostgreSQL/MongoDB/BigQuery)
+4. Observe the database card selection state
+5. Check the input fields below
+
+
+**Actual Result:**
+
+1. Selected database card does not show a clear highlighted/active state
+2. Input fields appear greyed out or disabled
+3. Poor visual feedback for selected option
+4. Users may assume fields are non-editable
+
+
+**Expected Result:**
+
+1. Selected database card should display a clear active/highlighted state
+2. Related input fields should become visually enabled and editable
+3. Proper UI feedback should guide the user through the setup process
+
+**Bug -20** 
+**Title**
+Horizontal Scrollbar Visible in Active Data Sources Table Causing Poor UI Experience
+
+**Description**
+
+The “Active Data Sources” table displays a horizontal scrollbar within the table container even in desktop view where sufficient screen space is available.
+
+The table layout is not properly responsive/aligned inside the container, causing unnecessary horizontal scrolling and reducing readability for users.
+
+**Steps to Reproduce**
+
+1. Navigate to Data Sources page
+2. Scroll down to the “Active Data Sources” section
+3. Observe the bottom area of the table container
+
+**Actual Result**
+
+1. Horizontal scrollbar appears inside the table
+2. Table content overflows container width
+3. Users must scroll horizontally to view complete data
+4. Poor table responsiveness and UI alignment
+
+
+**Expected Result**
+
+1. Table should fit properly within the container width
+2. Columns should align responsively without overflow
+3. Horizontal scrollbar should not appear unnecessarily in desktop view
+4. Users should view all important columns without manual scrolling
