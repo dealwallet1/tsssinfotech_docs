@@ -351,3 +351,179 @@ These cards currently appear static, which creates an inconsistent user experien
      1. System Health card
      2. Security Review card
 3.Observe that no hover interaction or visual feedback is displayed.
+
+
+**Bug -11** 
+**Title**
+Swagger API Returns HTTP 200 Success but Generates Incorrect/Irrelevant AI Response
+
+**Description:**
+In the backend Swagger API (/api/query), the request is returning HTTP status code 200 OK, but the AI-generated response is not relevant to the user query.
+
+When a user asks a specific analytical question, the API successfully executes without server error, but the returned content contains unrelated summaries, recommendations, or generic analytics text instead of the expected answer.
+
+This appears to be an AI/model response handling issue rather than an API failure.
+
+**Sample Query:**
+
+{
+  "query": "how many subscription plans are their in 2026 for brazil country?"
+  "query":"How many subscription plans are there in Brazil in 2026?"
+}
+
+**Actual Response:**
+
+1. API returns 200 OK
+2. Response contains unrelated analytics summary/recommendation text
+3. Does not provide the requested subscription count/details
+
+**Expected Response:**
+
+1. AI should generate an accurate response related to the asked query.
+2. Returned data should match the requested analytics/question context.
+3. Response should contain correct subscription plan information for Brazil in 2026.
+
+**Observed Issue:**
+
+1. Backend/API layer works successfully.
+2. AI model response generation is producing incorrect or irrelevant output.
+3. Possible causes:
+     1. Incorrect prompt handling
+     2. Model context issue
+     3. SQL/query generation mismatch
+     4. AI response parsing issue
+
+**Steps to Reproduce:**
+
+1. Open Swagger API documentation.
+2. Execute POST /api/query.
+3. Enter a valid analytics question in the request body.
+4. Click Execute.
+5. Observe that:
+     1. Status code is 200
+     2. Response content is unrelated to the actual query
+
+
+**Bug -12** 
+**Title**    
+Latest Local Changes Not Reflecting on Server After Deployment
+
+**Description**
+
+The latest changes are working correctly in the local environment in forntend, but they are not reflecting on the server after deployment.
+
+make sure to fix ASAP..
+
+**Steps to Reproduce**
+
+1. Make changes in the local environment
+2. Verify the changes are working locally
+3. Deploy the latest code to the server
+4. Open the server application
+5. Observe that the latest changes are not visible on the server
+
+**Expected Result**
+The server should reflect all the latest deployed changes.
+
+
+**Actual Result**
+
+The server is still showing old data/UI/functionality and not reflecting the latest updates.
+
+**Bug -13** 
+**Title**    
+Resource Allocation Chart Layout and Tooltip Visibility Issues
+
+**Description**
+
+Multiple UI issues were identified in the Resource Allocation chart component affecting readability, alignment, and overall user experience.
+
+**Issues Observed**
+
+1. The chart tooltip overlaps the graph bars and blocks visibility of the chart data while hovering.
+2. The Maintenance legend text has very low contrast and is difficult to read against the background.
+3. The chart appears compressed within the card container due to improper spacing and alignment.
+4. Y-axis labels are positioned too close to the chart border, affecting readability
+
+
+**Steps to Reproduce**
+
+1. Open the dashboard page
+2. Navigate to the Resource Allocation chart section
+3. Hover over the chart bars
+4. Observe the tooltip behavior and chart layout
+
+**Expected Result**
+
+1. Tooltip should appear without blocking important chart data
+2. Legend text should be clearly visible
+3. Chart should have proper spacing and alignment within the container
+4. Axis labels should have sufficient padding for better readability
+
+**Actual Result**
+
+1. Tooltip overlaps chart content
+2. Legend text visibility is poor
+3. Chart spacing/alignment appears uneven
+4. Axis labels are too close to the border
+
+**Bug -14** 
+**Title**
+Search Bar Text Visibility Issue and Refresh Charts Button Not Functioning Properly in Chart Explorer
+
+**Description:**
+In the Chart Explorer page, there are two issues identified in the highlighted section:
+
+1. **Search Bar Text Visibility Issue:**
+
+When entering text into the search bar, the typed text is not clearly visible due to poor text contrast/background styling. This makes it difficult for users to read the entered content.
+
+2. **Refresh Charts Button Issue:**
+
+When clicking the "Refresh Charts" button, the expected refresh action is not working properly. The charts are not updating/reloading as expected, and there is no proper response or feedback after clicking the button.
+
+
+**Steps to Reproduce:**
+
+1. Navigate to the Chart Explorer page.
+2. Enter text into the search bar.
+3. Observe the text visibility issue inside the input field.
+4. Click on the Refresh Charts button.
+5. Observe that the refresh functionality is not working correctly.
+
+**Expected Result:**
+
+1. Typed text in the search bar should be clearly visible.
+2. Refresh Charts button should properly reload/update the charts.
+
+**Actual Result:**
+
+1. Search input text is unclear and difficult to read.
+2. Refresh Charts button action is not functioning as expected.
+
+
+**Bug -15** 
+**Title**
+Create Free Trial ClickHouse Database for VPN Analytics Project
+
+**Description**
+
+Set up a free trial ClickHouse database environment for the VPN Analytics project to support backend development, API testing, and analytics data storage.
+
+**Requirements**
+
+1. Create a free trial ClickHouse account
+2. Configure a new database instance
+3. Create database: vpn_test1
+4. Verify database connectivity from backend application
+5. Share connection details securely with the development team
+6. Validate CRUD operations and query execution
+7. Ensure environment variables/configuration are properly updated
+
+**Acceptance Criteria**
+
+1. ClickHouse free trial account is successfully created
+2. vpn_test1 database is available and accessible
+3. Backend is able to connect without errors
+4. Test queries execute successfully
+5. Connection credentials are documented securely..
