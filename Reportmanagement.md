@@ -706,3 +706,194 @@ The table layout is not properly responsive/aligned inside the container, causin
 2. Columns should align responsively without overflow
 3. Horizontal scrollbar should not appear unnecessarily in desktop view
 4. Users should view all important columns without manual scrolling
+
+
+**Bug -21** 
+**Title**
+Revenue Performance Chart Container Displays Blank State After API Failure
+ 
+ **Description**
+
+The "Revenue Performance" chart section becomes completely blank when the API request fails with a 500 Internal Server Error. Although an error message is displayed at the top of the dashboard, the chart container itself does not provide any fallback UI, loading indicator, retry option, or meaningful empty/error state.
+
+This creates a poor user experience because users cannot determine whether the chart is still loading, failed to load, or contains no data.
+
+**Steps to Reproduce**
+
+1. Open the Analytics Dashboard.
+2. Navigate to the Dashboard Overview page.
+3. Trigger or simulate a failed API response (500 Internal Server Error) for the revenue chart API.
+4. Observe the Revenue Performance chart section.
+
+**Expected Result**
+
+The chart section should handle API failures gracefully by displaying one of the following:
+
+1. Valid chart data (if API succeeds)
+2. Loading state while fetching data
+3. Meaningful error state/message inside the chart container
+4. Empty-state UI when no data is available
+5. Retry action/button for failed requests
+
+**Actual Result**
+
+The Revenue Performance chart area displays a large empty blank container after the API failure, with no fallback UI or recovery action available.
+
+**Impact**
+
+1. Poor user experience
+2. Confusing blank dashboard state
+3. No indication of chart failure inside component
+4. Users may assume application is broken or still loading
+
+**Bug -22** 
+**Title**
+Dashboard KPI Cards Display Placeholder Values Instead of Proper Error State During API Failure
+
+**Description**
+Dashboard KPI widgets including:
+
+1. Total Revenue
+2. Active Users
+3. Avg Churn Rate
+
+display placeholder dashes (—) when API requests fail. The widgets do not provide any meaningful error state, retry action, or unavailable-data message.
+
+This makes the dashboard appear incomplete and does not clearly communicate that data loading has failed.
+
+**Steps to Reproduce**
+
+1. Open the Analytics Dashboard.
+2. Navigate to the Dashboard Overview page.
+3. Trigger or simulate a failed KPI metrics API response.
+4. Observe the KPI cards section.
+
+**Expected Result**
+
+KPI widgets should:
+
+1. display actual metric values when API succeeds,
+2. show loading state while fetching data,
+3. or display meaningful fallback/error state with retry option when API fails.
+
+**Actual Result**
+
+KPI cards display placeholder dashes (—) without any explanation or recovery option.
+
+
+**Bug -23** 
+**Title**
+API Reports Dashboard Displays “no available server” Blank Page Without Error Handling
+
+**Description:**
+While accessing the API Reports application (apireports.dealwallet.com), the page displays a blank white screen with the message:
+
+no available server
+
+The application fails to load any UI components, dashboard content, or fallback error handling screen.
+
+
+**Steps to Reproduce:**
+
+1. Open apireports.dealwallet.com
+2. Wait for the application to load
+3. Observe the displayed page
+
+**Expected Result:**
+
+1. Application should load successfully
+2. If backend/server is unavailable, a proper error page or maintenance message should be displayed
+3. User should receive meaningful feedback with retry/support options
+
+
+**Actual Result:**
+
+1. Blank white page is displayed
+2. Only raw text message no available server appears
+3. No proper UI error handling or recovery option is shown
+
+**Impact:**
+Users are unable to access the reports application or perform any actions.
+
+
+**Bug -24** 
+**Title**
+User Signup API Returns 500 Internal Server Error Even with Valid Credentials
+
+**Description:**
+While testing the Signup API endpoint in Swagger, the API returns a 500 Internal Server Error even when valid user registration details are provided.
+
+The request payload contains all required fields with correct values, but the user registration is not completed successfully. This indicates an issue on the backend/server-side handling of the signup process.
+
+**Environment:**
+
+1. API Endpoint: /auth/signup
+2. Platform: Swagger API Docs
+3. Environment: Production/UAT
+
+
+**Steps to Reproduce:**
+
+1. Open Swagger API documentation.
+2. Navigate to POST /auth/signup.
+3. Enter valid signup details:
+  1.Email
+  2.Phone number
+  3.Password
+  4.Confirm password
+  5.Role
+4.Click on Execute.
+5.Observe the API response.
+
+
+**Actual Result:**
+API returns:
+
+1. Status Code: 500 Internal Server Error
+2. Response Message: Internal Server Error
+
+**Expected Result:**
+The API should successfully register the user and return:
+
+1. Status Code: 200 OK or 201 Created
+2. Success response with user/account creation confirmation.
+
+
+**Bug -25** 
+**Title**
+Generating reports API Throws ClickHouse Type Error During Yearly Subscription Report Generation by Country
+
+**Description**
+
+When attempting to generate a CSV,PDF,PPT report for yearly plan subscriptions grouped by country for the year 2026 using the /files/generate API endpoint, the request fails with a ClickHouse database exception.
+
+The backend appears to generate an invalid aggregation query where the SUM() function is applied to a String-type column, resulting in a database error and preventing CSV ,PDF,PPTreport generation.
+
+This issue blocks users from exporting subscription analytics reports.
+
+**Steps to Reproduce**
+
+1. Open Swagger/API documentation
+2. Navigate to:
+         POST /files/generate
+3.Enter the following prompt:
+         Generate a csv report of yearly plan subscriptions by country in 2026
+4.Click on Execute
+5.Check the API response
+
+**Actual Result**
+
+1.API returns HTTP 500 error with the following database exception:
+     {
+  "message": "DB::Exception: Illegal type String of argument for aggregate function SUM. (ILLEGAL_TYPE_OF_ARGUMENT)"
+}
+2.CSV report is not generated
+3.Download option fails
+4.Backend query execution breaks
+
+**Expected Result**
+
+1. API should successfully process the request
+2. CSV report should be generated and downloadable
+3. Report should contain yearly subscription counts grouped by country for 2026
+4. API should return successful response without database exceptions
