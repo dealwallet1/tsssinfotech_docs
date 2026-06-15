@@ -897,3 +897,184 @@ This issue blocks users from exporting subscription analytics reports.
 2. CSV report should be generated and downloadable
 3. Report should contain yearly subscription counts grouped by country for 2026
 4. API should return successful response without database exceptions
+
+**Bug -26** 
+**Title**
+Recent Insights Card Redirects to 404 Page Instead of Opening Insight Details
+
+**Description:**
+When clicking on the "Revenue Growth" card under the Recent Insights section in the left sidebar, the application redirects to a 404 – This page could not be found error page instead of opening the corresponding insight details or report page.
+
+**Steps to Reproduce:**
+
+1. Open the Insights dashboard.
+2. Navigate to the Recent Insights section.
+3. Click on the "Revenue Growth" insight card.
+
+**Expected Result:**
+The selected insight should open the corresponding insight/report details page successfully.
+
+**Actual Result:**
+Application redirects to a 404 page not found error screen.
+
+
+**Bug -27** 
+**Title**
+Sidebar Collapse Expands Menu Text Outside Layout on Hamburger Icon Click
+
+**Description:**
+When the user clicks the hamburger (3-line) menu icon in the Mobile Store Admin sidebar, the sidebar partially collapses, but the navigation menu labels (Dashboard, Chart Explorer, Data Sources, Mobile Admin, etc.) overflow outside the sidebar container instead of resizing or hiding properly.
+
+**Actual Result:**
+
+1. Sidebar width reduces after clicking the hamburger icon
+2. Menu text remains visible outside the collapsed sidebar
+3. Navigation labels overlap the main content area
+4. Sidebar layout appears broken and misaligned
+
+**Expected Result:**
+
+1. Sidebar should collapse cleanly within its container
+2. Menu labels should either:
+     1.hide completely, or
+     2.appear properly aligned inside the collapsed sidebar
+3.No text overflow or UI overlap should occur
+4.Main content layout should remain properly aligned
+
+**Steps to Reproduce:**
+
+1. Open the Mobile Store Admin page
+2. Click the hamburger (3-line) menu icon in the top-left sidebar
+3. Observe the sidebar collapse behavior
+
+**Issue Type:**
+UI/UX Layout Bug
+
+**Possible Cause:**
+Sidebar collapsed state width is reduced, but menu label visibility/overflow styling is not handled correctly (overflow, display, width, or transition issue).
+
+
+**Bug -28** 
+**Title**
+“View All Insights” Button Redirects to 404 Page Instead of Insights Listing
+
+**Description:**
+When the user clicks the “View All Insights” button in the left sidebar under the Recent Insights section, the application redirects to a 404 – This page could not be found error page instead of loading the expected Insights page.
+
+**Actual Result:**
+
+1. Clicking the “View All Insights” button opens a 404 error page
+2. User is unable to access the complete Insights listing page
+
+**Expected Result:**
+
+1. Clicking the “View All Insights” button should navigate to the proper Insights dashboard/list page
+2. All available insights should load successfully without any error
+
+**Steps to Reproduce:**
+
+1. Open the Insights Engine dashboard
+2. Navigate to the left sidebar → Recent Insights section
+3. Click on the “View All Insights” button
+4. Observe the redirection behavior
+
+**Issue Type:**
+Functional / Navigation Bug
+
+**Priority:**
+High
+
+**Impact:**
+Users cannot access the complete insights section, which affects navigation flow and dashboard usability.
+
+**Possible Cause:**
+
+1. Incorrect route configuration
+2. Missing frontend route/page
+3. Backend endpoint or deployment issue
+4. Broken navigation link path for /insights page
+
+**Bug -29** 
+**Title**
+Mobile and Tablet Responsive Layout Is Broken – Dashboard Content, Sidebar, and Cards Are Not Properly Aligned
+ 
+ **Description:**
+The dashboard UI is not rendering correctly on mobile and tablet screen sizes. Multiple layout and responsiveness issues are visible when testing in responsive mode.
+
+The sidebar occupies excessive space, causing the main dashboard content to become compressed and partially hidden. Insight cards, analytics sections, and text content are not adapting properly to smaller screens. Additionally, API failure messages and console errors are appearing, which further impacts the user experience.
+
+
+**Steps to Reproduce:**
+
+1. Open the application in Chrome browser
+2. Navigate to the Analytics Dashboard page
+3. Open Chrome DevTools (F12 or Ctrl + Shift + I)
+4. Enable Responsive/Device Toolbar mode (Ctrl + Shift + M)
+5. Select mobile or tablet resolutions such as:
+            1.360 × 740
+            2. 375 × 667
+6.Refresh the page after switching to responsive mode
+7.Observe the dashboard layout, sidebar behavior, and insight cards
+8.Open the Console tab in DevTools
+9.Notice the layout breaking issues and multiple API errors (404 and 500) appearing in the console
+
+**Actual Result:**
+
+1. Sidebar overlaps or consumes most of the screen width on mobile/tablet views
+2. Dashboard content is partially hidden or compressed
+3. Insight cards and analytics sections are misaligned
+4. Text and components are not responsive for smaller resolutions
+5. Console shows multiple API errors (404 and 500 responses)
+6. Layout spacing and component scaling are inconsistent across devices
+
+
+**Expected Result:**
+
+1. Sidebar should collapse or resize properly on mobile and tablet screens
+2. Dashboard content should be fully visible and responsive
+3. Cards, charts, and insight sections should align correctly without overflow
+4. Proper spacing and scaling should be maintained across all screen sizes
+5. No broken API requests or console errors should appear during responsive testing
+
+
+**Bug -30** 
+**Title**
+Market Growth Trends and Resource Allocation Graphs Missing Axis Labels and Measurement Indicators
+
+**Description:**
+Both the “Market Growth Trends” and “Resource Allocation” graphs are displayed without proper axis labels, value measurements, or scale indicators. Users are unable to clearly identify the data values, units, or graph interpretation.
+
+**Affected Sections:**
+
+1. Market Growth Trends graph
+2. Resource Allocation graph
+
+**Steps to Reproduce:**
+1. Login to the InsightEngine Reports application.
+2. Navigate to the Chart Explorer page.
+3. Scroll down to the:
+      1.Market Growth Trends graph
+      2.Resource Allocation graph
+4.Observe the chart sections carefully.
+**Issue Observed:**
+
+1. X-axis and Y-axis labels are missing.
+2. Measurement scales/values are not displayed.
+3. Graph units and data indicators are unclear.
+4. Users cannot properly identify chart data or compare values visually.
+
+**Expected Result:**
+Graphs should display:
+1. X-axis and Y-axis labels
+2. Proper measurement scales/values
+3. Data indicators or units
+4. Clear graph identification for accurate analysis
+
+**Actual Result:**
+Graphs are rendered without:
+1. Measurement values
+2. Axis identification
+3. Scale markers
+4. Proper data readability
+
+This makes the charts difficult to understand and reduces reporting usability.
