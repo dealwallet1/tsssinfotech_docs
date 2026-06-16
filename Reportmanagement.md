@@ -1078,3 +1078,122 @@ Graphs are rendered without:
 4. Proper data readability
 
 This makes the charts difficult to understand and reduces reporting usability.
+
+
+**Bug -31** 
+**Title**
+Dashboard Page Missing Vertical Scrollbar Prevents Users from Viewing Full Content
+
+**Description:**
+The Dashboard Overview page does not display a vertical scrollbar, preventing users from scrolling up and down to access the complete dashboard content.
+
+Even though multiple dashboard sections and widgets are available below the visible screen area, the page remains fixed and users cannot navigate to the hidden content.
+
+**Steps to Reproduce:**
+
+1. Open the Dashboard Overview page.
+2. Observe the page layout after loading.
+3. Try scrolling down using the mouse wheel or trackpad.
+4. Notice that the page does not scroll vertically.
+
+**Expected Result:**
+A vertical scrollbar should be available when the dashboard content exceeds the screen height, allowing users to scroll up and down smoothly.
+
+**Actual Result:**
+No vertical scrollbar is displayed, and users are unable to access content outside the visible viewport.
+
+
+**Bug -32** 
+**Title**
+Notification Icon Click Action Not Working on Mobile Store Admin Dashboard
+
+**Description:**
+When users click the notification icon in the top-right corner of the Mobile Store Admin dashboard, no notification panel, dropdown, popup, or response is displayed.
+
+The notification icon appears clickable, but it does not perform any action, which may confuse users and affect usability.
+
+**Steps to Reproduce:**
+
+1. Open the Mobile Store Admin dashboard.
+2. Navigate to the top-right corner of the page.
+3. Click the notification (bell) icon.
+4. Observe the system behavior.
+
+**Expected Result:**
+Clicking the notification icon should open a notification dropdown, alerts panel, or display recent notifications.
+
+**Actual Result:**
+No action occurs after clicking the notification icon.
+
+
+**Bug -33** 
+**Title**
+Reports Portal Displays “No Available Server” Error and Fails to Load Dashboard
+
+**Description:**
+When accessing the reports portal (reports.dealwallet.com), the application fails to load and only displays the message “no available server” on a blank page. Users are unable to access the dashboard or any report data.
+
+This issue indicates that the backend server or service handling the request is unavailable or not responding properly.
+
+**Steps to Reproduce:**
+
+1. Open the browser
+2. Navigate to reports.dealwallet.com
+3. Observe the page after loading
+
+**Actual Result:**
+A blank page is displayed with the error message:
+ no available server
+
+
+**Expected Result:**
+The reports dashboard should load successfully without any server availability errors.
+
+**Bug -34** 
+**Title**
+Action Label Missing in Active Data Sources Table – Only Three-Dot Menu Displayed
+
+**Description:**
+In the Active Data Sources table, the Action column label is missing from the table header. Currently, only the three-dot action menu is displayed for each row without a visible “Action” or “Options” label. This causes unclear UI behavior and reduces usability because users may not understand the purpose of the menu icon.
+
+**Steps to Reproduce:**
+
+1. Login to the application
+2. Navigate to the Active Data Sources page
+3. Observe the table headers and row actions
+4. Check the right-side column beside the Status column
+
+**Actual Result:**
+Only the three-dot menu icon is displayed beside the Status column, and the Action column label/header is missing.
+
+**Expected Result:**
+An Action (or appropriate label) column header should be displayed above the three-dot menu icons for better clarity and consistency.
+
+
+**Bug -35** 
+**Title**
+Revenue Growth Percentage Displayed Even When Revenue Data Is Unavailable
+
+**Description**
+
+When the dashboard has no revenue data available, the Revenue Performance widget correctly displays “No data available” and the Total Revenue value is shown as empty (—). However, the growth percentage indicator still displays +12.5%.
+
+The percentage value should not be displayed when there is no revenue data available because it creates misleading analytics information and inconsistent UI behavior.
+
+**Steps to Reproduce**
+
+1. Open the Analytics Dashboard
+2. Load an account/environment with no revenue data
+3. Observe the Revenue Performance section
+4. Check the Total Revenue card on the right side
+
+**Actual Result**
+
+1. Revenue chart displays “No data available”
+2. Total Revenue value displays —
+3. Growth percentage still displays +12.5%
+
+**Expected Result**
+When no revenue data exists:
+1. Growth percentage should be hidden, disabled, or shown as 0%
+2. Dashboard metrics should remain consistent with the available data
