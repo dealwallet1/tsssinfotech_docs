@@ -1197,3 +1197,168 @@ The percentage value should not be displayed when there is no revenue data avail
 When no revenue data exists:
 1. Growth percentage should be hidden, disabled, or shown as 0%
 2. Dashboard metrics should remain consistent with the available data
+
+
+**Bug -36** 
+**Title**
+AI Assistant Cannot Reach Backend & Dashboard Fails Due to Missing DB_HOST Environment Variable
+
+**Description**
+
+The analytics dashboard is showing a configuration error indicating that DB_HOST is not set in the environment configuration. Additionally, the AI Assistant panel cannot connect to the backend API running on 127.0.0.1:8000.
+
+Because of this:
+
+1. Dashboard widgets show no data
+2. Revenue/User Growth sections are empty
+3. AI Assistant queries fail
+4. Backend connectivity is broken
+
+**Steps to Reproduce**
+
+1. Open Analytics Dashboard
+2. Navigate to Dashboard page
+3. Observe warning banner:
+4. DB_HOST is not set. Check your .env file
+5. Open AI Assistant
+6. Ask any query
+7. Observe backend connection error
+
+**Actual Result**
+
+1. Dashboard data not loading
+2. AI Assistant unable to fetch responses
+3. Backend connection failure shown
+
+**Expected Result**
+
+1. Dashboard should load analytics data successfully
+2. AI Assistant should communicate with backend API
+3. No environment variable errors should appear
+**Possible Root Cause**
+
+1. Missing or improperly loaded .env configuration
+2. Backend server not running on port 8000
+3. Database connection initialization failure
+
+**Bug -37** 
+**Title**
+Global Performance Map UI Alignment Issue Inside Card Container
+
+**Description**
+
+The “Global Performance Map” visualization is not properly aligned within the dashboard card container. The map content appears too close to the card edges, especially near the bottom corners, causing inconsistent spacing and an unpolished UI appearance.
+
+**Steps to Reproduce**
+
+1. Open Chart Explorer page
+2. Navigate to “Global Performance Map” widget
+3. Observe the map alignment inside the container
+
+**Actual Result**
+
+1. Map visualization appears cramped near card edges
+2. Bottom corners look misaligned
+3. Inconsistent inner padding/margins
+4. Content fitting inside the card looks improper
+
+**Expected Result**
+
+1. Map should have proper spacing from all card edges
+2. Consistent padding should be maintained
+3. Visualization should fit cleanly within rounded container borders
+
+**Possible Root Cause**
+
+1. Incorrect padding/margin values
+2. Overflow handling issue
+3. Improper canvas/image scaling inside container
+
+
+**Bug -38** 
+**Title**
+Chart Explorer Displays “Failed to Fetch” Error While Loading Dashboard Data
+
+**Description**
+
+The Chart Explorer page fails to load analytics data and displays a Failed to fetch error banner. The frontend is unable to retrieve data from the backend API, causing dashboard visualizations and charts to become partially or fully non-functional.
+
+**Steps to Reproduce**
+
+1. Open the Analytics Dashboard
+2. Navigate to the Chart Explorer page
+3. Wait for dashboard data to load
+4. Observe the error banner at the top
+
+**Actual Result**
+
+1. Failed to fetch error is displayed
+2. Some dashboard components fail to load data
+3. Analytics visualizations become unreliable/incomplete
+
+**Expected Result**
+
+1. Dashboard should successfully fetch data from backend APIs
+2. Charts and analytics widgets should load without errors
+3. No fetch failure message should appear
+
+**Possible Root Cause**
+
+1. Backend API unavailable
+2. API endpoint failure
+3. Network/CORS configuration issue
+4. Incorrect API base URL
+5. Timeout or internal server error
+
+
+**Bug -39** 
+**Title**
+Dashboard displays raw environment configuration error message to end users
+
+**Description:**
+On the Dashboard Overview page, the application is displaying the technical error message:
+DB_HOST is not set. Check your .env file.
+
+This exposes internal backend/environment configuration details directly in the UI instead of showing a user-friendly error message. The issue appears in a visible alert banner on the dashboard and may confuse users while also exposing sensitive system configuration information.
+
+**Steps to Reproduce:**
+
+1. Login to the application
+2. Navigate to the Dashboard Overview page
+3. Observe the alert banner displayed below the page heading
+
+**Actual Result:**
+System displays the raw backend/environment error message:
+DB_HOST is not set. Check your .env file.
+
+**Expected Result:**
+Application should handle configuration/database errors gracefully and display a generic user-friendly message such as:
+Unable to load dashboard data. Please try again later.
+
+**Impact:**
+
+1. Exposes internal system configuration details
+2. Poor user experience
+3. Dashboard metrics and charts are not loading properly
+
+
+**Bug -40** 
+**Title**
+Dashboard empty state text alignment is inconsistent in analytics widgets
+
+**Description:**
+The empty state messages (No data and No plan data) inside dashboard widgets are not properly aligned within their respective containers. The text positioning appears inconsistent and affects the visual layout of the dashboard.
+
+**Steps to Reproduce:**
+
+1. Login to the application
+2. Navigate to the Dashboard Overview page
+3. Observe the User Growth widget and Top Plans by Revenue widget
+4. Check the placement of the empty state messages (No data and No plan data)
+5. Notice that the text is not properly centered/aligned within the cards
+
+**Actual Result:**
+Empty state text is unevenly positioned and not properly centered within the cards.
+
+**Expected Result:**
+Empty state messages should be consistently centered and aligned within all dashboard widgets for better UI consistency.
