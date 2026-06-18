@@ -1362,3 +1362,143 @@ Empty state text is unevenly positioned and not properly centered within the car
 
 **Expected Result:**
 Empty state messages should be consistently centered and aligned within all dashboard widgets for better UI consistency.
+
+
+**Bug -41** 
+**Title**
+Chart axis labels and starting month are not properly visible in Market Growth Trends graph
+ 
+ **Description:**
+In the “Market Growth Trends” chart, the X-axis and Y-axis indicators/labels are either missing or not clearly visible. Additionally, the line graph appears to start before the first visible month label, causing improper chart alignment and reducing readability.
+
+The graph line starts from the left side, but the starting month label is not displayed correctly, creating confusion in data interpretation.
+
+**Steps to Reproduce:**
+
+1. Login to the application
+2. Navigate to the Chart Explorer page
+3. Scroll to the Market Growth Trends section
+4. Observe the X-axis, Y-axis, and starting point of the graph
+
+**Actual Result:**
+
+1. X-axis labels are partially missing/inconsistent
+2. Y-axis indicators are not clearly visible
+3. Graph line starts before the first visible month label
+4. Initial month alignment is incorrect
+
+**Expected Result:**
+
+1. Both X-axis and Y-axis labels should be clearly visible
+2. The graph should properly align with the starting month
+3. The first data point should begin exactly from the first visible month indicator
+
+
+**Bug -42** 
+**Title**
+Date Range Filter Dropdown Options Not Displaying in Dashboard Overview
+
+**Description:**
+The date range filter in the Dashboard Overview page is currently displaying only the default option “Last 30 Days” without any dropdown functionality or additional selectable ranges.
+
+Expected dropdown options such as:
+
+1. Last 7 Days
+2. Last 30 Days
+3. Last 3 Months
+4. Last 6 Months
+5. Last 12 Months
+6. Custom Range
+
+are not visible when clicking the filter.
+
+This prevents users from filtering dashboard analytics data based on different time periods.
+
+**Steps to Reproduce:**
+
+1. Login to the InsightEngine dashboard.
+2. Navigate to the Dashboard Overview page.
+3. Click on the “Last 30 Days” date filter dropdown at the top-right corner.
+4. Observe that no dropdown options are displayed.
+
+**Expected Result:**
+The date filter should open a dropdown menu showing multiple selectable date ranges including “Last 12 Months” and other period options.
+
+**Actual Result:**
+Only “Last 30 Days” is displayed and no dropdown menu/options appear.
+
+
+**Bug -43** 
+**Title**
+Recent Insights Tabs Are Displayed Too Close Together Without Proper Spacing
+
+**Description:**
+In the left sidebar under the Recent Insights section, the insight tabs/cards (Revenue Growth, User Demographics, and Churn Rate Analysis) are appearing too close to each other without proper spacing or padding. This makes the section look visually cluttered and reduces UI readability.
+
+Proper spacing/margin should be maintained between each insight card to improve alignment, readability, and overall user experience.
+
+**Steps to Reproduce:**
+
+1. Open the Chart Explorer page.
+2. Navigate to the left sidebar.
+3. Observe the Recent Insights section.
+4. Check the spacing between the insight cards.
+
+**Expected Result:**
+Each insight card should have consistent spacing and padding between items.
+
+**Actual Result:**
+The insight cards are displayed in a mixed/cluttered manner with little or no spacing between them.
+
+
+**Bug -44** 
+**Title**
+Incorrect Period Label Displayed as "12 Mo" Instead of "12 Months" in Dropdown
+ 
+ **Description:**
+In the Market Growth Trends section, the period filter dropdown is displaying abbreviated values such as "12 Mo", "6 Mo", and "3 Mo". As per the expected UI/content format, the period labels should be displayed in full text such as "12 Months", "6 Months", and "3 Months" for better clarity and readability.
+
+**Steps to Reproduce:**
+
+1. Open the dashboard page.
+2. Navigate to the Market Growth Trends widget.
+3. Click on the period dropdown.
+4. Observe the displayed dropdown values.
+
+**Expected Result:**
+Dropdown values should display as:
+1. 12 Months
+2. 6 Months
+3. 3 Months
+
+**Actual Result:**
+Dropdown values are displayed in abbreviated format:
+1. 12 Mo
+2. 6 Mo
+3. 3 Mo
+
+
+**Bug -45** 
+**Title**
+Search Query Is Not Cleared After Clicking Refresh in Chart Explorer
+
+**Description**
+
+In the Chart Explorer page, when a user searches for any report using the search bar and then clicks the Refresh button, the page data refreshes successfully, but the previously entered search text remains in the search field instead of being cleared.
+
+The expected behavior is that the search input should reset/clear after clicking the Refresh button so that the page returns to its default state.
+
+**Steps to Reproduce**
+
+1. Open the Chart Explorer page.
+2. Enter any text in the search bar (example: brazil reports).
+3. Click the Refresh button.
+4. Observe the search field after refresh.
+
+**Actual Result**
+
+The page refreshes, but the previously entered search text remains visible in the search bar.
+
+**Expected Result**
+
+After clicking the Refresh button, the search field should be cleared and reset to the default state
