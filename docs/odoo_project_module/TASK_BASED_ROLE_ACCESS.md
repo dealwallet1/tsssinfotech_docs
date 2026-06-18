@@ -209,3 +209,60 @@ can access the project.
 - Dashboard displays role statistics.
 - Reports use role information.
 - Existing project access remains unchanged.
+
+# Team Management UI & Access Control Enhancement
+
+## Overview
+
+The Team Management module has been enhanced to provide a more structured and user-friendly way of managing project teams and user access. The previous list-based interface has been improved with a modern Kanban-style layout that allows project managers and administrators to quickly view team assignments and project roles.
+
+## Features Implemented
+
+### Team Management Kanban View
+
+* Introduced project-based Kanban cards.
+* Each project is displayed as an individual team management card.
+* Improved visual organization and readability.
+
+### Role-Based Team Structure
+
+The following team roles are supported:
+
+* Team Leads
+* Developers
+* QA/Testers
+* DevOps Engineers
+* Project Members
+
+### Improved Assignment Visibility
+
+* Displays assigned users by role within each project.
+* Provides a quick overview of team composition.
+* Makes resource allocation easier to monitor.
+
+### Access Management Improvements
+
+* Enhanced project-level user access structure.
+* Prepared foundation for role-based permissions and project visibility.
+* Supports controlled project access based on team responsibilities.
+
+## Benefits
+
+* Better project team visibility.
+* Easier user and role management.
+* Improved navigation and usability.
+* Modern and professional interface.
+* Scalable structure for future access-control enhancements.
+
+## Future Enhancements
+
+* Role-based permission enforcement.
+* Team workload visualization.
+* Project access matrix.
+* Team activity tracking.
+* GitHub and project contribution insights.
+* Team performance dashboard.
+
+## Outcome
+
+The Team Management module now provides a centralized and organized view of project teams, making it easier for administrators, project managers, and team leads to manage users, roles, and project access efficiently.
