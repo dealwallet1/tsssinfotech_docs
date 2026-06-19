@@ -1502,3 +1502,127 @@ The page refreshes, but the previously entered search text remains visible in th
 **Expected Result**
 
 After clicking the Refresh button, the search field should be cleared and reset to the default state
+
+
+**Bug -46** 
+**Title**
+Incorrect Project Name and Branding Displayed in Application Header
+
+**Description**
+
+The application header is displaying the project name as “InsightEngine” along with its logo, while the actual project name should be “Report Management.”
+
+This causes incorrect branding and may confuse users.
+
+**Steps to Reproduce**
+
+1. Open the application.
+2. Observe the top-left header section.
+3. Check the displayed project name and logo.
+
+**Actual Result**
+
+The application displays the name “InsightEngine” and its associated logo.
+
+**Expected Result**
+
+The application should display the correct project name “Report Management” with the appropriate logo/branding.
+
+
+**Bug -47** 
+**Title**
+Inconsistent Background Theme in Mobile Store Admin Page
+
+**Description:**
+The Mobile Store Admin page displays a black background section behind the app store analytics cards, while the remaining application uses a light theme. This causes visual inconsistency and impacts UI appearance.
+
+**Steps to Reproduce**
+
+1. Open the Reporting Platform application.
+2. Login with valid credentials.
+3. Navigate to the Mobile Admin section from the left sidebar.
+4. Observe the background section behind:
+       1.Apple App Store card
+       2.Google Play Console card
+       3.Production Build Registry section
+5.Compare the background color with the overall application theme.
+
+**Actual Result**
+A black background is displayed behind the analytics and registry sections, causing inconsistency with the light-themed UI.
+
+**Expected Result**
+The background should match the application's light theme and remain visually consistent across all sections.
+
+
+**Bug -48** 
+**Title**
+Connection Wizard Step Indicator Does Not Update When Selecting Database Type
+
+**Description:**
+In the Connection Wizard section of the Reporting Platform, the step indicator remains on “Step 1 of 3” even after selecting different database types such as MongoDB and BigQuery.
+
+When a user clicks on another database option, the wizard flow/step progression is not updating or navigating to the next step as expected. This creates confusion and makes the multi-step wizard appear non-functional.
+
+**Steps to Reproduce:**
+
+1. Open the Reporting Platform → Data Sources page.
+2. Navigate to the Connection Wizard section.
+3. Click on database options like MongoDB or BigQuery.
+4. Observe the step indicator and wizard flow.
+
+**Expected Result:**
+After selecting a database type, the wizard should proceed/update to the next step (Step 2 of 3) or show related configuration changes.
+
+**Actual Result:**
+The wizard remains on Step 1 of 3 and no slide/step transition occurs after selecting MongoDB or BigQuery.
+
+
+**Bug -49** 
+**Title**
+Missing Table Columns in Mobile View for "Top Countries by Revenue" Section
+
+**Description:**
+In the Dashboard page, the "Top Countries by Revenue" table displays all columns correctly in the desktop view, including Active Users and Share. However, in the mobile view, these fields/columns are missing and not visible to the user.
+
+This causes inconsistency between desktop and mobile layouts and prevents users from viewing complete table information on mobile devices.
+
+
+**Steps to Reproduce:**
+
+1. Open the Dashboard page in desktop view.
+2. Navigate to the Top Countries by Revenue section.
+3. Observe the columns such as Active Users and Share.
+4. Switch to mobile view/responsive mode.
+5. Check the same section again.
+
+**Expected Result:**
+All table columns including Active Users and Share should be visible or properly adjusted in mobile view.
+
+**Actual Result:**
+The Active Users and Share fields are missing/not displayed in mobile view.
+
+
+**Bug -50** 
+**Title**
+Line Chart Option Displays Bar Chart Instead of Line Chart in Resource Allocation Widget
+
+**Description**:
+In the Resource Allocation section of the Chart Explorer page, clicking the Line chart toggle does not switch the visualization to a line chart. The chart continues to display as a bar chart even after selecting the Line option.
+
+This causes incorrect chart rendering and makes the chart type toggle functionality unusable.
+
+**Steps to Reproduce:**
+
+1. Open the Chart Explorer page.
+2. Navigate to the Resource Allocation widget.
+3. Click on the Line chart toggle button.
+4. Observe the displayed chart.
+5. Click on the Bar chart toggle button again.
+
+**Actual Result:**
+Both Bar and Line toggle options display the same bar chart visualization.
+
+**Expected Result:**
+
+1. Clicking Bar should display a bar chart.
+2. Clicking Line should display a line chart.
