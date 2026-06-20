@@ -1626,3 +1626,148 @@ Both Bar and Line toggle options display the same bar chart visualization.
 
 1. Clicking Bar should display a bar chart.
 2. Clicking Line should display a line chart.
+
+
+**Bug -51** 
+**Title**
+Sticky Header Remains Fixed While Scrolling in Mobile Store Admin Page
+
+**Description:**
+On the Mobile Store Admin page, the top header section remains fixed/stable while scrolling the page using the cursor or mouse wheel. The content cards and other page sections move upward normally, but the highlighted header area does not move along with the rest of the page.
+
+This behavior is inconsistent with other pages in the application, where the entire page including the header scrolls together. Due to this issue, the UI appears misaligned and creates an inconsistent scrolling experience.
+
+**Steps to Reproduce:**
+
+1. Open the Mobile Store Admin page.
+2. Scroll the page upward or downward using the mouse cursor/wheel.
+3. Observe the highlighted header section at the top of the page.
+
+**Actual Result:**
+The header section remains fixed/stable while the remaining page content scrolls.
+
+**Expected Result:**
+The header section should scroll together with the rest of the page content, similar to other pages in the application.
+
+
+**Bug -52** 
+**Title**
+Backend API Returns Incorrect Active User Count Compared to Database Data
+
+**Description**
+
+The API is returning incorrect active user data for the requested query despite the database containing the correct value.
+
+**Query:**
+
+How many active users are in the ExpressVPN Enterprise plan in Australia for February 2026?
+
+**Database Record:**
+
+1. Month: 2026-02
+2. Service: ExpressVPN
+3. Plan: Enterprise
+4. Country: Australia
+5. Active Users: 135,989
+
+**API Response:**
+
+1. Active Users: 1,245
+     The value returned by the API does not match the corresponding database record. This suggests an issue in the backend query logic, data               aggregation, filtering, transformation, or AI response generation layer.
+
+**Steps to Reproduce**
+
+1. Open Swagger API.
+2. Execute the query:
+      "How many active users are in the ExpressVPN Enterprise plan in Australia for February 2026?"
+3. Observe the API response.
+4. Compare the r
+**Expected Result**
+eturned value with the database record.
+The API should return: "In February 2026, ExpressVPN's Enterprise plan had 135,989 active users in Australia."
+
+**Actual Result**
+The API returns: "In February 2026, ExpressVPN's Enterprise plan had 1,245 active users in Australia."
+
+**Impact**
+Incorrect analytical data is displayed to users, resulting in inaccurate reports and business insights.
+
+
+**Bug -53** 
+**Title**
+Signup Endpoint Returns 500 Internal Server Error for Valid User Registration Request
+
+**Description:**
+
+While testing the POST /auth/signup API endpoint through Swagger UI, a signup request was submitted with all required and valid user details. After clicking the Execute button, the API returned a 500 Internal Server Error instead of creating the user account successfully.
+
+This indicates a server-side issue in the signup service, as the request payload is valid and the API documentation shows that a successful response (HTTP 200) is expected.
+
+**Steps to Reproduce**
+
+1. Open Swagger UI.
+2. Navigate to Authentication → POST /auth/signup.
+3. Click Try it out.
+4. Enter valid registration details:
+      
+        {
+  "email": "testuser@gmail.com",
+  "country_code": "+91",
+  "phone": "9652736247",
+  "password": "Valid@123",
+  "confirm_password": "Valid@123",
+  "role": "dev"
+}
+
+5.Click Execute.
+
+**Actual Result**
+
+1. API returns HTTP Status Code: 500
+2. Response Body:
+        Internal Server Error
+3.User account is not created.
+
+**Expected Result**
+
+1. API should validate the request successfully.
+2. User account should be created.
+3. API should return a success response (200/201) with user registration details or a success message.
+
+
+**Bug -54** 
+**Title**
+Signup Fails with "Failed to Parse URL" Error When Clicking Create Account
+
+**Description**
+
+Users are unable to create a new account through the Signup page. After entering all required details and clicking the "Create Account" button, the signup process fails and an error message is displayed:
+
+"Failed to parse URL from apireports.dealwallet.com/api/query/auth/signup"
+
+This prevents users from completing the account registration process.
+
+**Steps to Reproduce**
+
+1. Navigate to the Signup page.
+2. Enter valid details in all required fields:
+      1.Email
+      2.Phone Number
+      3.Role
+      4.Password
+      5.Confirm Password
+3.Click the "Create Account" button.
+4.Observe the error message.
+
+**Actual Result**
+
+The signup request fails and the following error message is displayed:
+
+"Failed to parse URL from apireports.dealwallet.com/api/query/auth/signup"
+
+**Expected Result**
+
+A new account should be created successfully, and the user should either:
+
+Be redirected to the Sign-In page, or
+Receive a success message confirming account creation.
