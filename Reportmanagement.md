@@ -1771,3 +1771,379 @@ A new account should be created successfully, and the user should either:
 
 Be redirected to the Sign-In page, or
 Receive a success message confirming account creation.
+
+
+**Bug -55** 
+**Title**
+VPN Analytics Query API returns null for successful signups despite data existing in the database
+
+**Description**
+The VPN Analytics Query API is returning a fallback response indicating that signup funnel data cannot be retrieved, even though the underlying database contains the expected records.
+
+**Environment**
+Environment: Swagger / VPN Analytics Query API
+Endpoint: POST /api/query
+Database: Primary Database (Postgres)
+Date Tested: 12-Jun-2026
+
+**Steps to Reproduce**
+1.Open Swagger documentation.
+2.Call the VPN Analytics Query API with the following query:
+  {
+  "query": "how many users are successfully complete signup in last month january 2026 in india"
+  }
+3.Observe the API response.
+4.Execute the following SQL query directly against the database:
+5.Compare the API response with the database result.
+
+**Actual Result**
+API returns:
+{
+  "success": true,
+  "data": {
+    "summary": "Unable to retrieve the signup funnel data for India for January 2026. The required data access tools are not available in the current environment.",
+    "key_metrics": {
+      "successful_signups": null
+    }
+  }
+}
+The API indicates that it cannot access the required data and returns null for successful_signups.
+
+**Expected Result**
+The API should successfully query the configured database and return:
+
+{
+  "success": true,
+  "data": {
+    "summary": "42 users successfully completed signup in India during January 2026.",
+    "key_metrics": {
+      "successful_signups": 42
+    }
+  }
+}
+
+**Database Validation**
+Direct SQL execution returns:
+
+successful_signups
+42
+This confirms that the data exists and the metric can be calculated correctly.
+
+**Impact**
+1.Users receive incorrect analytics results.
+2.Valid data is reported as unavailable.
+3.Reduces confidence in the VPN Analytics Query API.
+4.May affect reporting and decision-making.
+
+
+**Bug -56** 
+**Title**
+Analytics Query API Returns Data Source Error Instead of Generating Expected PDF Report with Active User Count
+
+**Description**
+When a user submits an analytics query through the /api/query endpoint to generate a PDF report, the API returns a success response (200 OK) but fails to retrieve the required analytics data.
+
+Instead of generating the requested report with the active user count for the specified filters, the response contains an error message indicating that the VPN_Data_Agent could not access the underlying data source due to a missing GROQ_API_KEY.
+
+The expected behavior is that the system should retrieve the active user count for the requested period and generate the PDF report successfully.
+
+**Environment**
+1.API: /api/query
+2.Testing Tool: Swagger UI
+3.Environment: Server
+
+**Steps to Reproduce**
+1.Open Swagger UI.
+2.Authenticate using a valid Bearer token.
+3.Execute the following request:
+4.Click Execute.
+
+**Actual Result**
+API returns:
+
+{
+  "success": true,
+  "data": {
+    "summary": "I’m sorry, but I wasn’t able to retrieve the required analytics data. The request to the VPN_Data_Agent failed because the underlying data source is not currently accessible (missing GROQ_API_KEY)."
+  }
+}
+
+1.No active user count is returned.
+2.PDF report is not generated.
+3.Response indicates a data source configuration failure.
+
+**Expected Result**
+The API should:
+
+1.Retrieve the active user count for:
+      Month: January 2026
+      Region: United States
+      Plan: Enterprise
+2.Generate and return the PDF report successfully.
+3.Response should contain:
+      Active user count
+      Summary
+      Recommendations (if applicable)
+      PDF download link/file
+**Example:**
+{
+  "success": true,
+  "data": {
+    "active_user_count": 1250,
+    "summary": "1250 active Enterprise users found in the United States for January 2026.",
+    "report_url": "<generated_pdf_url>"
+  }
+}
+**Impact**
+1.Users cannot generate analytics reports.
+2.Requested business metrics are unavailable.
+3.PDF report generation workflow is blocked.
+4.API returns a misleading success status despite failure to fetch data.
+
+**Possible Root Cause**
+1.Missing or invalid GROQ_API_KEY configuration.
+2.VPN_Data_Agent service cannot connect to the analytics data source.
+3.Backend error handling returns success: true even when data retrieval fails.
+
+
+**Bug -57** 
+**Title**
+Signup by Country Data Validation – ClickHouse vs Metabase (VPN Impact Analysis)
+
+**Description:**
+
+Conducting data validation for the Signup by Country page by comparing metrics between ClickHouse and Metabase for the selected reporting period. The analysis focuses on identifying discrepancies in country-level signup counts, verifying the underlying queries and filters, and investigating the impact of VPN usage on country attribution. The objective is to ensure data consistency, understand any variations caused by VPN traffic, and confirm the accuracy of the reported signup metrics across both platforms.
+
+**Scope:**
+
+1.Compare country-wise signup counts between ClickHouse and Metabase.
+2.Validate date range, event definitions, and applied filters.
+3.Investigate mismatches related to VPN-based country detection.
+4.Document findings and provide the root cause for any discrepancies.
+5.Confirm the accuracy of the Signup by Country reporting.
+
+
+**Bug -58** 
+**Title**
+Validate IP Provider Lookup API Response Contract and Error Handling
+
+**Description**
+Perform API testing for the IP Provider Lookup service to verify response structure, provider-level contracts, validation rules, and database version information.
+
+The API should correctly handle valid and invalid IP addresses and ensure every provider returns a consistent response format.
+
+**API Endpoints**
+1. IP Lookup API
+Method: GET
+
+Endpoint: /v1/lookup/{ip}
+
+2. Provider Database Information API
+Method: GET
+
+Endpoint: /v1/providers
+
+**Testing Scope**
+**1. Invalid IP Address Validation**
+Test Scenario
+Verify API behavior when an invalid IP address is provided.
+
+**Test Data**
+ IP: not-a-valid-ip
+
+**Expected Response**
+   {
+  "ip": "not-a-valid-ip",
+  "providers": {},
+  "error": {
+    "code": "invalid_ip",
+    "message": "Not a valid IPv4/IPv6 address"
+  }
+}
+
+**Validation Points**
+1.API should reject invalid IPv4/IPv6 formats.
+2.Error code should be invalid_ip.
+3.Error message should match expected format.
+4.No provider lookup should be triggered.
+**2. Provider Response Contract Validation**
+Verify every provider returns the same response structure.
+
+Expected provider response:
+ {
+  "status": "ok | not_found | provider_unavailable | unsupported",
+  "country": "PL",
+  "city": "Warsaw",
+  "version": "2026-05-27"
+}
+
+**Validation Rules**
+**Status Field**
+Verify accepted values:
+   ok
+   not_found
+   provider_unavailable
+   unsupported
+**Country Field**
+**Validation:**
+    1.Must always exist.
+    2.Should return ISO 3166-1 alpha-2 format.
+
+**Example:**
+**Valid:**
+1.US
+2.PL
+3.IN
+
+**Invalid:**
+1.United States
+2.India
+3.USA
+
+If provider has no country data:
+
+**Expected:**
+"country": null
+
+
+**City Field**
+Validation:
+
+Must always exist.
+Should return English/ASCII city name.
+Example:
+
+Correct:
+"city": "Warsaw"
+
+Incorrect:
+"city": "Warszawa"
+
+If unavailable:
+"city": null
+Expected:
+
+
+**Version Field**
+Validation:
+   Must always exist.
+   Format:
+         YYYY-MM-DD
+Example:
+         2026-05-27
+
+Should exist even when:
+         "status": "not_found"
+
+**3. Provider Data Missing Validation**
+Scenario
+Provider does not contain specific field information.
+
+Example:
+
+ipinfo database does not have city.
+
+**Expected:**
+   {
+ "status": "ok",
+ "country": "US",
+ "city": null,
+ "version": "2026-05-27"
+    }
+
+
+**Validation:**
+1.Key should not be removed.
+2.Value should be null.
+
+**4. Provider Not Found Scenario**
+Scenario
+IP does not exist in provider database.
+
+**Expected:**
+    {
+ "status": "not_found",
+ "country": null,
+ "city": null,
+ "version": "2026-05-27"
+}
+
+
+**Validation:**
+1.Version should still be available.
+2.Provider should indicate lookup was performed.
+
+**5. Provider Availability Validation**
+Verify /v1/providers endpoint.
+
+Expected Response:
+ {
+ "providers":[
+  {
+   "name":"maxmind",
+   "enabled":true,
+   "databases":[
+    {
+     "name":"GeoIP2-City",
+     "version":"2026-05-27",
+     "fetched_at":"2026-05-28T03:00:00Z"
+    }
+   ]
+  }
+ ]
+}
+
+**Validation:**
+1.Provider name should be displayed.
+2.Enabled status should be correct.
+3.Database version should exist.
+4.fetched_at timestamp should be valid ISO datetime.
+
+**Test Cases**
+**Test Case**	                                              **Expected Result**
+Valid IPv4 lookup	                                         Provider details returned successfully
+Valid IPv6 lookup	                                         Provider details returned successfully
+Invalid IP format	                                         Return invalid_ip error
+Empty IP value	                                              Validation error returned
+Missing provider data	                                    Fields returned as null
+Provider database miss	                                    status = not_found
+Provider service unavailable	                               status = provider_unavailable
+Unsupported provider lookup	                               status = unsupported
+Country format validation	                               ISO-2 code only
+City format validation	                                    ASCII English name
+Version availability check	                               Version always present
+Provider metadata API validation	                          Database details displayed
+
+**Acceptance Criteria**
+1.API rejects invalid IP addresses correctly.
+2.All providers follow the same response contract.
+3.Missing fields return null instead of removing keys.
+4.Country values follow ISO-2 standard.
+5.Database version is always returned.
+6.Provider freshness information is available through /v1/providers.
+7.Error responses follow defined schema.
+
+
+**Bug -59** 
+**Title**
+IPInfo Provider Returns Full Country Name and Null City Value
+
+**Description:**
+Based on the requirements, I performed end-to-end testing and found bugs in the IPInfo provider. As per the requirement, the country field should return the 2-letter ISO country code, but it is currently displaying the full country name. Additionally, the city field is returning null instead of the expected city value for the provided IP address. Apart from these issues, all other functionalities are working as expected.
+
+**Steps to Reproduce**
+1.Send a request to the API using the IPInfo provider.
+2.Provide a valid IP address.
+3.Verify the values returned in the country and city fields of the response.
+
+**Actual Result**
+1.The country field returns the full country name (e.g., "India") instead of the 2-letter country code (e.g., "IN").
+2.The city field returns null.
+
+**Expected Result**
+1.The country field should return the 2-letter ISO country code as specified in the requirements.
+2.The city field should return the corresponding city name for the provided IP address when the data is available.
+
+**Impact**
+Applications and downstream integrations that depend on standardized country codes and location details may experience data inconsistencies. Other functionalities have been tested and are working correctly.
+
