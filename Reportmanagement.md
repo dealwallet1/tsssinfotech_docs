@@ -2147,3 +2147,77 @@ Based on the requirements, I performed end-to-end testing and found bugs in the 
 **Impact**
 Applications and downstream integrations that depend on standardized country codes and location details may experience data inconsistencies. Other functionalities have been tested and are working correctly.
 
+
+**Bug -60** 
+**Title**
+API Testing for Report Generation Files (PDF, CSV, PPT) – VPN Report Management
+
+**Description:**
+
+Perform API testing using Swagger for the Report Management project related to VPN reports.
+
+**Scope:**
+1.Validate report generation APIs.
+2.Verify PDF, CSV, and PPT files are generated successfully.
+3.Check whether all report data is populated correctly in the generated files.
+4.Validate data accuracy against the API response and database source.
+5.Verify file format, headers, filters, and report content.
+6.Test different report types and date ranges.
+7.Validate API response status codes and error handling.
+
+**Acceptance Criteria:**
+1.Report generation APIs return successful responses.
+2.PDF, CSV, and PPT files are generated without errors.
+3.Generated reports contain accurate and complete data.
+4.Data displayed in reports matches the source data.
+5.No missing, duplicated, or incorrect records are observed.
+6.File download functionality works as expected.
+
+**Impact:**
+Ensures report generation APIs produce accurate and reliable VPN reports across all supported file formats.
+
+
+**Bug -61** 
+**Title**
+Resend OTP API returns incorrect message for unregistered email address
+
+**Description**
+While testing the POST /auth/resend-otp API, I provided a new email address that has never been registered or started the signup process.
+
+However, the API response returned:
+ {
+  "success": false,
+  "message": "Signup session expired"
+}
+
+**Steps to Reproduce**
+1.Open Swagger/API Docs.
+2.Call POST /auth/resend-otp.
+3.Provide an email address that has never been used for signup.
+4.Execute the request.
+
+**Actual Result**
+ {
+  "success": false,
+  "message": "Signup session expired"
+}
+
+**Expected Result**
+The API should return a more appropriate message indicating that the email is not associated with any signup process, for example:
+  {
+  "success": false,
+  "message": "No signup request found for this email"
+}
+
+or
+  {
+  "success": false,
+  "message": "Email is not registered for signup"
+}
+
+**Impact**
+Users receive a misleading error message. "Signup session expired" implies that a signup session previously existed and expired, whereas the email address was never used for signup.
+
+**Environment**
+1.Endpoint: POST /auth/resend-otp
+2.Environment: UAT/Production (update as applicable)
