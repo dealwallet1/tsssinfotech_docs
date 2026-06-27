@@ -55,12 +55,12 @@ This guide explains how to configure attendance in Odoo including:
 ## 6. Configure Late Check-In Rule
 
 Define email notification time (Example: 10:00 AM)
-Create automated action:
-Collect attendance records for the day
-Identify employees who have not checked in before 10:00 AM
-Generate late attendance report
-Send notification email to the configured recipients
-Execute automatically every day at 10:00 AM
+- Create automated action:
+- Collect attendance records for the day
+- Identify employees who have not checked in before 10:00 AM
+- Generate late attendance report
+- Send notification email to the configured recipients
+- Execute automatically every day at 10:00 AM
 
 ---
 
