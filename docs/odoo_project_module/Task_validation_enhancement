@@ -1,0 +1,25 @@
+## Task Validation Enhancement
+
+### Purpose
+
+Implemented mandatory task validation to ensure essential task information is provided before task creation or updates.
+
+### Changes Implemented
+
+* Added validation for task assignee selection.
+* Added validation for task start date.
+* Added validation for task target/end date.
+* Displayed a clear validation message when required fields are missing.
+* Prevented users from proceeding until all mandatory fields are completed.
+
+### Validation Rules
+
+The following fields are now required:
+
+* Assignee
+* Start Date
+* Target Date
+
+### Outcome
+
+This enhancement improves task planning, accountability, and project tracking by ensuring that every task contains the minimum required information before it can be processed within the Project Management module.
