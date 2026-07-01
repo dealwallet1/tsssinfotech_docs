@@ -2276,3 +2276,78 @@ Research and evaluate the feasibility of integrating AI with Playwright to build
 4.AI generates bug descriptions and possible fixes.
 5.Reports are generated in HTML and JSON formats.
 6.Documentation includes installation, execution, and project structure.
+
+
+**Bug -64** 
+**Title**
+Analytics Query API Returns Data Source Error Instead of Generating Expected PDF Report with Active User Count
+
+**Description**
+When a user submits an analytics query through the /api/query endpoint to generate a PDF report, the API returns a success response (200 OK) but fails to retrieve the required analytics data.
+
+Instead of generating the requested report with the active user count for the specified filters, the response contains an error message indicating that the VPN_Data_Agent could not access the underlying data source due to a missing GROQ_API_KEY.
+
+The expected behavior is that the system should retrieve the active user count for the requested period and generate the PDF report successfully.
+
+**Environment**
+1.API: /api/query
+2.Testing Tool: Swagger UI
+3.Environment: Server
+
+**Steps to Reproduce**
+1.Open Swagger UI.
+2.Authenticate using a valid Bearer token.
+3.Execute the following request:
+  {
+  "query": "Generate a PDF report for the count of active users in January 2026 for the United States region with the Enterprise plan?"
+}
+4.Click Execute.
+
+**Actual Result**
+API returns:
+
+{
+  "success": true,
+  "data": {
+    "summary": "I’m sorry, but I wasn’t able to retrieve the required analytics data. The request to the VPN_Data_Agent failed because the underlying data source is not currently accessible (missing GROQ_API_KEY)."
+  }
+}
+
+1.No active user count is returned.
+2.PDF report is not generated.
+3.Response indicates a data source configuration failure.
+
+**Expected Result**
+The API should:
+
+1.Retrieve the active user count for:
+       Month: January 2026
+       Region: United States
+       Plan: Enterprise
+2.Generate and return the PDF report successfully.
+3.Response should contain:
+       Active user count
+       Summary
+       Recommendations (if applicable)
+       PDF download link/file
+
+**Example:**
+{
+  "success": true,
+  "data": {
+    "active_user_count": 1250,
+    "summary": "1250 active Enterprise users found in the United States for January 2026.",
+    "report_url": "<generated_pdf_url>"
+  }
+}
+
+**Impact**
+1.Users cannot generate analytics reports.
+2.Requested business metrics are unavailable.
+3.PDF report generation workflow is blocked.
+4.API returns a misleading success status despite failure to fetch data.
+
+**Possible Root Cause**
+1.Missing or invalid GROQ_API_KEY configuration.
+2.VPN_Data_Agent service cannot connect to the analytics data source.
+3.Backend error handling returns success: true even when data retrieval fails.
