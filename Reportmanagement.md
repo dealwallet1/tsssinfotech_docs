@@ -2213,7 +2213,7 @@ or
   {
   "success": false,
   "message": "Email is not registered for signup"
-}
+  }
 
 **Impact**
 Users receive a misleading error message. "Signup session expired" implies that a signup session previously existed and expired, whereas the email address was never used for signup.
@@ -2221,3 +2221,59 @@ Users receive a misleading error message. "Signup session expired" implies that 
 **Environment**
 1.Endpoint: POST /auth/resend-otp
 2.Environment: UAT/Production (update as applicable)
+
+
+
+**DBINFO TICKETS***
+**Bug -62** 
+**Title**
+IPInfo Provider Returns Full Country Name and Null City Value
+
+**Description:**
+Based on the requirements, I performed end-to-end testing and found bugs in the IPInfo provider. As per the requirement, the country field should return the 2-letter ISO country code, but it is currently displaying the full country name. Additionally, the city field is returning null instead of the expected city value for the provided IP address. Apart from these issues, all other functionalities are working as expected.
+
+**Steps to Reproduce**
+1.Send a request to the API using the IPInfo provider.
+2.Provide a valid IP address.
+3.Verify the values returned in the country and city fields of the response.
+
+**Actual Result**
+1.The country field returns the full country name (e.g., "India") instead of the 2-letter country code (e.g., "IN").
+2.The city field returns null.
+
+**Expected Result**
+1.The country field should return the 2-letter ISO country code as specified in the requirements.
+2.The city field should return the corresponding city name for the provided IP address when the data is available.
+
+**Impact**
+Applications and downstream integrations that depend on standardized country codes and location details may experience data inconsistencies. Other functionalities have been tested and are working correctly.
+
+
+**Bug -63** 
+**Title**
+Explore Playwright with AI for Automation Testing Framework
+
+**Description:**
+
+Research and evaluate the feasibility of integrating AI with Playwright to build an intelligent automation testing framework. The framework should be capable of executing UI tests, detecting UI issues, validating functionality, and generating AI-powered test reports.
+
+**Tasks:**
+
+1.Research Playwright automation capabilities.
+2.Evaluate AI model integration (Groq/OpenAI) with Playwright.
+3.Create a Proof of Concept (PoC) for AI-assisted UI testing.
+4.Implement website crawling to identify pages automatically.
+5.Automate UI validations (buttons, forms, links, navigation).
+6.Detect UI issues (alignment, overlapping, broken elements, responsiveness).
+7.Generate AI-based bug summaries and recommendations.
+8.Produce HTML/JSON test reports with screenshots.
+9.Document framework architecture and setup process.
+
+**Acceptance Criteria:**
+
+1.AI successfully integrates with the Playwright framework.
+2.Framework can scan a website and execute automated UI tests.
+3.Failed test cases include screenshots and error details.
+4.AI generates bug descriptions and possible fixes.
+5.Reports are generated in HTML and JSON formats.
+6.Documentation includes installation, execution, and project structure.
