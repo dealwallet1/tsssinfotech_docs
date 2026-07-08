@@ -1,19 +1,38 @@
-# Employee Attendance-End-to-End Guide
+# Odoo Attendance — Employee Check-In / Check-Out & Location Tracking Guide
 
 
---------------------------------------------------------------------
 
-## Overview
-
-This guide explains how employees can mark attendance using Kiosk Mode with barcode scanning in Odoo.
+> **HR & IT Operations | Version 2.0**  
+> Covers: Standard Login • Kiosk Barcode • GPS Location Tracking
 
 ---
 
-## 1. Login to Odoo
+## Overview
 
-- Open your Odoo application
-- Enter your **Username** and **Password**
-- Click **Login**
+This guide provides a complete, step-by-step walkthrough for employees to mark their attendance in Odoo — from initial login to check-out — using both the standard web interface and Kiosk Mode with barcode scanning. It also explains how location tracking is captured and managed.
+
+> 📌 **Who Should Use This Guide**  
+> All employees required to log attendance in Odoo, including office staff, remote workers, and field employees.
+
+---
+
+## Part 1: Standard Employee Login & Attendance (Web/App)
+
+### Section 1 — Accessing Odoo
+
+**Step 1: Open Odoo Application**  
+Launch your browser and go to your company's Odoo URL (e.g., `https://yourcompany.odoo.com`) or open the Odoo mobile app on your smartphone.
+
+**Step 2: Enter Login Credentials**  
+On the login page, enter your:
+- **Username** — usually your work email address
+- **Password** — provided by your HR/IT department
+
+**Step 3: Click the Login Button**  
+Press the **Login** button to authenticate. If you have forgotten your password, click **Reset Password** to receive a reset link via email.
+
+> ⚠️ **Security Reminder**  
+> Never share your Odoo username or password. Always log out after completing your attendance marking, especially on shared devices.
 
 ---
 
