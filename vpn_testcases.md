@@ -95,4 +95,94 @@ The current signup flow only includes a Password field and does not provide a Co
   "password": "string"
 }
 
-2.The Confirm Password field is intended for frontend validation only and does not need to be included in the API request unless backend requirements change.
+
+
+**Bug-3**
+**Title**
+Verify OTP API Returns 503 "No Available Server" Instead of Expired OTP Error After OTP Expiry
+
+**Description**
+When an OTP has expired (OTP validity is 1 minute) and the user attempts to verify it after the expiry time, the Verify OTP API returns HTTP 503 Service Unavailable with the message "no available server" instead of returning a proper validation error indicating that the OTP has expired.
+
+The API should handle expired OTPs gracefully by returning an appropriate client error (e.g., 400 Bad Request or 401 Unauthorized) along with a meaningful error message.
+
+**Preconditions**
+1.User has successfully requested an OTP.
+2.OTP validity is configured as 1 minute.
+
+**Steps to Reproduce**
+1.Generate an OTP using the Send OTP API.
+2.Wait for more than 1 minute until the OTP expires.
+3.Enter the expired OTP.
+4.Execute the POST /api/v1/auth/verify-otp API request.
+5.Observe the response.
+
+**Actual Result**
+HTTP Status Code: 503 Service Unavailable
+Response Body:
+         no available server
+
+**Expected Result**
+The API should validate the expired OTP and return an appropriate client error, for example:
+
+1.HTTP Status Code: 400 Bad Request or 401 Unauthorized
+2.Response Body:
+{
+  "message": "OTP has expired"
+}
+
+or
+{
+  "message": "Invalid or expired OTP"
+}
+
+3.The API should not return a 503 Service Unavailable response for an expired OTP.
+
+**Impact**
+1.Users receive a misleading server error instead of a clear OTP expiry message.
+2.Prevents proper client-side error handling.
+3.Indicates improper backend exception handling or service routing when processing expired OTPs.
+
+
+**Bug-4**
+**Title**
+API Endpoint Displays "no available server" Error Instead of Responding to Requests
+
+**Description:**
+When accessing the API endpoint (https://apigarudavpn.dealwallet.com), the application displays the message "no available server" instead of processing the request or returning a valid API response. This indicates that the backend service or API gateway is unavailable.
+
+**Preconditions:**
+1.User has access to the API endpoint.
+2.Internet connection is active.
+
+**Steps to Reproduce:**
+1.Open a web browser.
+2.Navigate to https://apigarudavpn.dealwallet.com.
+3.Observe the response displayed on the page.
+
+**Actual Result:**
+The page displays:
+      no available server
+
+**Expected Result:**
+The API endpoint should:
+1.Return a valid API response (such as JSON), or
+2.Display a proper health/status response, or
+3.Process API requests successfully without showing a server availability error.
+
+**Impact:**
+1.API is inaccessible.
+2.Frontend applications depending on this API may fail to function.
+3.Users cannot perform any operations that require backend communication.
+
+**Possible Cause:**
+1.Backend service is down.
+2.API Gateway/Load Balancer cannot route traffic to any healthy backend server.
+3.Server deployment failure.
+4.Infrastructure or container/service outage.
+
+**Environment:**
+1.OS: Windows 11
+2.Browser: Microsoft Edge
+3.Environment: QA/UAT (apigarudavpn.dealwallet.com)
+
