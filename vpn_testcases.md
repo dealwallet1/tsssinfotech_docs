@@ -186,3 +186,93 @@ The API endpoint should:
 2.Browser: Microsoft Edge
 3.Environment: QA/UAT (apigarudavpn.dealwallet.com)
 
+
+**Bug-5**
+**Title**
+Reset Password API Missing confirm_password Field in Request Body
+
+**Description:**
+After a user successfully completes the Forgot Password flow and verifies the OTP, the Reset Password API only accepts the following request body:
+{
+  "email": "string",
+  "new_password": "string"
+}
+
+The API does not provide or validate a confirm_password field. As a result, there is no backend verification to ensure that the entered password and confirmation password match before updating the user's password.
+
+**Preconditions:**
+1.User has initiated the Forgot Password process.
+2.OTP has been successfully verified.
+3.User is on the Reset Password screen.
+
+**Steps to Reproduce:**
+1.Navigate to the Forgot Password flow.
+2.Enter a registered email address.
+3.Verify the OTP successfully.
+4.Open the Reset Password API (POST /api/v1/auth/new-password) in Swagger.
+5.Observe the request body schema.
+
+**Actual Result:**
+1.The request body contains only:
+      1.email
+      2.new_password
+2.confirm_password field is missing.
+
+**Expected Result:**
+1.The Reset Password functionality should include a confirm_password field and validate that:
+2.new_password and confirm_password are provided.
+3.Both values match before updating the password.
+4.If they do not match, the API should return an appropriate validation error.
+
+**Environment:**
+1.API Documentation (Swagger)
+2.Endpoint: POST /api/v1/auth/new-password
+
+**Impact:**
+1.Missing backend validation for password confirmation.
+2.Increased risk of incorrect password updates if frontend validation is bypassed.
+3.Inconsistent user experience and reduced security.
+
+**Attachments:**
+Swagger API screenshot showing the request body schema.
+
+**Note:** If the development team intentionally designed password confirmation to be validated only on the frontend, then this would be an enhancement request rather than a bug. However, from a security and API validation perspective, it is generally recommended that the backend also validate confirm_password (or otherwise ensure password confirmation) instead of relying solely on the client.
+
+
+**Bug-6**
+**Title**
+AI returns yearly pricing when user requests monthly subscription plan
+
+**Description:**
+When a user explicitly asks for the lowest subscription plan for the monthly pack, the AI response includes both the monthly and yearly prices. The response should respect the user's requested billing cycle and return only the relevant monthly pricing information.
+
+**Steps to Reproduce:**
+1.Send the following request:
+    {
+  "message": "What is the lowest subscription plan for montly pack?",
+  "session_id": "user12"
+}
+
+2.Observe the AI response.
+
+**Actual Result:**
+1.The AI returns the Basic Shield Plan with:
+    1.Monthly Price: $4.99
+    2.Yearly Price: $49.99 (included even though it was not requested)
+
+**Expected Result:**
+1.The AI should return only the details relevant to the monthly subscription plan, including:
+      1.Plan name
+      2.Monthly price
+      3.Applicable features
+      4.Other relevant monthly plan information
+2.The yearly price should not be included unless the user explicitly asks for yearly pricing or requests both billing options.
+
+**Environment:**
+1.Module: Subscription Agent
+2.Session ID: user12
+
+**Impact:**
+1.The response does not fully align with the user's intent.
+2.May cause confusion by presenting information outside the requested billing cycle.
+3.Reduces response accuracy and user experience.
