@@ -276,3 +276,85 @@ When a user explicitly asks for the lowest subscription plan for the monthly pac
 1.The response does not fully align with the user's intent.
 2.May cause confusion by presenting information outside the requested billing cycle.
 3.Reduces response accuracy and user experience.
+
+
+**Bug-7**
+**Title**
+Subscription Agent fails to generate payment link for Premium Yearly plan due to internal tool/function execution error
+
+**Description**
+The Subscription Agent fails to process a purchase request for the Premium Yearly subscription. Instead of generating a Stripe payment link, the API returns an internal tool/function execution error while responding with HTTP 200.
+
+**Steps to Reproduce**
+1.Open the Swagger documentation.
+2.Navigate to the POST /api/v1/agents/chat endpoint.
+3.Send the following request:
+  {
+  "message": "I want to purchase a yearly subscription for the premium plan.",
+  "session_id": "user22"
+}
+
+4.Click Execute.
+
+**Actual Result**
+1.HTTP status code: 200 OK
+2.Response contains an internal error:
+     1.tool_use_failed
+     2.invalid_request_error
+     3.Failed to call a function
+3.payment_link is returned as null.
+4.User is unable to proceed with the subscription purchase.
+
+**Expected Result**
+1.The Subscription Agent should identify the Premium Yearly plan.
+2.Generate the corresponding Stripe payment link.
+3.Return a successful response with a valid payment_link.
+4.Internal tool/function errors should not be exposed to the end user.
+
+**Environment**
+1.Swagger API
+2.Agent Chat API
+3.Endpoint: /api/v1/agents/chat
+
+**Impact**
+1.Users cannot purchase the Premium Yearly subscription.
+2.Subscription purchase flow is blocked.
+3.Potential revenue loss due to failed checkout.
+
+
+**Bug-8**
+**Title**
+Subscription Plan Detail API returns "No plan found" for existing plan when tier is provided in lowercase
+
+**Description**
+The Subscription Plan Detail API fails to retrieve an existing subscription plan when the tier value is provided in lowercase. Although the subscription_plans table contains a plan with the tier value Basic, the API returns a 404 Not Found response for the request using basic.
+
+**Steps to Reproduce**
+1.Open the Swagger API.
+2.Navigate to POST /api/v1/subscriptions/plan-detail.
+3.Send the following request:
+  {
+  "tier": "basic"
+}
+4.Execute the request.
+
+**Actual Result**
+1.API returns 404 Not Found.
+2.Response:
+    {
+  "detail": "No plan found for tier 'basic'"
+}
+
+**Expected Result**
+The API should successfully return the Basic subscription plan details even when the tier is provided as basic (lowercase), or it should clearly document that the tier field is case-sensitive.
+
+**Environment**
+1.Swagger API
+2.Endpoint: POST /api/v1/subscriptions/plan-detail
+
+**Impact**
+Users may be unable to retrieve valid subscription plan details due to case-sensitive matching of the tier value, resulting in an incorrect "No plan found" response.
+
+**Evidence**
+1.Database contains a subscription plan with tier = "Basic".
+2.API request using tier = "basic" returns 404 Not Found.
