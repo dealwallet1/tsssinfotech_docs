@@ -358,3 +358,64 @@ Users may be unable to retrieve valid subscription plan details due to case-sens
 **Evidence**
 1.Database contains a subscription plan with tier = "Basic".
 2.API request using tier = "basic" returns 404 Not Found.
+
+
+**Bug-9**
+**Title**
+Premium Armor pricing card does not display hover highlight effect
+
+**Description:**
+The hover highlight effect is inconsistent across the pricing cards. The Basic Shield and Ultimate Aegis cards display a highlighted border when hovered, but the Premium Armor card does not show the same hover effect.
+
+**Steps to Reproduce**
+1.Open the Pricing page.
+2.Move the cursor over the Basic Shield card.
+3.Observe the hover highlight.
+4.Move the cursor over the Premium Armor card.
+5.Move the cursor over the Ultimate Aegis card.
+
+**Actual Result**
+The Premium Armor card does not display the hover highlight/border effect, while the other pricing cards do.
+
+**Expected Result**
+All pricing cards (Basic Shield, Premium Armor, and Ultimate Aegis) should display a consistent hover highlight effect when the cursor is placed over them.
+
+**Environment**
+1.OS: Windows 11
+2.Browser: Google Chrome
+3.Module: Pricing Page
+
+
+**Bug-10**
+**Title**
+Add Show/Hide Password (Eye Icon) for Password and Confirm Password fields on the Sign Up page
+
+**Description**
+The Sign Up form does not provide a Show/Hide Password (eye icon) option for the Password and Confirm Password fields.
+
+Without this functionality, users cannot verify the passwords they have entered, increasing the likelihood of typing errors and failed account creation attempts.
+
+**Steps to Reproduce**
+1.Navigate to the Sign Up page.
+2.Enter a password in the Password field.
+3.Enter a password in the Confirm Password field.
+4.Observe the input fields.
+
+**Actual Result**
+1.Passwords remain masked.
+2.No eye icon is available to view or hide the entered passwords.
+
+**Expected Result**
+1.Display an eye icon inside both the Password and Confirm Password fields.
+2.Clicking the eye icon should:
+3.Show the entered password.
+4.Toggle back to a masked password when clicked again.
+
+**Environment**
+1.OS: Windows 11
+2.Browser: Google Chrome
+3.Module: Sign Up
+
+**Classification**
+1.If the design/UI specification includes an eye icon: ✅ UI Bug
+2.If there is no such requirement in the specification: ✅ Feature Request / UX Enhancement
