@@ -419,3 +419,91 @@ Without this functionality, users cannot verify the passwords they have entered,
 **Classification**
 1.If the design/UI specification includes an eye icon: ✅ UI Bug
 2.If there is no such requirement in the specification: ✅ Feature Request / UX Enhancement
+
+
+**Bug-11**
+**Title**
+Sign Up displays "Failed to fetch" error instead of successful account creation or meaningful error message
+
+**Description**
+When a user enters valid registration details and clicks the Sign Up button, the application displays a generic "Failed to fetch" alert instead of creating the account successfully or showing a user-friendly error message.
+
+This results in a poor user experience and does not inform the user about the actual cause of the failure.
+
+**Steps to Reproduce**
+1.Navigate to the Sign Up page.
+2.Enter a valid Full Name.
+3.Enter a valid Email Address.
+4.Enter matching Password and Confirm Password.
+5.Accept the Terms & Conditions.
+6.Click the Sign Up button.
+
+**Actual Result**
+1.A browser alert displays "Failed to fetch".
+2.The account is not created.
+3.No meaningful error message is shown to the user.
+
+**Expected Result**
+1.If the registration is successful:
+2.Display a success message such as "Account created successfully."
+3.Redirect the user to the Login page or OTP verification page (based on the application flow).
+4.If registration fails:
+5.Display a clear, user-friendly error message explaining the reason (e.g., email already exists, server unavailable, network error, etc.).
+6.Do not display the generic "Failed to fetch" alert.
+
+**Environment**
+1.Module: Sign Up
+2.Browser: Google Chrome
+3.OS: Windows 11
+
+**Severity**
+High (Prevents users from completing registration)
+
+**Priority**
+High
+
+**Possible Root Cause**
+1.Backend API is unavailable or returning an error.
+2.Frontend is not handling API/network errors properly and is exposing the raw "Failed to fetch" message instead of a meaningful Error
+
+
+**Bug-12**
+**Title**
+Remove Device API fails to delete device when device name casing differs and returns "Device not found"
+
+**Description**
+1.The Remove Device API returns a 404 - Device not found response when the device name casing is changed (e.g., Pro → pro).
+2.The device exists and is returned by the Get Devices API, but the deletion fails due to a case-sensitive name match. The API also exposes a device_id parameter, but the request appears to depend on the device name instead of deleting the device by its unique identifier.
+
+**Steps to Reproduce**
+1.Execute the Get Devices API.
+2.Verify that a device named iPhone 15 Pro is returned.
+3.Open the Remove Device API.
+4.Enter the device name as iPhone 15 pro (lowercase p).
+5.Click Execute.
+
+**Actual Result**
+1.The API returns 404 Not Found.
+2.Response:
+   {
+  "detail": "Device not found"
+}
+
+**Expected Result**
+1.The API should delete the device using its device_id, regardless of the device name.
+2.If deletion by name is supported, the API should clearly document whether name matching is case-sensitive or handle case differences gracefully.
+3.The API should return a meaningful validation message if the request parameters are incorrect.
+
+**Environment**
+1.Module: Device Management API
+2.Endpoint: DELETE /api/v1/devices
+3.API Testing Tool: Swagger UI
+
+**Severity**
+  Medium
+
+**Priority**
+  Medium
+
+**Notes**
+If the API is designed to perform a case-sensitive lookup by device name, then the observed behavior is expected and not a bug. However, from an API design perspective, deletion operations should ideally use the device_id (a unique identifier) rather than the device name to avoid failures caused by differences in letter casing.
