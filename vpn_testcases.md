@@ -507,3 +507,84 @@ Remove Device API fails to delete device when device name casing differs and ret
 
 **Notes**
 If the API is designed to perform a case-sensitive lookup by device name, then the observed behavior is expected and not a bug. However, from an API design perspective, deletion operations should ideally use the device_id (a unique identifier) rather than the device name to avoid failures caused by differences in letter casing.
+
+
+**Bug-13**
+**Title**
+Forgot Password – OTP Email Not Received and User Is Not Redirected to OTP Verification Page
+
+**Description:**
+When the user enters a registered email address on the Forgot Password page and clicks the Send OTP button, no OTP email is received. Additionally, the application does not redirect the user to the OTP Verification page after submitting the request.
+
+**Preconditions:**
+1.User has a registered account.
+2.User is on the Forgot Password page.
+
+**Steps to Reproduce:**
+1.Open the GarudaVPN login page.
+2.Click Forgot Password.
+3.Enter a valid registered email address.
+4.Click the Send OTP button.
+5.Check the registered email inbox (and Spam/Junk folder).
+
+**Actual Result:**
+1.No OTP email is received.
+2.The user remains on the Forgot Password page.
+3.The application does not navigate to the OTP Verification page.
+
+**Expected Result:**
+1.An OTP email should be sent successfully to the registered email address.
+2.Upon successful OTP generation, the application should automatically redirect the user to the OTP Verification page, where the 3.user can enter the received OTP and continue the password reset process.
+
+**Impact:**
+Users cannot proceed with the password reset flow, preventing them from regaining access to their accounts.
+
+**Environment:**
+1.Application: GarudaVPN Web Portal
+2.Browser: Google Chrome
+3.Module: Forgot Password
+
+
+**Bug-14**
+**Title**
+Profile page fails to load and displays reload screen after successful login
+
+**Description**
+After logging into the application with valid credentials, the user is successfully redirected to the Dashboard. However, when the user clicks on the Profile section from the left navigation menu, the Profile page fails to load and displays a browser error page with the message "This page couldn't load" along with Reload and Back buttons.
+
+**Preconditions**
+1.User has a valid GarudaVPN account.
+2.User is logged into the application.
+
+**Steps to Reproduce**
+1.Open the GarudaVPN web application.
+2.Log in using valid credentials.
+3.Verify that the Dashboard loads successfully.
+4.Click on Profile from the left navigation menu.
+
+**Actual Result**
+1.The Profile page does not load.
+2.A browser error page is displayed stating:
+    "This page couldn't load"
+3.User is unable to access the Profile page.
+
+**Expected Result**
+1.The Profile page should load successfully and display the user's profile information without requiring a page reload or showing an error.
+
+**Frequency**
+100% (Observed consistently)
+
+**Impact**
+1.Users cannot access or manage their profile details.
+2.Core account management functionality is blocked.
+
+**Environment**
+1.Application: GarudaVPN Web Portal
+2.Module: Dashboard → Profile
+3.Browser: Google Chrome
+4.Environment: QA/UAT
+
+**Notes**
+1.Check the browser Console for JavaScript errors.
+2.Verify whether the Profile API is returning an error (4xx/5xx).
+3.Confirm that the routing and frontend navigation to /dashboard/profile are working correctly.
