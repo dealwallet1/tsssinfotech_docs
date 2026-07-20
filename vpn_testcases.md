@@ -588,3 +588,91 @@ After logging into the application with valid credentials, the user is successfu
 1.Check the browser Console for JavaScript errors.
 2.Verify whether the Profile API is returning an error (4xx/5xx).
 3.Confirm that the routing and frontend navigation to /dashboard/profile are working correctly.
+
+
+**Bug-15**
+**Title**
+Quick Connect button redirects to a non-existent page and displays a 404 error
+
+**Description**
+After successfully logging into the application, clicking the Quick Connect button redirects the user to the VPN Status page (/dashboard/vpn-status). However, instead of loading the page, the application displays a 404 – This page could not be found error.
+
+**Preconditions**
+1.User is logged in with valid credentials.
+2.User is on the Dashboard page.
+
+**Steps to Reproduce**
+1.Open the GarudaVPN web application.
+2.Log in with valid user credentials.
+3.Navigate to the Dashboard.
+4.Click the Quick Connect button.
+5.Observe the redirected page.
+
+**Actual Result**
+1.User is redirected to /dashboard/vpn-status.
+2.The page displays:
+ 404 "This page could not be found."
+3.The VPN Status page does not load.
+
+**Expected Result**
+Clicking Quick Connect should navigate the user to the VPN Status page (or initiate the VPN connection) successfully without displaying a 404 error.
+
+**Frequency**
+100% (Occurs every time)
+
+**Environment**
+1.Application: GarudaVPN Web Portal
+2.Module: Dashboard → Quick Connect
+3.Browser: Google Chrome
+4.Environment: QA/UAT
+
+**Impact**
+1.Users cannot access the VPN Status page through the Quick Connect action.
+2.Quick Connect functionality is unusable, preventing users from managing or monitoring VPN connections.
+
+
+**Bug-16**
+**Title**
+Purchase Basic button does not redirect to the payment page during subscription purchase
+
+**Description**
+A newly registered user without any active subscription is required to purchase a subscription plan before using the VPN service.
+
+Currently, when the user selects a subscription plan (e.g., Basic Shield) and clicks the Purchase Basic button, there is no chatbot-based payment flow.
+
+As per the expected business workflow, all subscription purchases should be processed through the chatbot payment system instead of the current purchase flow.
+
+**Preconditions**
+1.User has created a new account.
+2.User has no active subscription plan.
+3.User is logged into the application.
+
+**Steps to Reproduce**
+1.Login with a newly created account.
+2.Navigate to Subscriptions.
+3.Select Basic Shield (or any available subscription plan).
+4.Click Purchase Basic.
+
+**Actual Result**
+1.The purchase flow is not routed through the chatbot payment process.
+2.Users cannot complete the subscription purchase using the chatbot.
+
+**Expected Result**
+1.After clicking Purchase Basic (or any subscription plan), the user should be redirected to the chatbot.
+2.The chatbot should guide the user through the payment process.
+3.After successful payment, the selected subscription should be activated automatically.
+
+**Business Impact**
+1.New users cannot follow the intended chatbot-based subscription purchase flow.
+2.Inconsistent payment experience.
+3.May prevent users from completing subscription purchases.
+
+**Environment**
+1.Application: GarudaVPN Web Portal
+2.Module: Subscriptions
+3.Browser: Google Chrome
+4.Environment: QA/UAT
+
+**Impact**
+1.New users are unable to purchase a subscription plan.
+2.The subscription purchase flow is blocked, preventing users from upgrading their account.
