@@ -676,3 +676,83 @@ As per the expected business workflow, all subscription purchases should be proc
 **Impact**
 1.New users are unable to purchase a subscription plan.
 2.The subscription purchase flow is blocked, preventing users from upgrading their account.
+
+
+**Bug-17**
+**Title**
+Password Reset Allows User to Reuse Current Password as New Password
+
+**Description**
+The Password Reset API allows users to set their current password as the new password after successfully completing the Forgot Password (OTP verification) flow. The system updates the password successfully instead of restricting password reuse.
+
+**Environment**
+1.Application: GarudaVPN
+2.Module: Authentication – Forgot Password / Reset Password
+3.Environment: QA
+4.API Endpoint: POST /api/v1/auth/new-password
+
+**Preconditions**
+1.User has a registered account.
+2.User has successfully verified the OTP received via the Forgot Password flow.
+
+**Steps to Reproduce**
+1.Log in using a valid email and password.
+2.Click Forgot Password.
+3.Enter the registered email address and complete OTP verification.
+4.On the Reset Password screen, enter the current password in the New Password field.
+5.Enter the same current password in the Confirm Password field.
+6.Click Submit.
+
+**Actual Result**
+1.The password is updated successfully.
+2.The API returns:
+    {
+  "message": "Password updated successfully" 
+    }
+3.The system allows the user to reuse their existing password as the new password.
+
+**Expected Result**
+1.The system should prevent users from reusing their current password.
+2.An appropriate validation message should be displayed, such as:
+    "New password cannot be the same as the current password."
+3.The API should return an appropriate error response (e.g., 400 Bad Request).
+
+**Impact**
+1.Allows password reuse, which is a security and validation issue.
+2.Does not enforce standard password reset best practices.
+
+**Bug-18**
+**Title**
+OTP Email Displays Incorrect Expiry Time (10 Minutes Instead of 1 Minute)
+
+**Description**
+The OTP email sent to users displays that the OTP is valid for 10 minutes, whereas the actual OTP expiration time configured in the application is 1 minute. This causes inconsistency between the email content and the system behavior.
+
+**Environment**
+1.Application: GarudaVPN
+2.Module: Authentication – Email OTP Verification
+3.Environment: QA
+
+**Preconditions**
+User has requested an OTP for registration, login, or password reset.
+
+**Steps to Reproduce**
+1.Trigger the OTP generation flow.
+2.Open the received OTP email.
+3.Observe the OTP validity message in the email.
+4.Wait for 1 minute and try to verify the OTP.
+
+**Actual Result**
+1.The email displays:
+      "This OTP is valid for 10 minutes."
+2.However, the OTP expires after 1 minute.
+
+**Expected Result**
+1.The OTP validity message in the email should match the actual system configuration.
+2.If the OTP expires after 1 minute, the email should display:
+           "This OTP is valid for 1 minute."
+
+**Impact**
+1.Misleads users about the OTP validity period.
+2.Creates confusion when the OTP expires earlier than stated.
+3.Results in a poor user experience.
