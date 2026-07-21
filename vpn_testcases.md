@@ -756,3 +756,94 @@ User has requested an OTP for registration, login, or password reset.
 1.Misleads users about the OTP validity period.
 2.Creates confusion when the OTP expires earlier than stated.
 3.Results in a poor user experience.
+
+
+**Bug-19**
+**Title**
+Frontend AI Chatbot Returns Incorrect Subscription Information Compared to Backend API
+
+**Description**
+The frontend AI chatbot returns incorrect information for the same subscription-related query that the backend API answers correctly. This results in inconsistent responses between the frontend and backend.
+
+**Environment**
+1.Application: GarudaVPN
+2.Module: AI Chatbot
+3.Environment: QA
+
+**Preconditions**
+1.User is logged in.
+2.AI chatbot is accessible.
+3.Backend Agents Chat API is available.
+
+**Steps to Reproduce**
+1.Call the backend endpoint /api/v1/agents/chat.
+2.Ask the following question:
+   **"How many devices can connect for yearly plan subscription for Basic Shield?""**
+3.Observe the backend response.
+4.Open the GarudaVPN web application.
+5.Ask the same question in the frontend AI chatbot.
+6.Compare both responses.
+
+**Actual Result**
+1.Backend API Response:
+   1.Returns the correct answer:
+         1.Basic Shield yearly plan allows 1 device connection.
+2.Frontend Chatbot Response:
+   1.States that the Basic Shield plan does not exist.
+   2.Indicates no results were found.
+   3.Provides incorrect and misleading information.
+
+**Expected Result**
+1.The frontend AI chatbot should display the same accurate information returned by the backend API. For this query, it should respond that:
+              **"The Basic Shield yearly subscription allows 1 device connection."**
+2.The frontend and backend should return consistent responses for identical queries.
+
+**Impact**
+1.Users receive incorrect subscription information.
+2.Inconsistent behavior between frontend and backend.
+3.Reduces trust in the AI chatbot and may mislead users when choosing a subscription plan.
+
+
+**Bug-20**
+**Title**
+Profile Displays "Premium Member" for User Without an Active Subscription Plan
+
+**Description**
+After logging in with valid credentials, the user is successfully redirected to the dashboard. Although the user does not have an active subscription plan, the profile section in the top-right corner incorrectly displays the account status as "Premium Member".
+
+This creates an inconsistency between the user's actual subscription status and the membership status displayed in the UI.
+
+**Environment**
+1.Environment: QA / Staging
+2.Module: Dashboard / Profile
+3.Browser: Google Chrome
+4.Platform: Web
+
+**Preconditions**
+1.User account exists.
+2.User has no active subscription plan.
+
+**Steps to Reproduce**
+1.Open the GarudaVPN application.
+2.Log in using valid user credentials.
+3.Navigate to the Dashboard.
+4.Observe the subscription details.
+5.Check the profile section in the top-right corner.
+
+**Actual Result**
+1.Current Plan: Free
+2.Days Remaining: 0
+3.No active subscription
+4.However, the profile section displays "Premium Member".
+
+**Expected Result**
+1.The membership status shown in the profile should accurately reflect the user's subscription status.
+
+**Examples:**
+1.If the user has no active subscription, display "Free Member", "Free Plan", or "No Active Subscription".
+2.Display "Premium Member" only when the user has an active premium subscription.
+
+**Impact**
+1.Misleading membership information displayed to users.
+2.Causes inconsistency between the dashboard and profile.
+3.May confuse users about their subscription benefits and account status.
