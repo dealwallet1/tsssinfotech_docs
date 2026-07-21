@@ -847,3 +847,102 @@ This creates an inconsistency between the user's actual subscription status and 
 1.Misleading membership information displayed to users.
 2.Causes inconsistency between the dashboard and profile.
 3.May confuse users about their subscription benefits and account status.
+
+
+**Bug-21**
+**Title**
+[Sign Up] Incorrect Button Label Displayed on OTP Verification Screen After User Registration
+
+**Description**
+After a user successfully completes the Sign Up form, an OTP is sent to the registered email address. The application redirects the user to the OTP Verification screen. However, the primary action button is incorrectly labeled "Send Reset Link" instead of an OTP verification-related action such as "Verify OTP" or "Verify & Create Account".
+
+This causes confusion because the screen is part of the Sign Up flow, not the Forgot Password flow.
+
+**Module**
+Authentication → Sign Up → OTP Verification
+
+**Environment**
+1.Environment: QA / Staging
+2.Platform: Web
+3.Browser: Google Chrome
+
+**Preconditions**
+1.User is not registered.
+2.User has access to a valid email address.
+
+**Steps to Reproduce**
+1.Open the GarudaVPN application.
+2.Navigate to the Sign Up page.
+3.Enter all mandatory registration details.
+4.Click the Sign Up button.
+5.Verify that the OTP is successfully received in the registered email.
+6.Open the OTP Verification screen.
+7.Observe the primary action button.
+
+**Actual Result**
+1.The OTP Verification screen displays the button text as:
+     "Send Reset Link"
+2.even though the user is in the Sign Up OTP verification flow.
+
+**Expected Result**
+1.The button label should reflect the current action, for example:
+        1.Verify OTP
+        2.Verify & Create Account
+        3.Continue
+        4.Submit OTP
+2.The button should not display "Send Reset Link", as this is associated with the Forgot Password workflow.
+
+**Impact**
+1.Confuses users during account registration.
+2.Creates an inconsistent user experience.
+3.May lead users to believe they are in the password reset flow instead of the Sign Up flow.
+
+
+**Bug-22**
+**Title**
+AI Chatbot Does Not Provide Subscription Purchase Flow After User Confirms Intent to Buy a VPN Plan
+
+**Description**
+When interacting with the AI chatbot to purchase a VPN subscription, the chatbot correctly displays the available subscription plans (Basic, Premium, and Ultimate). However, after the user expresses interest in purchasing a plan and selects or confirms a plan (e.g., Basic Plan), the chatbot only continues to provide plan information and asks whether the user would like to purchase it. It does not proceed with the subscription purchase workflow by providing a payment link, checkout page, or purchase action.
+
+This prevents users from completing the subscription purchase directly through the chatbot.
+
+**Preconditions**
+1.User is logged into the GarudaVPN dashboard.
+2.AI Chatbot (Aegis AI Support) is available.
+
+**Steps to Reproduce**
+1.Log in to the GarudaVPN dashboard.
+2.Open the Aegis AI Support chatbot.
+3.Type "I want to buy the VPN subscription plan."
+4.Observe that the chatbot lists the available plans.
+5.Type "Basic" (or any available plan).
+6.When prompted, reply "Yes" to confirm the purchase.
+7.Observe the chatbot response.
+
+**Actual Result**
+1.The chatbot repeatedly displays subscription plan details and pricing.
+2.The chatbot asks if the user wants to purchase the selected plan but does not initiate the purchase process.
+3.No payment page, checkout link, payment button, or subscription activation flow is provided.
+
+**Expected Result**
+After the user confirms the purchase:
+     1.The chatbot should initiate the subscription purchase flow.
+     2.It should provide a Checkout/Payment button or redirect the user to the subscription payment page.
+     3.The selected plan should be carried forward to the payment process.
+     4.The user should be able to complete the subscription without leaving the chatbot flow.
+
+**Environment:**
+1.Environment: QA / Staging
+2.Browser: Google Chrome
+3.OS: Windows 11
+
+**Impact**
+1.Users cannot purchase a VPN subscription through the chatbot.
+2.The conversation reaches a dead end after purchase confirmation.
+3.Results in poor user experience and potential loss of subscription conversions.
+
+**Possible Cause**
+1.Chatbot intent for purchase confirmation is not mapped to the checkout/payment workflow.
+2.Missing backend integration between the AI chatbot and the subscription/payment service.
+3.Purchase action or payment redirect API is not being triggered after user confirmation.
