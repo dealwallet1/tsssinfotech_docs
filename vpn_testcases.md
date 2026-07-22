@@ -946,3 +946,101 @@ After the user confirms the purchase:
 1.Chatbot intent for purchase confirmation is not mapped to the checkout/payment workflow.
 2.Missing backend integration between the AI chatbot and the subscription/payment service.
 3.Purchase action or payment redirect API is not being triggered after user confirmation.
+
+
+**Bug -23**
+**Title**
+OTP Expiry Forces User to Re-enter Registration Details Instead of Allowing OTP Resend
+
+**Description:**
+When the OTP expires during the signup process, the application displays an "Invalid or expired OTP" alert. After dismissing the alert, the user has no option to resend a new OTP and is forced to navigate back and re-enter all registration details (email, password, etc.) to restart the signup process.
+This creates unnecessary effort and negatively impacts the user experience.
+
+**Steps to Reproduce:**
+1. Navigate to the Sign Up page.
+2. Enter a valid email address and password.
+3. Request an OTP.
+4. Wait until the OTP expires (or enter an expired OTP).
+5. Click the Verify button.
+
+**Actual Result:**
+* A popup displays "Invalid or expired OTP."
+* No Resend OTP option is available.
+* User must return to the signup page and re-enter all registration details to receive a new OTP.
+
+**Expected Result:**
+* When the OTP expires, the application should:
+   * Display an appropriate inline message such as "Your OTP has expired. Please request a new OTP."
+   * Provide a Resend OTP button/link on the OTP verification page.
+   * Retain the previously entered email address and password.
+   * Send a new OTP without requiring the user to restart the registration process.
+
+**Suggested Enhancement:**
+* Add a Resend OTP link/button below the OTP input field.
+* Optionally include a countdown timer (e.g., Resend OTP in 30 seconds) to prevent excessive OTP requests.
+* Keep the user on the OTP verification screen until verification is completed successfully.
+
+**Environment:**
+* Application: Garuda VPN
+* Module: Sign Up – OTP Verification
+* Environment: Web
+* Browser: Chrome (as per screenshot)
+
+**Impact:**
+* Poor user experience.
+* Increased signup abandonment.
+* Unnecessary repetition of registration steps.
+* Higher support burden due to failed registrations.
+
+
+**Bug -24**
+**Title**
+User Can Purchase Subscription Through Chatbot Without Authentication
+
+**Description**
+A user who is not logged in can purchase a subscription plan through the AI chatbot. The chatbot displays the subscription details, redirects the user to the payment gateway, and the payment is completed successfully without requiring user authentication.
+
+This allows anonymous users to purchase subscription plans, which bypasses the application's authentication flow and poses a serious security and business logic issue.
+
+**Preconditions**
+1.User is not logged in.
+2.AI Chatbot is accessible.
+
+**Steps to Reproduce**
+1.Open the GarudaVPN website.
+2.Do not log in.
+3.Open the AI Chatbot.
+4.Enter: "I want to purchase Basic monthly subscription plan."
+5.Observe that the chatbot displays the subscription plan details.
+6.Click Continue to Secure Payment.
+7.Complete the payment process.
+
+**Actual Result**
+1.The chatbot allows the user to proceed with payment without authentication.
+2.Payment is processed successfully.
+3.The subscription purchase completes even though the user is not logged in.
+
+**Expected Result**
+1.The chatbot should verify whether the user is authenticated before initiating the subscription purchase.
+2.If the user is not logged in, the chatbot should display a message such as:
+        **"Please log in to your account before purchasing a subscription plan."**
+3.The Continue to Secure Payment button should either be disabled or redirect the user to the login page.
+4.Payment should not be initiated for unauthenticated users.
+
+**Environment:**
+1.Application: GarudaVPN
+2.Module: AI Chatbot
+3.Browser: Google Chrome
+4.Environment: QA
+
+**Impact**
+1.Authentication bypass.
+2.Unauthorized subscription purchases.
+3.Subscription may not be associated with a valid user account.
+4.Potential payment reconciliation and account management issues.
+5.High security and business logic risk.
+
+**Suggested Fix**
+1.Validate the user's authentication status before displaying payment options.
+2.Restrict access to the payment gateway for unauthenticated users.
+3.Enforce backend authentication checks before creating a Stripe checkout session or processing any subscription payment.
