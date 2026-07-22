@@ -1044,3 +1044,93 @@ This allows anonymous users to purchase subscription plans, which bypasses the a
 1.Validate the user's authentication status before displaying payment options.
 2.Restrict access to the payment gateway for unauthenticated users.
 3.Enforce backend authentication checks before creating a Stripe checkout session or processing any subscription payment.
+
+
+**Bug -25**
+**Title**
+Chatbot responds to general knowledge questions instead of restricting responses to GarudaVPN-related queries
+
+**Description**
+The Aegis AI Support chatbot currently answers general knowledge questions that are unrelated to the GarudaVPN application. For example, when asked "capital of india", the chatbot responds with "The capital of India is New Delhi."
+
+The chatbot should be restricted to answering only GarudaVPN-related queries, account support, subscriptions, billing, devices, troubleshooting, and knowledge base content. Any unrelated/general-purpose questions should be declined with an appropriate message.
+
+**Steps to Reproduce**
+1.Log in to the GarudaVPN Dashboard.
+2.Open the Aegis AI Support chatbot.
+3.Enter a general knowledge question (e.g., "capital of india").
+4.Submit the query.
+5.Observe the chatbot response.
+
+**Actual Result**
+The chatbot answers the general knowledge question correctly (e.g., "The capital of India is New Delhi."), even though it is unrelated to GarudaVPN.
+
+**Expected Result**
+1.The chatbot should not answer general knowledge or unrelated questions.
+2.It should respond with a message such as:
+  **"I'm designed to assist only with GarudaVPN-related questions, including subscriptions, billing, devices, account management, and technical support. Please ask a GarudaVPN-related question."**
+
+**Impact**
+1.Users may use the chatbot as a general-purpose AI assistant instead of a product support assistant.
+2.Increased unnecessary AI usage and token consumption.
+3.Inconsistent with the intended chatbot scope and business requirements.
+4.May lead to irrelevant conversations and reduced support efficiency.
+
+**Environment:**
+1.Application: GarudaVPN Dashboard
+2.Module: Aegis AI Support Chatbot
+3.Environment: QA
+4.Browser: Google Chrome
+5.OS: Windows 11
+
+**Suggested Fix**
+1.Implement domain-specific intent filtering or prompt guardrails.
+2.Restrict responses to GarudaVPN knowledge base and support documentation.
+3.Reject or redirect unrelated queries with a predefined fallback message.
+4.Add backend validation to prevent responses outside the allowed knowledge domain.
+
+
+**Bug -26**
+**Title**
+Change Password button is unresponsive after successful OTP verification
+
+**Description**
+After successfully verifying the OTP for password reset, the user enters the current password, new password, and confirm password. However, clicking the "Change Password" button does not trigger any action. The password is not updated, and no success or error message is displayed.
+
+**Environment**
+1.Application: GarudaVPN Web
+2.Module: Forgot Password / Reset Password
+3.Environment: QA
+4.Browser: Google Chrome
+5.OS: Windows 11
+
+**Preconditions**
+1.User account is registered.
+2.User has successfully completed OTP verification.
+
+**Steps to Reproduce**
+1.Navigate to the Forgot Password page.
+2.Enter a registered email address.
+3.Request and verify the OTP successfully.
+4.Enter the following:
+    1.Current Password
+    2.New Password
+    3.Confirm Password
+5.Click the Change Password button.
+
+**Expected Result**
+1.The Change Password button should be clickable and submit the password reset request.
+2.If the entered details are valid, the password should be updated successfully.
+3.A success message should be displayed, and the user should be redirected to the login page (or appropriate page).
+4.If validation fails, an appropriate error message should be shown.
+
+**Actual Result**
+1.Clicking the Change Password button does not perform any action.
+2.No API request appears to be triggered.
+3.No success or error message is displayed.
+4.The user remains on the same page, making it impossible to complete the password reset process.
+
+**Impact**
+1.Users cannot complete the password reset process even after successful OTP verification.
+2.Prevents users from regaining access to their accounts.
+3.Results in a broken password recovery flow.
