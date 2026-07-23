@@ -1134,3 +1134,102 @@ After successfully verifying the OTP for password reset, the user enters the cur
 1.Users cannot complete the password reset process even after successful OTP verification.
 2.Prevents users from regaining access to their accounts.
 3.Results in a broken password recovery flow.
+
+
+**Bug -27**
+**Title**
+Dashboard Displays Only One Active Subscription While Backend Returns Multiple Active Subscriptions
+
+**Description**
+After purchasing Basic Shield Monthly and Ultimate Shield Monthly using the same account, the backend API returns both subscriptions with status: active.
+
+However, the Dashboard UI displays only the Ultimate Shield plan as the current subscription, while the Basic Shield subscription is missing from the active subscriptions view.
+
+This results in an inconsistency between the frontend and backend.
+
+**Preconditions**
+1.User is logged in.
+2.User has successfully purchased:
+3.Basic Shield Monthly
+4.Ultimate Shield Monthly
+
+**Steps to Reproduce**
+1.Log in to the application.
+2.Purchase the Basic Shield Monthly subscription.
+3.Purchase the Ultimate Shield Monthly subscription using the same account.
+4.Open the Dashboard.
+5.Verify the Overview and Subscriptions sections.
+6.Verify the backend API response (GET /api/v1/subscriptions/my-subscriptions).
+
+**Actual Result**
+1.Backend API returns two active subscriptions:
+2.Basic Shield (Active)
+3.Ultimate Shield (Active)
+4.Dashboard displays only Ultimate Shield.
+5.Basic Shield is not shown in the UI.
+
+**Expected Result**
+1.The Dashboard should accurately reflect the backend data.
+**If multiple active subscriptions are supported, both active subscriptions should be displayed with their respective plan details and validity periods.**
+
+**Impact**
+1.Frontend is inconsistent with backend data.
+2.Users cannot view all their active subscriptions.
+3.Creates confusion regarding purchased plans.
+4.Increases customer support requests.
+
+**Evidence**
+**Backend API Response:**
+1.Basic Shield → status: active
+2.Ultimate Shield → status: active
+
+**Frontend:**
+1.Displays only Ultimate Shield as the current plan.
+2.Billing/Invoices correctly display both purchases.
+
+
+**Bug -28**
+**Title**
+Frontend Chatbot Displays Incorrect and Inconsistent Subscription Details Compared to Backend API Response
+
+**Description**
+The frontend chatbot returns a different response than the backend API for the same user query.
+
+**Preconditions**
+1.User has a valid GarudaVPN account.
+2.User is logged in to the GarudaVPN web application.
+3.The AI Chatbot is accessible and operational.
+4.The backend /api/v1/agents/chat API is available and responding successfully.
+5.The user has at least one active subscription (to compare chatbot subscription information with the Subscription page).
+6.Swagger API documentation is accessible for backend response verification.
+
+**Steps to Reproduce**
+1.Log in to GarudaVPN.
+2.Open the chatbot.
+3.Ask:
+    **कितने सब्सक्रिप्शन प्लान हैं?**
+4.Compare the frontend chatbot response with the backend /api/v1/agents/chat API response.
+
+**Actual Result**
+1.Backend correctly returns only the available subscription plans (Basic, Premium, Ultimate).
+2.Frontend chatbot additionally displays current subscription information and purchase suggestions.
+3.The chatbot states the user has multiple active subscriptions (Basic and Ultimate), which does not match the subscription page.
+4.The frontend response is inconsistent with the backend response.
+
+**Expected Result**
+1.The frontend chatbot should accurately display the backend response.
+2.It should only answer the user's question by listing the available subscription plans.
+3.It should not append incorrect or unrelated subscription information unless explicitly requested and verified.
+
+**Environment**
+1.Frontend: GarudaVPN Web Application
+2.Backend: /api/v1/agents/chat
+3.Browser: Chrome
+4.Module: AI Chatbot
+
+**Impact**
+1.Users receive different responses for the same question in the frontend and backend, causing inconsistency.
+2.The chatbot displays incorrect or misleading subscription information, which can confuse users about their active plans.
+3.Users may believe they have multiple active subscriptions or incorrect plan details.
+4.This reduces trust in the AI chatbot and the accuracy of the application.
+5.Inconsistent frontend and backend behavior can lead to unnecessary customer support requests and a poor user experience.
