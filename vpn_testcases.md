@@ -1233,3 +1233,116 @@ The frontend chatbot returns a different response than the backend API for the s
 3.Users may believe they have multiple active subscriptions or incorrect plan details.
 4.This reduces trust in the AI chatbot and the accuracy of the application.
 5.Inconsistent frontend and backend behavior can lead to unnecessary customer support requests and a poor user experience.
+
+
+**Bug -29**
+**Title**
+Agent Chat API returns 524 Origin Timeout for chat requests
+
+**Description**
+The Agent Chat API is returning a 524 Origin Timeout when a valid chat request is submitted through Swagger. The request reaches the server successfully, but the backend does not respond within Cloudflare's 120-second timeout limit.
+
+**Environment**
+1.Application: GarudaVPN API
+2.Module: Agent Chat API
+3.Environment: QA/UAT
+4.API Endpoint: POST /api/v1/agents/chat
+5.Tested Via: Swagger UI
+
+**Preconditions**
+1.User is logged in.
+2.Valid Bearer Token is provided.
+3.Swagger API is accessible.
+
+**Steps to Reproduce**
+1.Open the Swagger documentation.
+2.Authorize using a valid Bearer Token.
+3.Navigate to POST /api/v1/agents/chat.
+4.Enter the following request body:
+  **{
+  "message": "ಬೆಳಗಾವಿ ಯಾವ ಜಿಲ್ಲೆಗೆ ಸೇರಿದೆಂದು ತಿಳಿಸಿ",
+  "session_id": "user24"
+}**
+
+5.Click Execute.
+6.Wait for the response.
+
+**Actual Result**
+1.API returns HTTP Status Code: 524
+Error:
+   **Error: response status is 524
+   Error 524: A timeout occurred**
+2.Response indicates:
+  1.Origin server did not return a complete response.
+  2.Cloudflare Proxy Read Timeout (120 seconds).
+  3.origin_response_timeout
+
+**Expected Result**
+1.The API should process the chat request successfully and return:
+  1.HTTP 200 OK
+  2.Chatbot response containing the answer to the user's query.
+3.If backend processing fails, it should return a proper application error (e.g., 500 Internal Server Error or 503 Service Unavailable) with a meaningful message instead of timing out.
+
+**Impact**
+1.Users are unable to receive chatbot responses.
+2.Chat functionality becomes unavailable.
+3.Causes poor user experience and API reliability issues.
+4.Automated API tests fail due to request timeout.
+
+**Evidence**
+1.Valid request payload submitted through Swagger.
+2.API request executed successfully.
+3.Server responded with 524 Origin Timeout after exceeding the backend processing time.
+4.Screenshot attached showing the request payload and the 524 timeout response.
+
+
+**Bug -30**
+**Title**
+Dashboard displays incorrect "Days Remaining" when multiple active subscription plans exist
+
+**Description**
+When a user has multiple active subscription plans purchased on different dates, the Dashboard correctly displays 2 Active Plans, but the Days Remaining widget shows only 27 days.
+
+The dashboard appears to calculate the remaining days based on only one subscription instead of accurately reflecting the active subscriptions or clearly indicating which subscription the countdown belongs to.
+
+**Preconditions**
+1.User account is logged in.
+2.User has purchased two active subscription plans.
+3.Basic Shield purchased on 13/07/2026
+4.Ultimate Shield purchased on 14/07/2026
+5.Both subscriptions are active.
+
+**Steps to Reproduce**
+1.Log in with a user account having two active subscriptions.
+2.Navigate to the Dashboard/Overview page.
+3.Verify the Active Plans section.
+4.Observe the Days Remaining card.
+
+**Actual Result**
+1.The dashboard correctly shows 2 Active Plans.
+2.The Days Remaining section displays 27 days without indicating which subscription it belongs to.
+3.The displayed value does not accurately represent the remaining validity of both active subscriptions.
+
+**Expected Result**
+1.The dashboard should correctly handle multiple active subscriptions by implementing one of the following:
+2.Display remaining days for each active subscription separately, or
+3.Clearly indicate that the displayed countdown belongs to a specific subscription (e.g., Basic Shield – 27 Days Remaining), or
+4.Display the correct overall subscription validity based on the application's business logic.
+5.The remaining days should always be consistent with the subscription purchase/expiry dates.
+
+**Impact**
+1.Misleading subscription information is displayed to users.
+2.Users cannot determine which subscription the remaining days refer to.
+3.May cause confusion regarding subscription validity and renewal dates.
+4.Reduces trust in the subscription management dashboard.
+
+**Environment**
+1.Module: Dashboard / Overview
+2.Feature: Subscription Summary
+3.Platform: Web
+4.Browser: Chrome (as observed)
+
+**Evidence:**
+1.2 Active Plans (Ultimate Shield & Basic Shield)
+2.Days Remaining: 27
+3.Invoice dates: 13/07/2026 and 14/07/2026
