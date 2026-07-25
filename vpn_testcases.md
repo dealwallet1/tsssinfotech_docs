@@ -1346,3 +1346,89 @@ The dashboard appears to calculate the remaining days based on only one subscrip
 1.2 Active Plans (Ultimate Shield & Basic Shield)
 2.Days Remaining: 27
 3.Invoice dates: 13/07/2026 and 14/07/2026
+
+
+**Bug -31**
+**Title**
+Backend cannot retrieve subscription purchase dates when users request subscription history
+
+**Description**
+When a user asks for the dates on which subscription plans were purchased (e.g., "In which dates I have taken subscription plans?"), the chatbot is unable to retrieve the historical purchase dates.
+
+Instead, the backend responds that it cannot access historical subscription data, preventing the chatbot from answering the user's question accurately.
+
+**Preconditions**
+1.User is logged in.
+2.User has one or more subscription purchases.
+3.Subscription purchase history exists.
+
+**Steps to Reproduce**
+1.Open the chatbot.
+2.Ask:
+   **"In which dates I have taken subscription plans?"**
+3.Observe the backend response.
+
+**Actual Result**
+1.The backend returns:
+**"I cannot access historical subscription dates for users. My capabilities are limited to checking current subscription status..."**
+2.As a result, the chatbot cannot provide the subscription purchase dates.
+
+**Expected Result**
+1.The backend should retrieve the user's subscription purchase history and return the purchase dates, for example:
+   1.Basic Shield – Purchased on 13/07/2026
+   2.Ultimate Shield – Purchased on 14/07/2026
+2.This allows the chatbot to answer the user's question accurately.
+
+**Impact**
+1.Users cannot obtain their subscription purchase history through the chatbot.
+2.The chatbot cannot answer account-history-related questions despite the data existing elsewhere in the system.
+3.Results in inconsistent or incomplete user experience.
+
+
+**Bug -32**
+**Title**
+Telegram Bot does not allow users to log out after successful login
+
+**Description**
+After successfully logging into the Telegram bot using valid credentials and OTP verification, the user is unable to log out. When the /logout <email> command is entered, the bot responds:
+**"I'm sorry, but I can't log you out directly. Please use the GarudaVPN app or website to log out, or raise a ticket if you need further assistance."**
+
+This prevents users from ending their authenticated session within the Telegram bot.
+
+**Preconditions**
+1.User has a valid registered account.
+2.Telegram bot is accessible.
+3.User is not logged in before starting the test.
+
+**Steps to Reproduce**
+1.Open the Telegram bot.
+2.Enter the login command with a valid email.
+3.Receive the OTP.
+4.Enter the correct OTP.
+5.Verify that the login is successful.
+6.Enter the logout command (e.g., /logout <email>).
+
+**Actual Result**
+1.The bot does not log out the user and instead displays:
+**"I'm sorry, but I can't log you out directly. Please use the GarudaVPN app or website to log out, or raise a ticket if you need further assistance."**
+
+**Expected Result**
+1.The bot should:
+  1.Successfully log out the authenticated user and confirm the logout (e.g., "You have been logged out successfully."), or
+  2.If logout is intentionally unsupported, this limitation should be clearly documented and users should not be allowed to create authenticated sessions that cannot be terminated from the bot.
+
+**Impact**
+1.Users cannot end their authenticated session from the Telegram bot.
+2.Poor user experience due to inconsistent authentication flow.
+3.Potential security concern if users expect to be able to terminate their session on shared devices.
+
+**Severity**
+Medium
+
+**Priority**
+Medium
+
+**Environment**
+1.Platform: Telegram Bot
+2.Authentication: Email + OTP
+3.Browser/OS: N/A (Telegram client)
