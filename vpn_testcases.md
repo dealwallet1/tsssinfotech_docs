@@ -1432,3 +1432,99 @@ Medium
 1.Platform: Telegram Bot
 2.Authentication: Email + OTP
 3.Browser/OS: N/A (Telegram client)
+
+
+**Bug -33**
+**Title**
+Chat API does not recognize valid JWT token after successful login
+
+**Description**
+After successfully logging in through the /api/v1/auth/login API, a valid JWT access token is returned with a 200 OK response. The token is then passed in the Authorization: Bearer <JWT_TOKEN> header while calling the /api/v1/agents/chat API.
+
+However, the Chat API does not recognize the authenticated user and returns the response:
+
+**"Please login first. Send: /login your@email yourpassword"**
+
+This indicates that the JWT authentication/session is not being properly recognized or maintained between the Login API and Chat API.
+
+**Preconditions**
+1.Valid user account exists.
+2.User credentials are valid.
+3.Login API is available.
+4.JWT Bearer authentication is configured.
+
+**Steps to Reproduce**
+1.Call POST /api/v1/auth/login with valid email and password.
+2.Verify that the API returns 200 OK.
+3.Copy the access_token JWT from the login response.
+4.Authorize the API using the JWT token through Swagger UI.
+5.Call POST /api/v1/agents/chat.
+6.Provide a valid chat request, for example:
+   {
+  "message": "What is my current subscription plans?",
+  "session_id": "user253"
+}
+7.observe the API response.
+
+**Expected Result**
+1.The Chat API should recognize the valid JWT token and process the user's question successfully.
+Example:
+  {
+  "response": "Your current subscription plan is...",
+  "session_id": "user253"
+}
+
+**Actual Result**
+1.The Chat API returns:
+    {
+  "response": "Please login first. Send: /login your@email yourpassword",
+  "session_id": "user253",
+  "agent_used": null,
+  "tools_used": [],
+  "payment_link": null
+}
+
+**Impact**
+1.Authenticated users cannot access the Chat API after successful login.
+2.The JWT authentication flow is inconsistent between the Login API and Chat API.
+3.Users are incorrectly treated as unauthenticated.
+4.Chat functionality requiring authenticated user information cannot be used.
+
+
+**Bug -34**
+**Title**
+Chatbot provides incorrect device limit for Ultimate Monthly subscription in Hindi Language
+
+**Description**
+When a user asks the chatbot in Hindi about the device limit for the Ultimate Monthly Plan, the chatbot provides an incorrect response stating that the plan has a maximum device limit of 1.
+
+However, the actual subscription details show that the Ultimate Plan supports Unlimited device connections.
+
+**Preconditions**
+1.User is logged in.
+2.User has an active Ultimate Monthly Plan subscription.
+3.Chatbot is available.
+4.Hindi language input is supported.
+
+**Steps to Reproduce**
+1.Log in with a user account having an active Ultimate Monthly Plan.
+2.Navigate to the Subscriptions page.
+3.Verify that the Ultimate Plan shows Devices: Unlimited.
+4.Open the chatbot.
+5.Ask the following question in Hindi:
+  **"अल्टीमेट मंथली प्लान सब्सक्रिप्शन के लिए डिवाइस की कितनी लिमिट है?"**
+6.Observe the chatbot response.
+
+**Expected Result**
+1.The chatbot should provide the correct information based on the user's actual subscription plan:
+   **The Ultimate Monthly Plan supports unlimited device connections.**
+2.The response should remain accurate regardless of the language used by the user.
+
+**Actual Result**
+The chatbot incorrectly responds that the Ultimate Monthly Plan has a device limit of 1.
+
+**Impact**
+1.Users receive incorrect subscription information.
+2.The chatbot response does not match the actual plan configuration.
+3.This can cause confusion regarding the user's subscription benefits.
+4.Multilingual chatbot responses may be using incorrect or outdated plan data.
