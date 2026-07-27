@@ -1629,3 +1629,110 @@ This results in inconsistent behavior between the backend API and the frontend c
 2.Conversation context is lost due to the chat reset.
 3.Inconsistent behavior between frontend and backend.
 4.Poor user experience and confusion during subscription flow.
+
+
+**Bug -37**
+**Title**
+Chatbot displays raw Stripe checkout URL instead of a "Proceed to Payment" button after subscription confirmation
+
+**Description**
+When a user purchases a subscription through the frontend chatbot and confirms the purchase by selecting Yes, the chatbot displays the complete Stripe Checkout URL and payment metadata directly in the chat.
+
+Instead of exposing the raw payment link, the chatbot should present a clear "Proceed to Payment" or "Pay Now" button that redirects the user to the Stripe Checkout page.
+
+Displaying internal payment details and long URLs provides a poor user experience and makes the payment flow appear unfinished.
+
+**Environment**
+1.Application: GarudaVPN Frontend Chatbot
+2.Module: Subscription Purchase
+3.Browser: Chrome
+4.Environment: QA
+
+**Preconditions**
+1.User is logged in.
+2.Chatbot is available.
+3.No active subscription.
+
+**Steps to Reproduce**
+1.Log in to the application.
+2.Open the AI chatbot.
+3.Ask to purchase the Basic Monthly subscription.
+4.Confirm the purchase by replying Yes.
+5.Observe the chatbot response.
+
+**Actual Result**
+1.Chatbot displays:
+2.Raw Stripe Checkout URL.
+3.Payment metadata (type, url, plan, billing, amount, etc.).
+4.User must click the long URL manually.
+
+**Expected Result**
+1.Chatbot should display a prominent "Proceed to Payment" or "Pay Now" button.
+2.Clicking the button should redirect the user to the Stripe Checkout page.
+3.Internal payment metadata and raw URLs should not be visible to end users.
+
+**Severity**
+Medium
+
+**Priority**
+Medium
+
+**Impact**
+1.Poor payment user experience.
+2.Exposes technical implementation details.
+3.Makes the payment flow appear unpolished.
+4.May reduce user confidence during checkout.
+
+
+**Bug -38**
+**Title**
+Deleted user remains on Dashboard after page refresh instead of being redirected to the Login page
+
+**Description**
+After a user logs into the application, if the same account is deleted through the backend API, refreshing the frontend application does not invalidate the current session. Instead of redirecting the user to the Login page, the application continues displaying the Dashboard even though the account no longer exists.
+
+The frontend should validate the authenticated session on page refresh. If the account has been deleted or is no longer valid, the application should clear the stored authentication data and redirect the user to the Login page.
+
+**Environment**
+1.Application: GarudaVPN Frontend
+2.Module: Authentication / Session Management
+3.Browser: Chrome
+4.Environment: QA
+
+**Preconditions**
+1.User account exists.
+2.User is logged into the frontend.
+3.Backend API is accessible.
+
+**Steps to Reproduce**
+1.Log in to the frontend using a valid user account.
+2.Keep the frontend session active.
+3.Delete the same user account using the backend Delete Account API.
+4.Verify that the API returns 200 - Account deleted successfully.
+5.Return to the frontend.
+6.Refresh the browser page.
+
+**Actual Result**
+1.The application remains on the Dashboard.
+2.The user is not logged out.
+3.The session appears to remain active even though the account has been deleted.
+
+**Expected Result**
+1.On page refresh, the frontend should validate the user's session.
+2.If the account has been deleted or is invalid, the application should:
+3.Clear the authentication token/session.
+4.Log the user out.
+5.Redirect the user to the Login page.
+6.Optionally display a message such as "Your account has been deleted. Please log in with a valid account."
+
+**Severity**
+High
+
+**Priority**
+High
+
+**Impact**
+1.Allows users with deleted accounts to continue accessing protected pages until the session expires.
+2.Causes inconsistent frontend and backend authentication states.
+3.Creates potential security and session management issues.
+4.Leads to a poor user experience.
