@@ -1528,3 +1528,104 @@ The chatbot incorrectly responds that the Ultimate Monthly Plan has a device lim
 2.The chatbot response does not match the actual plan configuration.
 3.This can cause confusion regarding the user's subscription benefits.
 4.Multilingual chatbot responses may be using incorrect or outdated plan data.
+
+
+**Bug -35**
+**Title**
+Profile update fails with "Failed to update profile" error after clicking Save Changes
+
+**Description**
+When a logged-in user attempts to update their profile information from the Profile page and clicks the Save Changes button, the application displays the error message "Failed to update profile." The profile information is not updated successfully.
+
+**Preconditions**
+1.User is logged into the application.
+2.User is on the Dashboard → Profile → Personal Information page.
+3.User account is active.
+
+**Steps to Reproduce**
+1.Log in with valid user credentials.
+2.Navigate to Dashboard → Profile.
+3.Modify one or more editable profile fields (e.g., Full Name or Phone Number).
+4.Click the Save Changes button.
+
+**Actual Result**
+1.A popup appears with the message: 
+   **Failed to update profile.**
+2.The updated profile information is not saved.
+
+**Expected Result**
+1.The profile information should be updated successfully.
+2.A success confirmation message (e.g., "Profile updated successfully.") should be displayed.
+3.The updated values should persist after refreshing the page.
+
+**Impact**
+1.Users are unable to update their personal information.
+2.Prevents users from maintaining accurate profile details.
+3.Degrades overall user experience.
+
+**Severity**
+High
+
+**Priority**
+High
+
+**Environment**
+1.Application: GarudaVPN Web Portal
+2.Module: Dashboard → Profile
+3.Browser: Google Chrome
+4.OS: Windows 11
+
+
+**Bug -36**
+**Title**
+Frontend chatbot resets to a new chat instead of displaying the "Please login first" response for unauthenticated users
+
+**Description**
+When an unauthenticated user asks a subscription-related question in the chatbot, the backend correctly responds with a login prompt. However, the frontend chatbot does not display this response. Instead, it keeps loading and then resets the conversation to a fresh chat with the default welcome message and suggested prompts.
+
+This results in inconsistent behavior between the backend API and the frontend chatbot.
+
+**Preconditions**
+1.User is not logged in.
+2.GarudaVPN website is open.
+3.AI chatbot is available.
+4.Backend API is accessible.
+
+**Steps to Reproduce**
+1.Open the GarudaVPN website without logging in.
+2.Open the AI chatbot.
+3.Enter a subscription-related query (e.g., "I want to purchase basic monthly subscription plan?").
+4.Observe the frontend chatbot behavior.
+5.Execute the same request through the backend Swagger API.
+
+**Actual Result**
+1.Backend: Returns the expected response:
+    **"Please login first. Send: /login your@email yourpassword"**
+2.Frontend: Displays a loading indicator and then resets the chat to a fresh conversation with the default welcome message instead of showing the backend response.
+
+**Expected Result**
+1.The frontend should display the backend response exactly as returned:
+ **"Please login first. Send: /login your@email yourpassword"**
+2.The chat session should remain intact and should not reset to a new conversation.
+3.Backend Response (Verified)
+4.HTTP Status: 200 OK
+5.Response:
+      {
+  "response": "Please login first. Send: /login your@email yourpassword",
+  "session_id": "...",
+  "agent_used": null,
+  "tools_used": [],
+  "payment_link": null
+}
+
+**Environment**
+1.Platform: Web
+2.Module: AI Chatbot
+3.Authentication State: Not Logged In
+4.Browser: Google Chrome (Windows)
+
+**Impact**
+1.Users do not receive the required login instruction.
+2.Conversation context is lost due to the chat reset.
+3.Inconsistent behavior between frontend and backend.
+4.Poor user experience and confusion during subscription flow.
