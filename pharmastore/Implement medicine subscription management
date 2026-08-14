@@ -1,0 +1,407 @@
+1. Description
+
+    Implemented the Medicine Subscription Management functionality for the Pharma Store, allowing customers to subscribe to regularly required medicines and manage recurring deliveries through a centralized subscription interface.
+
+    The feature was designed for customers who regularly purchase medicines such as diabetes, blood-pressure, heart-care, and other long-term medications. Instead of manually placing the same order repeatedly, customers can configure a subscription and receive their medicines according to a selected schedule.
+
+2. Business Requirement
+
+    Customers who regularly require medicines need a convenient way to automate recurring purchases.
+
+    The subscription system was introduced to allow customers to:
+
+    Subscribe to frequently used medicines.
+    Select a delivery frequency.
+    Define the required quantity.
+    View active subscriptions.
+    Monitor upcoming deliveries.
+    Manage existing subscriptions.
+    Pause or resume subscriptions.
+    Skip an upcoming delivery.
+    Cancel subscriptions.
+    View subscription pricing and savings.
+
+    The objective is to reduce repetitive ordering and provide a convenient recurring-medicine purchasing experience.
+
+3. Features Implemented
+    Medicine Subscription
+
+    Customers can create a subscription for an eligible medicine.
+
+    The subscription captures information such as:
+
+    Medicine/product
+    Quantity
+    Subscription frequency
+    Delivery schedule
+    Subscription price
+    Subscription status
+    Next delivery date
+
+    Example:
+
+     Medicine:
+     Metformin 500 mg
+
+
+    Quantity:
+     2 packs
+
+
+    Frequency:
+     Every 30 Days
+
+
+    Next Delivery:
+      15 September 2026
+
+
+    Status:
+     Active
+
+4. Subscription Creation Workflow
+
+    The subscription workflow follows:
+
+    Customer opens medicine
+           ↓
+    Selects subscription option
+           ↓
+    Selects quantity
+           ↓
+    Selects delivery frequency
+           ↓
+    Reviews subscription details
+           ↓
+    Confirms subscription
+           ↓
+    Subscription Created
+           ↓
+    Next Delivery Scheduled
+
+    This provides a simple process for converting a regular medicine purchase into a recurring subscription.
+
+5. Subscription Frequency
+
+    Implemented recurring delivery frequency options based on the pharmacy requirements.
+
+     Examples include:
+
+      Every 7 Days
+      Every 15 Days
+      Every 30 Days
+      Every 60 Days
+      Custom recurring schedule where applicable
+
+      The selected frequency determines the next scheduled delivery.
+
+6. Subscription Dashboard
+
+     Developed a centralized subscription dashboard where customers can view their subscriptions.
+
+     The dashboard provides summary information such as:
+
+     Active Subscriptions
+     Next Delivery
+     Monthly Estimated Spend
+     Subscription Savings
+
+    Example:
+
+     ┌──────────────────┐
+     │ Active           │
+     │ Subscriptions    │
+     │       4          │
+     └──────────────────┘
+
+
+     ┌──────────────────┐
+     │ Next Delivery    │
+     │   15 Sep 2026    │
+     └──────────────────┘
+
+
+     ┌──────────────────┐
+     │ Monthly Spend    │
+     │     ₹2,499       │
+     └──────────────────┘
+
+7. Subscription Cards
+
+    Each active subscription is displayed as an individual card.
+
+    Example:
+
+     ┌─────────────────────────────────────────────┐
+     │ Medicine Image                              │
+     │                                             │
+     │ Metformin 500 mg                            │
+     │                                             │
+     │ Quantity: 2 Packs                           │
+     │ Frequency: Every 30 Days                    │
+     │ Next Delivery: 15 Sep 2026                 │
+     │                                             │
+     │ ₹399 / delivery                             │
+     │                                             │
+     │ ✓ Active                                    │
+     │                                             │
+     │ [View Details]                              │
+     │                                             │
+     │ [Pause] [Skip Next] [Cancel]                │
+     └─────────────────────────────────────────────┘
+
+     The card provides all important subscription information without requiring users to open multiple pages.
+
+8. Subscription Status
+
+    Implemented clear subscription status indicators.
+
+    Supported states include:
+
+    Active
+    Paused
+    Cancelled
+    Pending
+
+    The status is displayed prominently within the subscription interface.
+
+9. Subscription Management Actions
+
+    Customers can manage existing subscriptions through dedicated actions.
+
+    View Details
+
+    Displays complete subscription information.
+
+    Pause
+
+    Temporarily stops upcoming recurring deliveries without permanently cancelling the subscription.
+
+    Resume
+
+    Restarts a previously paused subscription.
+
+    Skip Next Delivery
+
+    Allows the customer to skip one upcoming delivery while keeping the subscription active.
+
+    Cancel
+
+    Permanently stops the recurring subscription.
+
+10. Subscription Details
+
+    The detailed subscription view provides information such as:
+
+    Medicine name
+    Product image
+    Quantity
+    Delivery frequency
+    Next delivery date
+    Subscription price
+    Estimated monthly cost
+    Savings
+    Subscription status
+    Subscription creation date
+
+    This provides customers with complete visibility into their recurring medicine orders.
+
+11. Subscription Savings
+
+     Integrated savings information into the subscription experience where applicable.
+
+     Example:
+
+      Regular Price:
+      ₹500
+
+
+      Subscription Price:
+      ₹450
+
+
+      You Save:
+      ₹50
+
+      Savings information helps communicate the value of recurring medicine subscriptions.
+
+12. Delivery Schedule
+
+     Each subscription maintains a recurring delivery schedule.
+
+     Example:
+
+     Current Delivery
+          ↓
+     15 Aug 2026
+
+
+    Next Delivery
+          ↓
+    15 Sep 2026
+
+
+    Following Delivery
+          ↓
+    15 Oct 2026
+
+    The system uses the configured subscription frequency to determine future delivery dates.
+
+13. Automated Recurring Order Foundation
+
+     The subscription management implementation establishes the foundation for automated recurring orders.
+
+     The workflow can generate the next order based on:
+
+     Active subscription status.
+     Medicine/product.
+     Quantity.
+     Delivery frequency.
+     Next delivery date.
+     Subscription configuration.
+
+     This reduces the need for customers to manually reorder medicines every cycle.
+
+14. User Interface
+
+    The subscription interface was designed to match the overall Pharma Store design system.
+
+    Implemented:
+
+    Modern subscription cards.
+    Clear status badges.
+    Medicine product imagery.
+    Consistent typography.
+    Rounded cards.
+    Soft shadows.
+    Clear action buttons.
+    Responsive layout.
+    Savings indicators.
+    Delivery information.
+
+
+15. Responsive Design
+
+     The subscription management interface was optimized for all major screen sizes.
+
+     Desktop
+     Subscription Card    Subscription Card    Subscription Card
+     Tablet
+     Subscription Card    Subscription Card
+
+
+     Subscription Card
+     Mobile
+     Subscription Card
+
+
+     Subscription Card
+
+
+     Subscription Card
+
+     Actions are arranged vertically or wrapped appropriately on smaller screens to prevent layout overflow.
+
+16. Technical Implementation
+     Frontend
+
+      Implemented using:
+
+       Odoo QWeb
+       HTML5
+       SCSS/CSS
+       Bootstrap
+       JavaScript
+       Responsive Flexbox/Grid
+       Backend
+
+       Subscription functionality is structured around:
+
+       Subscription records.
+       Customer information.
+       Product information.
+       Quantity.
+       Frequency.
+       Delivery dates.
+       Subscription status.
+       Recurring order information.
+
+
+17. Subscription Data Structure
+
+     The subscription record is conceptually structured as:
+
+     Medicine Subscription
+     │
+     ├── Customer
+     ├── Product
+     ├── Quantity
+     ├── Frequency
+     ├── Subscription Price
+     ├── Next Delivery Date
+     ├── Status
+     ├── Start Date
+     └── End Date / Cancellation Date
+
+     This structure provides the required information to manage the complete subscription lifecycle.
+
+18. Subscription Lifecycle
+
+     The complete lifecycle is:
+
+      Draft
+        ↓
+      Active
+        ↓
+    ┌───────────────┐
+    │               │
+   Pause          Delivery
+    │               │
+    ↓               ↓
+   Paused       Next Delivery
+    │               │
+    ↓               ↓
+   Resume       Recurring Order
+    │
+    ↓
+   Active
+    │
+    ↓
+   Cancel
+    │
+    ↓
+   Cancelled
+
+   This provides a clear state-based subscription management process.
+
+19. UI/UX Improvements
+
+     Implemented the following improvements:
+
+     Clear subscription summary.
+     Easy-to-understand delivery information.
+     Prominent subscription status.
+     Simple management actions.
+     Clear savings information.
+     Consistent product imagery.
+     Improved spacing.
+     Responsive cards.
+     Mobile-friendly controls.
+     Better visual hierarchy.
+
+
+20. Validation
+
+     Subscription creation and management includes validation for important information.
+
+     Validation areas include:
+ 
+     Product selection.
+     Quantity.
+     Delivery frequency.
+     Customer information.
+     Subscription status.
+     Delivery date.
+     Valid subscription configuration.
+
+     Invalid or incomplete subscription information should not be allowed to create an active recurring subscription.
