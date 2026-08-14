@@ -1,0 +1,448 @@
+1. Description
+
+    Implemented the Automated Medicine Refill Workflow for the Pharma Store to automate recurring medicine orders based on active customer subscriptions.
+
+    The workflow connects the subscription schedule with the refill/order process so that medicines can be prepared for the customer's next scheduled delivery without requiring the customer to manually place the same order each time.
+
+    The implementation also provides delivery-date tracking, refill status management, and a foundation for customer notifications and recurring order processing.
+
+2. Business Requirement
+
+    Customers who subscribe to regularly required medicines should not need to manually reorder them for every delivery cycle.
+
+    The automated refill workflow is designed to:
+
+    Monitor active medicine subscriptions.
+    Identify upcoming refill dates.
+    Generate or prepare recurring medicine orders.
+    Maintain the subscribed quantity.
+    Calculate the next delivery date.
+    Update refill status.
+    Handle skipped or paused subscriptions.
+    Support customer notifications.
+    Reduce manual reordering.
+
+
+3. Automated Refill Workflow
+
+    The complete workflow follows:
+
+    Active Subscription
+           ↓
+    Check Next Refill Date
+           ↓
+    Refill Date Reached
+           ↓
+    Validate Subscription
+           ↓
+    Check Product Availability
+           ↓
+    Create Recurring Order
+           ↓
+    Update Refill Status
+           ↓
+    Schedule Next Delivery
+           ↓
+    Notify Customer
+           ↓
+    Order Processing
+           ↓
+    Delivery
+
+    This creates a continuous recurring medicine cycle.
+
+4. Subscription Eligibility Check
+ 
+    Before creating a refill, the workflow verifies that the subscription is eligible.
+
+    The system checks:
+
+     Subscription status.
+     Customer information.
+     Product information.
+     Subscription quantity.
+     Delivery frequency.
+     Next refill date.
+     Product availability.
+
+     Only valid active subscriptions should proceed to the refill process.
+
+5. Refill Date Management
+
+    Each subscription maintains a scheduled refill/delivery date.
+
+    Example:
+
+     Subscription
+         ↓
+     Next Refill Date
+     15 September 2026
+         ↓
+     Refill Processing
+         ↓
+     Next Refill Date
+     15 October 2026
+
+     The next refill date is recalculated based on the configured subscription frequency.
+
+6. Automated Order Creation
+
+    When the refill date is reached, the workflow prepares a recurring order using the subscription information.
+
+    The order contains:
+
+     Customer
+     Product
+     Quantity
+     Price
+     Delivery Information
+     Subscription Reference
+     Refill Reference
+
+    Example:
+
+     Customer:
+     Customer Name
+
+
+    Medicine:
+    Metformin 500 mg
+
+
+    Quantity:
+    2 Packs
+
+
+    Subscription:
+    Every 30 Days
+
+
+    Refill:
+    September Cycle
+
+
+    Status:
+    Processing
+
+
+7. Product Availability Validation
+
+    Before processing the refill, product availability is checked.
+
+    Product Available
+    Subscription
+        ↓
+    Product Available
+        ↓
+    Create Refill Order
+        ↓
+    Continue Processing
+    Product Unavailable
+    Subscription
+        ↓
+    Product Unavailable
+        ↓
+    Refill Cannot Be Processed
+        ↓
+    Update Refill Status
+        ↓
+    Notify Customer / Admin
+
+    This helps prevent failed recurring orders caused by unavailable products.
+
+8. Refill Status Management
+
+     Implemented status tracking for the refill process.
+
+     Example statuses:
+
+      Scheduled
+      Processing
+      Order Created
+      Pending
+      Completed
+      Skipped
+      Failed
+
+      This allows both users and administrators to understand the current state of a refill.
+
+9. Pause Subscription Handling
+
+    If a customer pauses their subscription:
+
+    Active
+      ↓
+    Pause
+      ↓
+    Paused
+      ↓
+    Refill Temporarily Stopped
+
+    The automated refill process should not create a recurring order while the subscription remains paused.
+
+    When the customer resumes the subscription:
+
+    Paused
+      ↓
+    Resume
+      ↓
+    Active
+      ↓
+    Refill Scheduling Resumes
+
+
+10. Skip Next Delivery
+
+     The workflow supports skipping the next scheduled refill without cancelling the entire subscription.
+
+     Example:
+
+      Next Refill
+      15 September
+
+
+      Customer selects:
+      Skip Next Delivery
+
+
+            ↓
+
+
+      September Refill Skipped
+
+
+            ↓
+
+
+       Next Refill
+       15 October
+
+       The subscription remains active after the skipped cycle.
+
+11. Subscription Cancellation
+
+     When a subscription is cancelled:
+
+     Active
+       ↓
+     Cancel
+       ↓
+     Cancelled
+       ↓
+     Automatic Refill Disabled
+
+     No future recurring refill should be generated after cancellation.
+
+12. Automated Refill Scheduler
+
+     The workflow can be executed through a scheduled background process.
+
+     Conceptually:
+
+     Scheduled Job
+         ↓
+     Find Active Subscriptions
+         ↓
+     Check Refill Dates
+         ↓
+     Identify Due Refills
+         ↓
+     Validate Products
+         ↓
+     Create Orders
+         ↓
+     Update Subscription
+         ↓
+     Schedule Next Refill
+
+     This removes the requirement for manual staff intervention for every recurring order.
+
+13. Customer Notification Workflow
+
+     The refill workflow provides a foundation for customer notifications.
+
+     Example:
+
+            Upcoming Refill
+            Your medicine refill is scheduled
+            for 15 September 2026.
+            Refill Processed
+            Your medicine refill order has
+            been successfully created.
+            Refill Issue
+            We could not process your refill.
+            Please review your subscription.
+
+            Notifications can later be delivered through:
+
+            Email
+            Website notification
+            SMS
+            Push notification
+
+
+14. Subscription Dashboard Integration
+
+     The automated refill process is connected to the subscription dashboard.
+
+     Customers can see:
+
+     Next delivery date.
+     Refill status.
+     Last refill.
+     Upcoming refill.
+     Subscription status.
+     Estimated recurring spending.
+
+    Example:
+
+       Active Subscription
+
+
+       Medicine:
+       Metformin 500 mg
+
+
+       Last Refill:
+       15 August 2026
+
+
+       Next Refill:
+       15 September 2026
+
+
+       Status:
+       Scheduled
+
+
+15. Automated Refill Lifecycle
+
+       The complete lifecycle is:
+
+                    ┌─────────────┐
+                    │   Active    │
+                    │ Subscription│
+                    └──────┬──────┘
+                           ↓
+                    Check Refill Date
+                           ↓
+                    Refill Due?
+                      /          \
+                    No            Yes
+                    │              ↓
+                    │       Validate Product
+                    │              ↓
+                    │       Create Order
+                    │              ↓
+                    │       Update Status
+                    │              ↓
+                    │       Schedule Next
+                    │              ↓
+                    └───────→ Next Cycle
+
+
+16. Error Handling
+
+    Implemented handling for common refill scenarios.
+
+    Product Out of Stock
+    Refill Failed
+
+
+    Product is currently unavailable.
+    Invalid Subscription
+    Refill cannot be processed because
+    the subscription is inactive or invalid.
+    Cancelled Subscription
+    Refill skipped because the subscription
+    has been cancelled.
+    Paused Subscription
+    Refill postponed because the subscription
+    is currently paused.
+
+    These statuses prevent invalid recurring orders.
+
+17. Technical Implementation
+     Backend
+
+       The automated workflow is structured around:
+
+       Subscription records.
+       Refill records/status.
+       Customer information.
+       Product information.
+       Delivery dates.
+       Subscription frequency.
+       Recurring orders.
+       Scheduled jobs.
+       Odoo
+
+       Implemented using relevant Odoo mechanisms such as:
+
+       Models
+       Scheduled Actions / Cron
+       Server-side business logic
+       Sales Orders
+       Product records
+       Customer records
+       Website subscription interface
+
+
+18. Conceptual Data Structure
+
+     Subscription
+     │
+     ├── Customer
+     ├── Product
+     ├── Quantity
+     ├── Frequency
+     ├── Status
+     ├── Next Refill Date
+     │
+     └── Refill History
+          │
+          ├── Refill Date
+          ├── Order Reference
+          ├── Quantity
+          ├── Status
+          └── Processing Result
+
+    This structure provides a history of recurring medicine refills.
+
+19. Refill History
+
+     The system can maintain historical refill information.
+
+     Example:
+
+      Refill History
+
+
+        15 Aug 2026
+        ✓ Completed
+        Order: SO00125
+
+
+        15 Jul 2026
+        ✓ Completed
+        Order: SO00102
+
+
+        15 Jun 2026
+        ✓ Completed
+        Order: SO00081
+
+    This provides customers and administrators with visibility into previous recurring orders.
+
+20. UI/UX Improvements
+
+     The automated refill workflow was represented clearly in the subscription interface through:
+
+     Next refill dates.
+     Delivery status.
+     Refill status badges.
+     Subscription status.
+     Last refill information.
+     Clear management actions.
+
+    The objective was to ensure that customers understand when their medicine will be refilled and what stage the order is currently in.
