@@ -1,0 +1,408 @@
+1. Description
+
+    Developed a dedicated Medicine Subscription Dashboard for the Pharma Store to give customers a centralized view of their active and recurring medicine subscriptions.
+
+    The dashboard provides an overview of subscription activity, upcoming deliveries, estimated spending, subscription status, and individual subscription details. It also integrates with the medicine subscription and automated refill workflows implemented previously.
+
+    The primary goal was to make recurring medicine management simple, transparent, and easy to understand from a single dashboard.
+
+2. Business Requirement
+
+    Customers using recurring medicine subscriptions need a centralized location to monitor their subscriptions without having to navigate through multiple pages.
+
+    The dashboard was designed to allow customers to:
+
+    View active subscriptions.
+    Monitor upcoming medicine deliveries.
+    Check subscription status.
+    View estimated recurring spending.
+    Track subscription savings.
+    Review medicine and quantity details.
+    Access subscription management actions.
+    Monitor refill information.
+
+
+3. Dashboard Overview
+
+    The dashboard provides high-level subscription information at the top of the page.
+
+    Example:
+
+    ┌──────────────────────────────────────────────────────────────┐
+    │                  My Medicine Subscriptions                  │
+    │                                                              │
+    │  Active          Upcoming       Monthly       Savings       │
+    │  Plans           Delivery       Spend                       │
+    │                                                              │
+    │    4            15 Sep 2026      ₹2,499        ₹350          │
+    └──────────────────────────────────────────────────────────────┘
+
+    This allows users to understand their subscription activity immediately after opening the dashboard.
+
+4. Dashboard Summary Cards
+
+    Implemented summary cards for important subscription metrics.
+
+    Active Subscriptions
+
+    Displays the total number of currently active medicine subscriptions.
+
+    Active Subscriptions
+           4
+    Next Delivery
+
+    Displays the next scheduled medicine delivery.
+
+    Next Delivery
+
+
+    15 Sep 2026
+    Estimated Monthly Spend
+
+    Displays the estimated amount spent on recurring medicines each month.
+
+    Monthly Spend
+
+
+    ₹2,499
+    Subscription Savings
+
+    Displays estimated savings generated through subscription pricing where applicable.
+
+    Subscription Savings
+
+
+    ₹350
+
+
+5. Active Subscription Section
+
+    Implemented a dedicated section for displaying currently active subscriptions.
+
+    Each subscription is represented using a structured card.
+
+    Example:
+
+    ┌────────────────────────────────────────────┐
+    │ Medicine Image                             │
+    │                                            │
+    │ Metformin 500 mg                           │
+    │ Diabetes Care                              │
+    │                                            │
+    │ Quantity: 2 Packs                          │
+    │ Frequency: Every 30 Days                   │
+    │                                            │
+    │ Next Delivery                              │
+    │ 15 September 2026                          │
+    │                                            │
+    │ ₹399 / Delivery                            │
+    │                                            │
+    │ ✓ Active                                   │
+    │                                            │
+    │ [View Details] [Manage]                    │
+    └────────────────────────────────────────────┘
+
+6. Subscription Information
+
+    Each subscription card displays key information including:
+
+    Medicine name.
+    Product image.
+    Category.
+    Quantity.
+    Subscription frequency.
+    Subscription price.
+    Next delivery date.
+    Subscription status.
+    Management actions.
+
+    This avoids requiring the user to open the subscription details page for basic information.
+
+7. Upcoming Delivery Section
+
+    Added an upcoming delivery section to make scheduled medicine deliveries clearly visible.
+
+    Example:
+
+    Upcoming Delivery
+
+
+    ┌─────────────────────────────────────┐
+    │ Metformin 500 mg                    │
+    │                                     │
+    │ Delivery Date                       │
+    │ 15 September 2026                   │
+    │                                     │
+    │ Quantity: 2 Packs                   │
+    │ Status: Scheduled                   │
+    └─────────────────────────────────────┘
+
+   This improves visibility of upcoming recurring medicine orders.
+
+8. Subscription Status
+
+   Implemented clear status indicators.
+
+   Supported subscription statuses include:
+
+   Active
+   Paused
+   Pending
+   Cancelled
+
+   The status is displayed directly on subscription cards and relevant dashboard sections.
+
+9. Refill Status Integration
+
+    Integrated the dashboard with the automated refill workflow.
+
+    Customers can see information such as:
+
+    Last Refill
+    15 August 2026
+
+
+    Next Refill
+    15 September 2026
+
+
+    Refill Status
+    Scheduled
+
+    This provides visibility into the recurring medicine lifecycle.
+
+10. Subscription Management Actions
+
+     The dashboard provides access to subscription management functionality.
+
+     Available actions include:
+
+     View Details
+
+     Opens the complete subscription information.
+
+     Pause
+
+     Temporarily stops recurring deliveries.
+
+     Resume
+
+     Restarts a paused subscription.
+
+     Skip Next Delivery
+
+     Skips the next scheduled refill while keeping the subscription active.
+
+     Cancel
+
+     Stops future recurring deliveries.
+
+11. Dashboard Navigation
+
+      Implemented clear navigation between subscription-related areas.
+
+      Example:
+
+       My Account
+          ↓
+       Subscriptions
+          ↓
+       Subscription Dashboard
+          ↓
+       Subscription Details
+          ↓
+       Manage Subscription
+
+       This provides a consistent navigation flow for customers.
+
+12. Empty State
+
+      Implemented an appropriate empty state for customers who do not have active subscriptions.
+
+      Example:
+
+      ┌──────────────────────────────────────┐
+      │                                      │
+      │        No Active Subscriptions       │
+      │                                      │
+      │   Subscribe to regularly required    │
+      │   medicines and manage them here.   │
+      │                                      │
+      │        [ Explore Medicines ]         │
+      │                                      │
+      └──────────────────────────────────────┘
+
+     This prevents the dashboard from appearing empty or broken for new users.
+
+13. Responsive Design
+
+     The dashboard was optimized for multiple screen sizes.
+
+     Desktop
+     ┌────────────┐ ┌────────────┐ ┌────────────┐ ┌────────────┐
+     │ Active     │ │ Next       │ │ Monthly    │ │ Savings    │
+     │ Plans      │ │ Delivery   │ │ Spend      │ │            │
+     └────────────┘ └────────────┘ └────────────┘ └────────────┘
+
+    Subscription cards are displayed in a multi-column layout.
+
+    Tablet
+
+    Summary cards and subscription cards automatically adapt to available screen width.
+
+    Mobile
+
+    Cards stack vertically:
+
+    Active Plans
+
+
+    Next Delivery
+
+
+    Monthly Spend
+
+
+    Savings
+
+
+    Subscription
+    Subscription
+    Subscription
+
+    Management buttons are optimized for touch interaction.
+
+14. UI/UX Improvements
+
+     The dashboard was designed using the same visual language as the Pharma Store storefront.
+
+     Implemented:
+
+      Modern dashboard cards.
+      Consistent healthcare color palette.
+      Rounded corners.
+      Soft shadows.
+      Clear status badges.
+      Responsive spacing.
+      Product imagery.
+      Clear CTA buttons.
+      Improved information hierarchy.
+      Easy-to-scan subscription information.
+
+
+15. Technical Implementation
+
+    Frontend
+
+     Implemented using:
+
+      Odoo QWeb
+      HTML5
+      SCSS/CSS
+      Bootstrap
+      Flexbox
+      CSS Grid
+      JavaScript where required
+      Backend Integration
+
+     Integrated with:
+
+      Customer records.
+      Product information.
+      Subscription records.
+      Subscription status.
+      Refill information.
+      Delivery dates.
+      Recurring order information.
+
+
+
+16. Dashboard Data Structure
+
+     The dashboard consumes subscription information conceptually structured as:
+
+     Subscription Dashboard
+     │
+     ├── Summary
+     │   ├── Active Subscriptions
+     │   ├── Next Delivery
+     │   ├── Monthly Spend
+     │   └── Savings 
+     │
+     ├── Active Subscriptions
+     │   ├── Product
+     │   ├── Quantity
+     │   ├── Frequency
+     │   ├── Price
+     │   ├── Status
+     │   └── Next Delivery
+     │
+     └── Refill Information
+         ├── Last Refill
+         ├── Next Refill
+         └── Refill Status
+
+
+17. Dashboard Workflow
+
+    The complete user workflow is:
+
+    Customer Login
+         ↓
+    Open My Account
+         ↓
+    Open Subscriptions
+         ↓
+    Subscription Dashboard
+         ↓
+    View Summary
+         ↓
+    View Active Subscriptions
+         ↓
+    Select Subscription
+         ↓
+    View Details
+         ↓
+    Manage Subscription
+
+
+18. Integration with Previous Features
+
+     The dashboard connects multiple previously implemented features.
+
+     Medicine Subscription
+
+     Displays:
+
+     Active plans.
+     Medicine information.
+     Subscription frequency.
+     Pricing.
+     Automated Refill
+
+     Displays:
+
+     Next refill.
+     Refill status.
+     Delivery schedule.
+     Product Catalog
+
+   Uses:
+
+    Product names.
+    Product images.
+    Product categories.
+    Product information.
+
+   This creates a unified subscription management experience.
+
+19. Performance Considerations
+
+     Implemented frontend optimizations including:
+
+      Reusable dashboard components.
+      Optimized product images.
+      Efficient card rendering.
+      Responsive CSS.
+      Reduced unnecessary styling.
+      Optimized dashboard asset loading.
