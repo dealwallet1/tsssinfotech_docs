@@ -9,4 +9,5 @@
 [How to Choose the Right Embedding for Your RAG Model](https://www.analyticsvidhya.com/blog/2025/03/embedding-for-rag-models/)
 
 [Fine-Tune Gemma-3 on Custom Dataset Locally: Step-by-Step Easy Tutorial ](https://medium.com/@aniket.mohan9/fine-tuning-embedding-models-for-rag-unlocking-the-power-of-tailored-representations-565a9370bf12)
-
+[Your Vector Database Is Losing to an Algorithm From 1994](https://medium.com/data-and-beyond/your-vector-database-is-losing-to-an-algorithm-from-1994-e8fe79868c45)
+[Your AI Agent Doesn’t Need a Vector Database](https://medium.com/@anubhavgoyal101/41402345796f?sk=b9e7255ddd0e7f850ed365259d0eb1b9)

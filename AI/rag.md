@@ -27,3 +27,7 @@
 [RAG for LLM-Based Recommendations – Squareboat Blog](https://squareboat.com/blog/rag-for-llm-based-recommendations)
 
 [Agentic RAG System Architectures – Analytics Vidhya](https://www.analyticsvidhya.com/blog/2025/01/agentic-rag-system-architectures/)
+
+[PixelRAG: Search Documents by How They Look — A Hands-On Guide](https://share.google/vhulnNR16YsKqpJJu)
+[How RAG Works: An End-to-End Guide to Retrieval-Augmented Generation - Geeky Codes](https://geekycodes.in/generative-ai/how-rag-works-an-end-to-end-guide-to-retrieval-augmented-generation/)
+[Your RAG Agent Should Stop Searching So Much](https://levelup.gitconnected.com/your-rag-agent-should-stop-searching-so-much-6336f44807b5?sk=682f9d9868ddb1d96998ccd6c03c6459)
