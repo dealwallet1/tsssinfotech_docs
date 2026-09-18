@@ -16,6 +16,5 @@
 
 [How to cache LLM responses](https://python.langchain.com/docs/how_to/llm_caching/)
 
-[Ollama allows you to run open-source large language models, such as Llama 2, locally](https://python.langchain.com/docs/integrations/chat/ollama/
-
-)
+[Ollama allows you to run open-source large language models, such as Llama 2, locally](https://python.langchain.com/docs/integrations/chat/ollama/)
+[Building a Harness with Jev](https://www.langchain.com/blog/building-a-harness-with-jev)
