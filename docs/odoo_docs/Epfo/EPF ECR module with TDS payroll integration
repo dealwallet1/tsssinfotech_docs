@@ -1,0 +1,27 @@
+# EPF ECR Module – Development Progress
+
+## 1. Module Structure
+- Created the `epf_ecr_export` module for EPF ECR management in Odoo 19.
+- Added establishment configuration and monthly return management.
+- Created member-line models for employee-wise EPF return data.
+
+## 2. ECR Generation
+- Implemented member data entry and validation.
+- Added PF/EPS contribution calculation logic.
+- Implemented ECR file generation with configurable format settings.
+- Added ECR return status and validation workflow.
+
+## 3. Payroll Integration
+- Created the `epf_ecr_tds_bridge` module to connect EPF ECR processing with the existing TDS Payroll Management module.
+- Added functionality to load employee and payroll data for a selected company and payroll period.
+- Added validation for missing UAN details, duplicate records, and changes in source payroll data.
+
+## 4. Challan and Payment Tracking
+- Added fields to record challan/TRRN details.
+- Implemented challan amount estimation and payment status tracking.
+- Added support for recording payment references and related details.
+
+## 5. Validation and Security
+- Added validation checks for member data and ECR generation requirements.
+- Implemented workflow and access-control mechanisms.
+- Added initial automated test cases for calculations, validation, and workflow handling.

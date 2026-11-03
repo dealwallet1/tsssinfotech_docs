@@ -1,0 +1,459 @@
+1. Description
+
+    Implemented the core subscription management actions for the Pharma Store, allowing customers to control their active medicine subscriptions directly from the Subscription Dashboard.
+
+    The implementation provides customers with the ability to pause, resume, skip the next delivery, and cancel subscriptions without needing to contact the pharmacy manually.
+
+    These actions were integrated with the existing subscription dashboard and automated refill workflow so that changes made by customers are reflected in future refill and delivery processing.
+
+2. Business Requirement
+
+    Customers need flexibility when managing recurring medicine deliveries. A fixed recurring schedule may not always be suitable because customers may:
+
+    Have enough medicine for the next cycle.
+    Temporarily stop taking a medicine.
+    Go on vacation.
+    Need to postpone a delivery.
+    No longer require a medicine.
+    Want to restart a previously paused subscription.
+
+    The system therefore required self-service subscription controls.
+
+3. Subscription Actions Implemented
+
+    The following actions were implemented:
+
+    View Details
+    Pause Subscription
+    Resume Subscription
+    Skip Next Delivery
+    Cancel Subscription
+
+    Each action performs a specific operation on the customer's subscription.
+
+4. View Subscription Details
+
+    Implemented a View Details action that allows customers to open the complete information for an individual subscription.
+
+    The details page displays:
+
+    Medicine name.
+    Product image.
+    Quantity.
+    Subscription frequency.
+    Subscription price.
+    Current status.
+    Next delivery date.
+    Last refill date.
+    Subscription start date.
+    Refill information.
+
+    Example:
+
+     Subscription Details
+
+
+     Medicine:
+     Metformin 500 mg
+
+
+     Quantity:
+     2 Packs
+
+
+     Frequency:
+     Every 30 Days
+
+
+     Next Delivery:
+     15 September 2026
+
+
+     Status:
+     Active
+
+
+    [ Pause ]
+    [ Skip Next Delivery ]
+    [ Cancel ]
+
+
+5. Pause Subscription
+
+    Implemented the ability to temporarily pause an active subscription.
+
+    Workflow
+    Active
+      ↓
+    Pause Subscription
+      ↓
+    Paused
+
+    When a subscription is paused:
+
+    Future automated refills are temporarily stopped.
+    The subscription remains stored.
+    Existing subscription information is retained.
+    The customer can resume the subscription later.
+
+
+6. Pause Confirmation
+
+    Added confirmation before pausing a subscription to prevent accidental actions.
+
+    Example:
+
+    Pause Subscription?
+
+
+    Your upcoming medicine deliveries will be
+    temporarily stopped.
+
+
+    [ Keep Active ]    [ Pause Subscription ]
+
+    After successful confirmation:
+
+    ✓ Subscription paused successfully.
+
+
+7. Resume Subscription
+
+    Implemented the ability to restart a paused subscription.
+
+    Workflow
+    Paused
+      ↓
+    Resume Subscription
+      ↓
+    Active
+
+   When resumed:
+
+    Subscription status changes to Active.
+    Refill scheduling resumes.
+    The next delivery date is recalculated where applicable.
+    Automated refill processing becomes active again.
+
+    Example:
+
+     Subscription Status
+
+
+     Paused
+
+
+     [ Resume Subscription ]
+
+     After the action:
+
+     ✓ Subscription resumed successfully.
+
+
+8. Skip Next Delivery
+
+    Implemented a Skip Next Delivery action that allows customers to skip only the next scheduled medicine refill without cancelling the subscription.
+
+    Workflow
+    Active Subscription
+          ↓
+    Skip Next Delivery
+          ↓
+    Current Delivery Skipped
+          ↓
+    Subscription Remains Active
+          ↓
+    Next Delivery Scheduled
+
+    Example:
+
+      Current Next Delivery:
+      15 September 2026
+
+
+      Skip Next Delivery
+
+
+          ↓
+
+
+      Next Delivery:
+      15 October 2026
+
+      This is useful when a customer already has enough medicine for the upcoming cycle.
+
+9. Skip Confirmation
+
+    Added confirmation before skipping a delivery.
+
+    Example:
+
+    Skip Next Delivery?
+
+
+    Your upcoming delivery will be skipped,
+    but your subscription will remain active.
+
+
+    [ Go Back ]    [ Skip Delivery ]
+
+    Confirmation message:
+
+    ✓ Next delivery skipped successfully.
+
+
+10. Cancel Subscription
+
+     Implemented subscription cancellation functionality.
+
+     Workflow
+     Active
+       ↓
+     Cancel Subscription
+       ↓
+     Confirmation
+       ↓
+     Cancelled
+
+     After cancellation:
+
+     Future recurring refills are stopped.
+     Future automated orders are prevented.
+     Subscription status changes to Cancelled.
+     Historical subscription information remains available.
+
+
+11. Cancellation Confirmation
+
+    Added a confirmation dialog to prevent accidental cancellation.
+
+    Example:
+
+     Cancel Subscription?
+
+
+     Future medicine deliveries will be stopped.
+     You can create a new subscription later.
+
+
+     [ Keep Subscription ]    [ Cancel Subscription ]
+
+     After confirmation:
+
+     ✓ Subscription cancelled successfully.
+
+
+12. Subscription State Management
+
+     Integrated the actions with subscription states.
+
+                 ┌───────────┐
+                 │  Active   │
+                 └─────┬─────┘
+                       │
+          ┌────────────┼─────────────┐
+          ↓            ↓             ↓
+       Pause         Skip          Cancel
+          ↓            │             ↓
+       Paused          │        Cancelled
+          │            │
+        Resume         │
+          ↓            │
+        Active ←───────┘
+
+    This provides a controlled subscription lifecycle.
+
+13. Automated Refill Integration
+
+     Subscription actions were integrated with the previously implemented automated refill workflow.
+
+     Paused Subscription
+     Status = Paused
+            ↓
+     Skip Automated Refill
+     Cancelled Subscription
+     Status = Cancelled
+            ↓
+     Stop Future Refills
+     Skipped Delivery
+     Skip Next = True
+            ↓
+     Skip Current Refill
+            ↓
+     Schedule Next Cycle
+     Active Subscription
+     Status = Active
+            ↓
+    Continue Automated Refill
+
+    This prevents unwanted medicine orders from being generated after customers change their subscription settings.
+
+14. Subscription Dashboard Integration
+
+     The actions were integrated directly into the subscription cards.
+
+     Example:
+
+     ┌─────────────────────────────────────────┐
+     │ Metformin 500 mg                        │
+     │                                         │
+     │ Every 30 Days                            │
+     │ Next Delivery: 15 Sep 2026              │
+     │                                         │
+     │ ✓ Active                                 │
+     │                                         │
+     │ [View Details]                           │
+     │                                         │
+     │ [Pause] [Skip Next] [Cancel]            │
+     └─────────────────────────────────────────┘
+
+    The available actions change depending on the current subscription state.
+
+15. Dynamic Action Availability
+
+     Actions are displayed based on the subscription status.
+
+     Active
+     View Details
+     Pause
+     Skip Next Delivery
+     Cancel
+     Paused
+     View Details
+     Resume
+     Cancel
+     Cancelled
+     View Details
+
+     This prevents users from performing invalid actions.
+
+16. User Interface Improvements
+
+    Implemented:
+
+     Clearly labeled action buttons.
+     Confirmation dialogs.
+     Status badges.
+     Success messages.
+     Error messages.
+     Disabled states where applicable.
+     Responsive action layout.
+     Consistent button styling.
+     Clear visual hierarchy.
+
+
+17. Action Feedback
+
+     Each operation provides immediate feedback.
+
+     Success
+     ✓ Subscription updated successfully.
+     Error
+     Unable to update subscription.
+     Please try again.
+     Invalid Action
+     This action is not available for
+     the current subscription status.
+
+    This helps customers understand the result of every action.
+
+18. Technical Implementation
+
+     Frontend
+
+     Implemented using:
+
+      Odoo QWeb
+      HTML5
+      SCSS/CSS
+      Bootstrap
+      JavaScript
+      Responsive UI components
+
+    Backend
+
+     Subscription actions interact with:
+
+      Subscription records.
+      Customer records.
+      Product records.
+      Refill schedules.
+      Recurring orders.
+      Subscription status.
+
+
+19. Action Workflow
+
+     The general action-processing flow is:
+
+     Customer selects action
+            ↓
+     Validate subscription
+            ↓
+     Check current status
+            ↓
+     Confirm action if required
+            ↓
+     Update subscription
+            ↓
+     Update refill schedule
+            ↓
+     Update dashboard
+            ↓
+     Display confirmation
+
+    This ensures subscription changes are processed consistently.
+
+20. Validation
+
+     Validation was implemented to ensure that actions are performed only when appropriate.
+
+     Examples:
+
+      Pause
+
+      Only an active subscription can be paused.
+
+      Resume
+
+      Only a paused subscription can be resumed.
+
+      Skip
+
+      Only an active subscription with a future delivery can skip the next delivery.
+
+      Cancel
+
+      An already cancelled subscription cannot be cancelled again.
+
+      This reduces inconsistent subscription states.
+
+21. Responsive Design
+
+      Subscription actions were optimized for all screen sizes.
+
+      Desktop
+
+      Actions appear horizontally:
+
+      [View Details] [Pause] [Skip Next] [Cancel]
+      Tablet
+
+      Actions wrap based on available space.
+
+      Mobile
+
+      Actions are stacked or wrapped:
+
+      [View Details]
+
+
+      [Pause]
+
+
+      [Skip Next Delivery]
+
+
+      [Cancel]
+
+     This provides adequate touch targets for mobile users.

@@ -1,0 +1,282 @@
+1. Description
+
+    Developed the Prescription Upload Workflow for the Pharma Store to allow customers to securely submit their medical prescriptions through the website.
+
+    The workflow provides a simple interface for uploading prescription documents and prepares the submitted prescription for further review and processing. The implementation was designed to reduce manual communication, improve the prescription-ordering experience, and connect prescription submission with the pharmacy's product and order workflow.
+
+2. Business Requirement
+
+    Customers may have prescriptions from doctors that need to be reviewed before medicines can be processed.
+
+    The Pharma Store therefore required a digital prescription upload workflow that allows customers to:
+
+    Upload a prescription directly from the website.
+    Submit prescription documents securely.
+    Upload supported file formats.
+    Review the selected file before submission.
+    Receive clear upload status feedback.
+    Submit the prescription for pharmacy review.
+    Continue with the medicine-ordering process after submission.
+
+3. Features Implemented
+    Prescription Upload Interface
+
+    Created a dedicated prescription upload section with:
+
+    Upload area.
+    File selection control.
+    Drag-and-drop support where applicable.
+    Upload instructions.
+    Supported file information.
+    Upload/Submit action.
+    Clear/remove file option.
+    Upload status feedback.
+
+    Example:
+
+    ┌──────────────────────────────────────────────┐
+    │                                              │
+    │              📄                              │
+    │                                              │
+    │       Upload Your Prescription               │
+    │                                              │
+    │   Upload your doctor's prescription here     │
+    │                                              │
+    │        [ Choose File ]                       │
+    │                                              │
+    │       JPG / PNG / PDF                        │
+    │                                              │
+    └──────────────────────────────────────────────┘
+4. Supported Files
+
+    The upload workflow was designed to support common prescription formats such as:
+
+    JPG
+    PNG
+    PDF
+
+    The interface provides users with clear information about accepted formats before uploading.
+
+5. File Selection Workflow
+
+    The implemented workflow follows:
+
+    User opens Prescription Upload
+              ↓
+    Select / Upload Prescription
+              ↓
+    File Validation
+              ↓
+    File Preview / File Information
+              ↓
+    User Confirms Submission
+              ↓
+    Prescription Submitted
+              ↓
+    Pharmacy Review
+              ↓
+    Prescription Processing
+
+6. File Validation
+
+    Validation was included to prevent invalid files from being submitted.
+
+    Validation can check:
+
+    File format.
+    File size.
+    File availability.
+    Required upload field.
+    Valid prescription attachment.
+
+    If validation fails, the user receives a clear message.
+
+    Example:
+
+    Invalid file format.
+
+    Please upload a JPG, PNG, or PDF prescription.
+
+7. Prescription Preview
+
+    After selecting a prescription, the interface displays the selected document/file information before final submission.
+
+    For supported image files, a preview can be displayed.
+
+    Example:
+
+    Prescription_2026.jpg
+
+    [ Preview ]
+
+    [ Remove ]    [ Submit Prescription ]
+
+    This gives users an opportunity to verify that they selected the correct document.
+
+8. Upload Status
+
+    Added user feedback for different upload states.
+
+    Uploading
+    Uploading prescription...
+    Successful
+    ✓ Prescription uploaded successfully.
+    Failed
+    Unable to upload prescription.
+    Please try again.
+
+    This improves transparency throughout the upload process.
+
+9. Prescription Submission
+
+    After successful validation, the user can submit the prescription.
+
+    The submission process stores the prescription information and makes it available for pharmacy-side review.
+
+    The workflow is designed to prevent incomplete submissions and provide confirmation after successful upload.
+
+10. Pharmacy Review Workflow
+
+     The uploaded prescription can follow a review process:
+
+     Submitted
+         ↓
+     Under Review
+         ↓
+     Verified
+         ↓
+     Processing
+         ↓
+     Completed
+
+     If the prescription cannot be processed, an appropriate status can be applied for further customer action.
+
+11. User Experience Improvements
+
+     The prescription upload interface was designed to be simple and understandable.
+
+     Implemented:
+
+     Clear instructions.
+     Prominent upload button.
+     Simple file-selection workflow.
+     File preview.
+     Validation messages.
+     Upload progress/status.
+     Success confirmation.
+     Error handling.
+     Mobile-friendly layout.
+
+12. Responsive Design
+
+     The prescription upload interface was optimized for:
+
+     Desktop
+     Large upload area.
+     Drag-and-drop support.
+     Preview section.
+     Clearly visible submission button.
+     Tablet
+     Adaptive upload container.
+     Responsive file preview.
+     Proper button spacing.
+     Mobile
+     Full-width upload area.
+     Touch-friendly controls.
+     Mobile file picker.
+     Stacked layout.
+     Readable instructions.
+
+13. Technical Implementation
+     Frontend
+
+      Implemented using:
+
+       Odoo QWeb
+       HTML5
+       SCSS/CSS
+       Bootstrap
+       JavaScript
+       File input APIs
+       Responsive layout components
+       Odoo Integration
+
+       Integrated with:
+
+       Website pages.
+       Customer/user information.
+       Prescription records.
+       File attachments.
+       Website forms.
+       Pharmacy review workflow.
+
+14. Prescription Data
+
+     The workflow can associate the uploaded prescription with relevant customer information.
+
+      Example:
+
+      Prescription
+      │
+      ├── Customer
+      ├── Uploaded File
+      ├── File Type
+      ├── Upload Date
+      ├── Status
+      └── Review Information
+
+      This provides a structured foundation for pharmacy-side prescription management.
+
+15. Security Considerations
+
+      Prescription documents can contain sensitive medical information, so the upload workflow was designed with controlled access in mind.
+
+      Important considerations include:
+
+      Restricting prescription access to authorized users.
+      Validating uploaded files.
+      Preventing unsupported file uploads.
+      Associating files with the appropriate customer.
+      Avoiding unnecessary public exposure of prescription documents.
+      Maintaining controlled pharmacy-side access.
+
+16. Error Handling
+
+     Implemented user-friendly handling for common scenarios:
+
+     No File Selected
+     Please select a prescription before submitting.
+     Invalid Format
+     Unsupported file format.
+     Please upload JPG, PNG, or PDF.
+     File Too Large
+     File size exceeds the allowed limit.
+     Please upload a smaller file.
+     Upload Failure
+     Upload failed.
+     Please try again.
+     Successful Upload
+     ✓ Prescription submitted successfully.
+
+17. Technical Structure
+
+     Example implementation structure:
+
+     pharma_store/
+
+     ├── controllers/
+     │   └── prescription.py
+     │
+     ├── models/
+     │   └── prescription.py
+     │
+     ├── views/
+     │   └── prescription_upload.xml
+     │
+     ├── static/
+     │   └── src/
+     │       ├── css/
+     │       │   └── prescription.scss
+     │       │
+     │       └── js/
+     │           └── prescription.js
