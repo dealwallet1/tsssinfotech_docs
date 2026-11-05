@@ -269,7 +269,7 @@ The test cases include test case IDs, scenarios, preconditions, execution steps,
 **Acceptance Criteria**
 Requirement document exploration completed.
 
-All four agent functionalities reviewed.
+All four agent functionalities reviewed
 
 Application workflows and query routing understood.
 
