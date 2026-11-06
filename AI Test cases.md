@@ -297,3 +297,145 @@ Document defects and create individual GitHub bug tickets.
 
 **Next Steps**
 Start functional testing of all four agents using the prepared test cases, validate actual responses against expected results, capture evidence for failures and report identified defects through separate GitHub issues.
+
+**BUG : 3**
+Title:API Key Required Popup Displays 403 Error When Opening LightRAG Application Without an API Key
+
+**Description**
+When a user opens the LightRAG application, an API Key Required popup is displayed asking the user to enter an API key to access the service.
+
+Displaying this popup is expected behavior because API authentication is required. However, when the user opens the application without entering an API key, the application displays a raw 403 error message below the API key input field:
+
+403 {"detail":"API Key required"}/graphs?label=*&max_depth=3&max_nodes=1000
+
+The application should handle this authentication scenario gracefully instead of exposing a raw API error message to the user.
+
+**Preconditions**
+LightRAG application is accessible.
+
+User does not have an API key entered or saved.
+
+User opens the application in a browser.
+
+**Steps to Reproduce**
+Open the LightRAG application.
+
+Navigate to the Chatbot section.
+
+Observe the API Key Required popup.
+
+Do not enter any API key in the input field.
+
+Observe the error message displayed below the API key input field.
+
+Verify the HTTP 403 error response.
+
+**Actual Result**
+API Key Required popup appears when opening the application.
+
+Without entering an API key, the application displays a raw 403 error message.
+
+The error exposes backend API details, including the /graphs endpoint and request parameters.
+
+The user cannot access the chatbot without providing a valid API key.
+
+**Expected Result**
+API Key Required popup should appear when no API key is configured.
+
+The application should not display raw HTTP 403 responses or backend endpoint details.
+
+The user should see a clear and user-friendly message, such as: "Please enter a valid API key to access the service."
+
+The application should handle missing API key authentication gracefully without exposing backend implementation details.
+
+After entering and saving a valid API key, the user should be able to access the chatbot successfully.
+
+**Acceptance Criteria**
+API Key Required popup appears when no API key is available.
+
+No raw 403 error or backend endpoint details are displayed.
+
+A user-friendly validation message is displayed when authentication is missing.
+
+Empty API key submission is handled properly.
+
+Invalid API keys display an appropriate authentication error.
+
+Valid API keys allow successful chatbot access.
+
+No unnecessary authentication errors appear in the UI.
+
+**Impact: Poor user experience and exposure of raw backend error details during application initialization.**
+
+**Priority: Medium**
+
+**Issue Type: Bug**
+
+**Priority: Medium**
+
+**Module: LightRAG – Chatbot / API Authentication**
+
+**BUG : 4**
+Title:Login Free Button Is Non-Functional in LightRAG Application Header
+
+**Description**
+The LightRAG application header displays a Login Free button. However, clicking the button does not trigger any action or navigation.
+
+The button appears to be interactive, but it does not provide any response when clicked. Additionally, the button label Login Free should be verified against the intended UI design.
+
+**Preconditions**
+LightRAG application is accessible.
+
+User opens the application without logging in.
+
+Chatbot page is loaded successfully.
+
+**Steps to Reproduce**
+Open the LightRAG application.
+
+Navigate to the Chatbot page.
+
+Locate the Login Free button in the top navigation bar.
+
+Click the Login Free button.
+
+Observe whether any login popup, authentication page, or navigation action occurs.
+
+**Actual Result**
+Login Free button is displayed in the application header.
+
+Clicking the button does not trigger any action.
+
+No login popup or authentication page is displayed.
+
+The button appears interactive but does not respond.
+
+**Expected Result**
+Clicking the Login button should trigger the intended login or authentication flow.
+
+The application should navigate to the login page or display the appropriate login popup.
+
+The button label should be consistent with the intended UI design.
+
+**Acceptance Criteria**
+Login button should perform its intended action.
+
+Clicking the button should open the appropriate authentication interface.
+
+The button should not appear interactive without providing functionality.
+
+Button text should match the approved UI design.
+
+Login functionality should work correctly without affecting existing chatbot functionality.
+
+**Impact: Users may be confused because the application displays a login option that does not work.**
+
+**Priority: Medium**
+
+**Issue Type: Bug**
+
+**Priority: Medium**
+
+**Module: LightRAG – Header / Authentication**
+
+**Environment: QA**
