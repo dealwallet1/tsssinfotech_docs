@@ -439,3 +439,221 @@ Login functionality should work correctly without affecting existing chatbot fun
 **Module: LightRAG – Header / Authentication**
 
 **Environment: QA**
+
+**BUG : 5**
+**Title :**Improve Pipeline Status Popup with Completed, Pending, Processing, and Failed Document Counts
+
+**Description**
+The current Pipeline Status popup does not provide sufficient information about document-processing progress.
+
+Currently, the popup displays:
+
+Pipeline Busy indicator
+
+Job Name
+
+Start Time
+
+Progress (0/0 Batch)
+
+Pipeline Messages
+
+However, it does not clearly display the number of completed, pending, processing, and failed documents.
+
+To improve pipeline monitoring and provide better visibility, the Pipeline Status popup should display separate document counts for each processing status, along with the total document count and overall progress.
+
+**Preconditions**
+LightRAG application is accessible.
+
+User navigates to the Document Management section.
+
+Documents are uploaded into the application.
+
+Pipeline processing is available.
+
+**Steps to Reproduce**
+Open the LightRAG application.
+
+Navigate to the Documents section.
+
+Upload multiple documents.
+
+Click the Pipeline button.
+
+Observe the Pipeline Status popup.
+
+Check whether completed, pending, processing, and failed document counts are displayed.
+
+Verify whether the progress reflects the actual document-processing status.
+
+**Actual Result**
+Pipeline Status popup displays limited information.
+
+Job Name and Start Time may display -.
+
+Progress may display 0/0 Batch.
+
+No separate document counts are available inside the popup for Completed, Pending, Processing, and Failed statuses.
+
+Users cannot easily identify the overall document-processing status.
+
+**Expected Result**
+The Pipeline Status popup should display the following information:
+
+Completed: Number of successfully processed documents.
+
+Pending: Number of documents waiting for processing.
+
+Processing: Number of documents currently being processed.
+
+Failed: Number of documents that failed during processing.
+
+Total: Total number of documents included in the pipeline.
+
+**Proposed UI Improvements**
+Display Completed count with a green indicator.
+
+Display Pending count with a yellow indicator.
+
+Display Processing count with a blue indicator.
+
+Display Failed count with a red indicator.
+
+Display Total document count.
+
+Add a progress bar showing overall completion percentage.
+
+Display Job Name, Start Time, and Elapsed Time.
+
+Show meaningful pipeline messages and processing logs.
+
+Update all counts and progress dynamically as document statuses change.
+
+**Acceptance Criteria**
+All four document statuses must be displayed separately.
+
+Total document count must match the documents included in the pipeline.
+
+Completed count must increase when documents finish successfully.
+
+Pending count must decrease when documents enter processing.
+
+Processing count must reflect currently running document jobs.
+
+Failed count must increase when document processing fails.
+
+Progress percentage must be calculated correctly.
+
+All counts must update automatically or through the refresh action.
+
+When no pipeline job is running, display a clear idle state.
+
+Pipeline messages must provide meaningful information instead of displaying only -.
+
+**Issue Type: Enhancement / UI Improvement**
+
+**Module: LightRAG – Document Management / Pipeline**
+
+**Priority: Medium**
+
+**Environment: QA**
+
+**URL: https://qa-knowledgeforge.dealwallet.com/webui/**
+
+**Impact**
+Improves pipeline visibility, helps users monitor document-processing activities, makes failures easier to identify, and provides a clear overview of document-processing progress.
+
+
+**BUG : 6**
+**Title :**Chatbot Generates Responses When No Documents Are Uploaded
+
+**Description**
+When no PDF or other documents are uploaded into the Document Management section, the chatbot still generates responses to user queries with detailed product and sales information.
+
+During testing, the Documents page displayed zero uploaded documents across all processing statuses. However, when a user submitted a product-related question through the Store Manager Chatbot, the chatbot returned product information, including SKU, product name, category, unit price, total units sold, total revenue, and order count.
+
+This behavior needs to be verified against the expected knowledge source and chatbot configuration.
+
+**Preconditions**
+Open the LightRAG application.
+
+Navigate to the Documents section.
+
+Ensure no documents have been uploaded.
+
+Verify that all document status counts are zero.
+
+Navigate to the Chatbot section.
+
+**Steps to Reproduce**
+Open the LightRAG application.
+
+Navigate to Document Management.
+
+Verify that the document list is empty.
+
+Confirm that All, Completed, Parsing, Analyzing, Processing, and Failed counts are zero.
+
+Navigate to the Chatbot section.
+
+Select Store Manager Agent.
+
+Enter the following question:
+
+**"How many products do we have in the range of 3000?"**
+
+Click Send.
+
+Observe the chatbot response.
+
+**Actual Result**
+No documents are uploaded in the Document Management section.
+
+The chatbot still generates a detailed response.
+
+It returns product details, SKU numbers, unit prices, total units sold, revenue, and order counts.
+
+The response does not indicate which knowledge source was used.
+
+**Expected Result**
+If the chatbot is configured to use uploaded documents as its only knowledge source:
+
+It should not generate unsupported document-based answers when no documents are available.
+
+It should display a meaningful message such as:
+
+"No documents are currently available in the knowledge base. Please upload relevant documents before asking document-based questions."
+
+It should not fabricate product or sales information.
+
+It should clearly identify the source of information used to generate responses.
+
+If the chatbot is designed to retrieve information from an independent business database, its responses should be validated against that database instead.
+
+**Acceptance Criteria**
+Chatbot should correctly identify whether relevant knowledge sources are available.
+
+Document-based queries should not return unsupported answers when the document repository is empty.
+
+Database-backed queries should work only when the appropriate database or tools are configured.
+
+Responses should be grounded in the actual configured data source.
+
+Chatbot should provide a clear message when the required knowledge source is unavailable.
+
+The application should not generate fabricated information.
+
+**Issue Type: Functional Bug**
+
+**Priority: High (if document-based RAG is required)**
+
+**Module: LightRAG – Chatbot / Document Management**
+
+**Environment: QA**
+
+**URL: https://qa-knowledgeforge.dealwallet.com/webui/**
+
+**Impact**
+Users may receive misleading information because the chatbot generates detailed responses without clearly identifying the underlying data source.
+
+**Priority: High if document-only RAG behavior is required.**
