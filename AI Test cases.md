@@ -657,3 +657,175 @@ The application should not generate fabricated information.
 Users may receive misleading information because the chatbot generates detailed responses without clearly identifying the underlying data source.
 
 **Priority: High if document-only RAG behavior is required.**
+
+**BUG : 7**
+**Title :**E-Commerce Chatbot Responds to General Knowledge Questions Outside Its Intended Domain
+
+**Description**
+The Store Manager Agent is designed to handle e-commerce-related queries, including store operations, orders, products, sales, revenue, and business performance.
+
+However, during testing, the chatbot generates responses to general knowledge questions that are unrelated to e-commerce.
+
+For example:
+
+When asked "What is Python?", the chatbot provides a detailed explanation of the Python programming language.
+
+When asked "Capital of Hyderabad?", the chatbot generates a general knowledge response about Hyderabad.
+
+The chatbot should validate incoming queries against its intended business domain and prevent unrelated general knowledge responses.
+
+**Preconditions**
+LightRAG application is accessible.
+
+Navigate to the Chatbot section.
+
+Select the Store Manager Agent.
+
+Ensure the chatbot is connected.
+
+**Steps to Reproduce**
+**Test Case 1: General Programming Question**
+
+Open the LightRAG application.
+
+Navigate to the Chatbot section.
+
+Select Store Manager Agent.
+
+Enter the question: "What is Python?"
+
+Click Send.
+
+Observe the chatbot response.
+
+**Test Case 2: General Knowledge Question**
+
+Enter the question: "Capital of Hyderabad?"
+
+Click Send.
+
+Observe the chatbot response.
+
+**Actual Result**
+Chatbot responds to general knowledge questions.
+
+Provides detailed explanations unrelated to e-commerce.
+
+Does not validate whether the question belongs to the Store Manager Agent's domain.
+
+Does not display any out-of-scope warning or restriction message.
+
+**Expected Result**
+Chatbot should identify questions outside its supported e-commerce domain.
+
+It should not provide general-purpose answers unrelated to its assigned responsibilities.
+
+It should display a user-friendly message, such as:
+
+**"I'm the Store Manager Assistant. I can help you with products, orders, sales, revenue, inventory, and store operations. Please ask an e-commerce-related question."**
+
+**Acceptance Criteria**
+Chatbot should answer relevant e-commerce and store-management questions.
+
+General knowledge questions should be identified as out-of-scope.
+
+Programming, geography, entertainment, and unrelated general knowledge questions should not receive general-purpose answers.
+
+Appropriate out-of-scope messages should be displayed.
+
+Relevant business queries should continue working correctly.
+
+Domain validation should work consistently across chatbot sessions.
+
+**Impact**
+The chatbot may behave like a general-purpose AI assistant instead of a specialized E-Commerce Store Manager Agent. This reduces domain accuracy and affects the reliability of the application.
+
+**Priority: High**
+
+**Issue Type: Functional Bug**
+
+**Module: LightRAG – Chatbot / Store Manager Agent**
+
+**Environment: QA**
+
+**URL: https://qa-knowledgeforge.dealwallet.com/webui/**
+
+**Reference: Attached screenshots showing responses to "What is Python?" and "Capital of Hyderabad?"**
+
+**BUG : 8**
+**Title :**Add Logout Confirmation Popup Before Ending User Session
+
+**Description**
+Currently, when a user clicks the Logout icon in the LightRAG application header, the application immediately logs out without displaying any confirmation message.
+
+There is no confirmation popup to verify whether the user actually intends to log out.
+
+To prevent accidental logout and improve user experience, a confirmation dialog should be displayed before terminating the current session.
+
+**Preconditions**
+User is logged into the LightRAG application.
+
+User is accessing the Document Management or Chatbot section.
+
+Logout icon is visible in the application header.
+
+**Steps to Reproduce**
+Open the LightRAG application.
+
+Log in with valid credentials.
+
+Navigate to the Document Management page.
+
+Locate the Logout icon in the top-right corner.
+
+Click the Logout icon.
+
+Observe the application behavior.
+
+**Actual Result**
+Clicking the Logout icon immediately logs out the user.
+
+No confirmation popup is displayed.
+
+The user is redirected or logged out without an opportunity to cancel the action.
+
+**Expected Result**
+When the user clicks the Logout icon, the application should display a confirmation popup.
+
+Suggested Confirmation Message:
+
+**"Are you sure you want to log out?"**
+
+The popup should provide two options:
+
+**Yes, Logout: Terminates the current session and redirects the user to the appropriate login page.**
+
+**No, Cancel: Closes the confirmation popup and keeps the user logged in on the current page.**
+
+**Acceptance Criteria**
+Clicking the Logout icon should display a confirmation popup.
+
+The popup should clearly ask the user to confirm the logout action.
+
+Clicking Yes should successfully terminate the current session.
+
+Clicking No or Cancel should close the popup without logging out.
+
+Clicking outside the popup or pressing Escape should not accidentally log out the user.
+
+The confirmation dialog should work consistently on both Document Management and Chatbot pages.
+
+Session data should be cleared only after the user confirms logout.
+
+**Impact**
+Users may accidentally lose their active session by clicking the Logout icon unintentionally. Adding a confirmation dialog prevents accidental logout and improves application usability.
+
+**Priority: Medium**
+
+**Issue Type: Enhancement / UI Improvement**
+
+**Module: LightRAG – Authentication / User Session Management**
+
+**Environment: QA**
+
+**URL: https://qa-knowledgeforge.dealwallet.com/webui/**
