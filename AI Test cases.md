@@ -829,3 +829,200 @@ Users may accidentally lose their active session by clicking the Logout icon uni
 **Environment: QA**
 
 **URL: https://qa-knowledgeforge.dealwallet.com/webui/**
+
+**BUG : 9**
+**Title :**Incorrect Default Category Assigned to Uploaded Documents When No Category Is Selected
+
+**Description**
+When uploading a document through the Document Management section, the application allows users to submit the document without selecting a category from the category dropdown.
+
+During testing, a Store Manager knowledge document (01_store_manager_knowledge.txt) was uploaded without selecting any category.
+
+The upload was successful, but after submission, the application automatically assigned the category Legal to the uploaded document.
+
+Since the uploaded document contains Store Manager-related information, assigning the Legal category is incorrect.
+
+The application should handle missing category selections appropriately and should not assign an unrelated default category.
+
+**Preconditions**
+LightRAG application is accessible.
+
+User is logged into the application.
+
+Navigate to the Document Management section.
+
+Ensure the document is not already uploaded.
+
+**Steps to Reproduce**
+Open the LightRAG application.
+
+Navigate to the Documents section.
+
+Click the Upload button.
+
+Select the file 01_store_manager_knowledge.txt.
+
+Do not select any category from the Select Category dropdown.
+
+Click Upload.
+
+Wait for the upload to complete successfully.
+
+Check the uploaded document in the Document Management table.
+
+Observe the assigned category.
+
+**Actual Result**
+The document uploads successfully without selecting a category.
+
+The application automatically assigns the Legal category.
+
+The assigned category does not match the document's Store Manager-related content.
+
+No warning or validation message is displayed when the category is left unselected.
+
+**Expected Result**
+The application should not automatically assign an unrelated category when no category is selected.
+
+If category selection is mandatory, the application should display a validation message such as:
+
+"Please select a document category before uploading."
+
+If automatic categorization is supported, the application should identify the appropriate category based on the document content.
+
+Store Manager knowledge documents should be assigned the appropriate Store Manager category.
+
+The selected or automatically assigned category should be displayed correctly in the Document Management table.
+
+**Acceptance Criteria**
+Category selection should be validated before document submission if it is mandatory.
+
+Documents should not receive an incorrect default category.
+
+Store Manager documents should be assigned the appropriate category.
+
+Finance documents should be assigned the Finance category.
+
+Legal documents should be assigned the Legal category.
+
+The assigned category should remain consistent after successful upload and processing.
+
+A meaningful validation message should appear when a mandatory category is missing.
+
+**Impact**
+Incorrect category assignment can cause documents to be grouped under the wrong category, resulting in confusion during document management and potentially affecting category-based retrieval.
+
+**Issue Type: Functional Bug**
+
+**Priority: High**
+
+**Module: LightRAG – Document Management / Document Upload**
+
+**Environment: QA**
+
+**URL: https://qa-knowledgeforge.dealwallet.com/webui/**
+
+**Evidence: Attached screenshots showing the upload process without category selection and the uploaded Store Manager document displayed under the Legal category.**
+
+**BUG : 10**
+**Title :**Add Recent Chat History, New Chat, and End Chat Options to Chatbot
+
+**Description**
+Currently, the LightRAG Chatbot interface does not display dedicated options to manage conversation sessions.
+
+Users can submit multiple questions and receive responses in the same conversation, but there are no visible options to access recent chat history, start a new conversation, or end the current chat session.
+
+To improve chatbot usability and conversation management, the application should provide these three functionalities.
+
+**Preconditions**
+LightRAG application is accessible.
+
+User is logged into the application.
+
+Navigate to the Chatbot section.
+
+Select the Store Manager Agent.
+
+Submit at least one question to create a conversation.
+
+**Steps to Reproduce**
+Open the LightRAG application.
+
+Navigate to the Chatbot section.
+
+Select Store Manager Agent.
+
+Submit multiple questions.
+
+Observe the chatbot header and conversation interface.
+
+Check whether options for Recent Chat History, New Chat, and End Chat are available.
+
+**Actual Result**
+No dedicated Recent Chat History option is visible.
+
+No New Chat option is available to start a fresh conversation.
+
+No End Chat option is available to terminate the current conversation.
+
+Users do not have clear controls to manage multiple conversations.
+
+**Expected Result**
+**1. Recent Chat History**
+
+Provide an option to view previously created conversations.
+
+Allow users to reopen and continue an existing conversation.
+
+Display conversation titles and timestamps where supported.
+
+**2. New Chat**
+
+Provide a New Chat button.
+
+Clicking it should start a fresh conversation.
+
+Previous conversation messages should not appear in the new chat.
+
+Existing conversation history should remain accessible.
+
+**3. End Chat**
+
+Provide an End Chat option.
+
+Clicking it should end the current conversation.
+
+Display a confirmation message before ending the session if appropriate.
+
+Ensure the conversation history is preserved if history retention is supported.
+
+**Acceptance Criteria**
+Recent conversations should be accessible through a dedicated history section.
+
+Users should be able to open previous conversations.
+
+New Chat should create an independent conversation session.
+
+Previous conversation messages should not mix with a new conversation.
+
+End Chat should properly terminate the active conversation.
+
+Existing conversation history should be retained according to the application's session-retention policy.
+
+All chat management controls should be accessible and clearly visible.
+
+Chat management functionality should work consistently across supported agent categories.
+
+**Impact**
+Without chat management functionality, users may find it difficult to organize conversations, revisit previous discussions, and start separate sessions for different business queries.
+
+**Priority: High**
+**Issue Type: Enhancement / UI Improvement**
+
+**Module: LightRAG – Chatbot / Chat Session Management**
+
+**Environment: QA**
+
+**URL: https://qa-knowledgeforge.dealwallet.com/webui/**
+
+**Reference: Attached screenshot of the Store Manager Chatbot interface.**
