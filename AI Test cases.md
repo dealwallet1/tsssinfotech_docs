@@ -1,5 +1,5 @@
 **BUG : 1**
-Title:QA Testing – E-Commerce Assistant Multi-Agent  AI-Chatbot Exploring on Project Doc
+**Title:**QA Testing – E-Commerce Assistant Multi-Agent  AI-Chatbot Exploring on Project Doc
 
 **Description:**
 Perform comprehensive QA testing of the E-Commerce Assistant application based on the Technical User Guide.
@@ -9,7 +9,7 @@ The application contains four specialised AI agents: Store Manager, Finance, Leg
 The objective is to validate that each agent processes user queries correctly and provides accurate, relevant and traceable responses.
 
 **Scope of Testing**
-1. Agent Selection and Routing
+**1. Agent Selection and Routing**
 Verify all four agents are available in the category selector.
 
 Verify the selected agent name and specialisation are displayed correctly.
@@ -20,7 +20,7 @@ Verify responses from one agent are not incorrectly returned by another agent.
 
 Test switching between agents during a conversation.
 
-2. Store Manager Agent
+**2. Store Manager Agent**
 Validate order and revenue information.
 
 Verify monthly and month-over-month revenue comparisons.
@@ -33,7 +33,7 @@ Test chained queries and multiple lookups.
 
 Validate missing, incorrect and unavailable store data.
 
-3. Finance Agent
+**3. Finance Agent**
 Validate GST and TCS-related responses.
 
 Verify marketplace commission calculations.
@@ -46,7 +46,7 @@ Test refund deductions and fee reversals.
 
 Verify calculation accuracy with different amounts, rates and missing inputs.
 
-4. Legal Agent
+**4. Legal Agent**
 Validate consumer protection and e-commerce compliance responses.
 
 Test return, replacement and refund policy queries.
@@ -59,7 +59,7 @@ Validate incentivised review and rating-related responses.
 
 Verify source-grounded legal answers and citations.
 
-5. Technical Agent
+**5. Technical Agent**
 Validate API and webhook-related answers.
 
 Test webhook signature verification queries.
@@ -72,7 +72,7 @@ Validate rate-limit and payment error-code responses.
 
 Test retry mechanisms and delayed webhook scenarios.
 
-6. RAG and Source Citation Validation
+**6. RAG and Source Citation Validation**
 Verify relevant knowledge-base documents are retrieved.
 
 Verify references are displayed at the end of applicable answers.
@@ -85,7 +85,7 @@ Test queries where no relevant document is available.
 
 Verify unsupported answers are not presented as confirmed facts.
 
-7. Conversation and Follow-up Testing
+**7. Conversation and Follow-up Testing**
 Verify follow-up questions retain previous conversation context.
 
 Test multiple consecutive questions.
@@ -175,7 +175,7 @@ Individual GitHub bug reports.
 Final QA testing summary.
 
 **BUG : 2**
-Title:E-Commerce Assistant Requirement Analysis and Test Case Preparation
+**Title:**E-Commerce Assistant Requirement Analysis and Test Case Preparation
 
 **Description**
 Completed the exploration and analysis of the E-Commerce Assistant Technical User Guide
@@ -185,7 +185,7 @@ Reviewed the project requirements, functionalities and workflows of all four spe
 Based on the requirement document, prepared detailed test cases covering positive, negative and edge-case scenarios for each agent.
 
 **Activities Completed**
-1. Requirement Document Exploration
+**1. Requirement Document Exploration**
 Reviewed the E-Commerce Assistant Technical User Guide.
 
 Understood the overall multi-agent chatbot architecture and workflow.
@@ -202,7 +202,7 @@ Reviewed follow-up queries and conversation context.
 
 Understood tool-based calculations and data retrieval workflows.
 
-2. Agent-Wise Requirement Analysis
+**2. Agent-Wise Requirement Analysis**
 Store Manager Agent
 
 Orders, revenue and sales analytics.
@@ -213,7 +213,7 @@ Monthly revenue comparisons.
 
 Cancellation and peak-day analysis.
 
-Finance Agent
+**Finance Agent**
 
 GST and TCS calculations.
 
@@ -223,7 +223,7 @@ UPI fees and seller settlements.
 
 Refund deductions and payout reconciliation.
 
-Legal Agent
+**Legal Agent**
 
 Consumer protection regulations.
 
@@ -233,7 +233,7 @@ Pricing claims and dark patterns.
 
 Reviews, ratings and customer consent.
 
-Technical Agent
+**Technical Agent**
 
 API and webhook integrations.
 
@@ -245,7 +245,7 @@ Inventory synchronization.
 
 Rate limits and payment error handling.
 
-3. Test Case Preparation
+**3. Test Case Preparation**
 Prepared an Excel workbook containing 87 test cases covering:
 
 Positive test scenarios.
@@ -299,7 +299,7 @@ Document defects and create individual GitHub bug tickets.
 Start functional testing of all four agents using the prepared test cases, validate actual responses against expected results, capture evidence for failures and report identified defects through separate GitHub issues.
 
 **BUG : 3**
-Title:API Key Required Popup Displays 403 Error When Opening LightRAG Application Without an API Key
+**Title:**API Key Required Popup Displays 403 Error When Opening LightRAG Application Without an API Key
 
 **Description**
 When a user opens the LightRAG application, an API Key Required popup is displayed asking the user to enter an API key to access the service.
@@ -376,7 +376,7 @@ No unnecessary authentication errors appear in the UI.
 **Module: LightRAG – Chatbot / API Authentication**
 
 **BUG : 4**
-Title:Login Free Button Is Non-Functional in LightRAG Application Header
+**Title:**Login Free Button Is Non-Functional in LightRAG Application Header
 
 **Description**
 The LightRAG application header displays a Login Free button. However, clicking the button does not trigger any action or navigation.
