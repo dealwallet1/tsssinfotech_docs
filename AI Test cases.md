@@ -1272,3 +1272,5 @@ Application: LightRAG
 Ensure the LightRAG embedding pipeline generates reliable embeddings, stores vectors correctly, retrieves relevant information and produces accurate, context-aware responses across all four AI agent categories.
 
 **Estimated Effort: 09 Story Points**
+https://wms.dealwallet.com/odoo/my-tasks/6950 (document uploaded ticket number)
+
