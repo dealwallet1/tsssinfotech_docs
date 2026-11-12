@@ -1026,3 +1026,249 @@ Without chat management functionality, users may find it difficult to organize c
 **URL: https://qa-knowledgeforge.dealwallet.com/webui/**
 
 **Reference: Attached screenshot of the Store Manager Chatbot interface.**
+
+**BUG : 11**
+**Title :**Chatbot Returns HTTP 502 Error When Submitting Queries
+
+**Description**
+When users submit questions through the LightRAG chatbot, the application intermittently returns an HTTP 502 error instead of generating the expected response.
+
+During testing, the Store Manager Agent successfully generated a response to a previous query. However, when another question was submitted, the chatbot displayed an error message:
+
+Error: HTTP 502
+
+The chatbot fails to return the expected information, preventing users from completing their queries.
+
+**Preconditions**
+LightRAG application is accessible.
+
+User is logged into the application.
+
+Chatbot is connected.
+
+Store Manager Agent is selected.
+
+Relevant knowledge sources and backend services are configured.
+
+**Steps to Reproduce**
+Open the LightRAG application.
+
+Navigate to the Chatbot section.
+
+Select the Store Manager Agent.
+
+Enter a valid business-related question.
+
+**Example: Which are my top 5 best-selling products last month?**
+
+Click the Send button.
+
+Wait for the chatbot response.
+
+Observe the error message displayed in the conversation.
+
+**Actual Result**
+User successfully submits the chatbot query.
+
+The chatbot fails to generate the expected response.
+
+An error message appears in the response area:
+
+Error: HTTP 502
+
+The user cannot retrieve the requested information.
+
+A Retry option is displayed, but the original request has failed.
+
+**Expected Result**
+The chatbot should process valid queries successfully.
+
+The appropriate agent should retrieve the required information from the configured knowledge sources or database.
+
+The chatbot should return the expected response without HTTP 502 errors.
+
+If a backend service is temporarily unavailable, the application should display a meaningful error message and allow the user to retry.
+
+**Acceptance Criteria**
+Valid chatbot queries should return successful responses.
+
+Backend API requests should be handled reliably.
+
+HTTP 502 errors should not occur during normal chatbot operations.
+
+Backend service failures should be logged for debugging.
+
+The application should handle temporary service unavailability gracefully.
+
+The Retry action should allow users to resubmit failed queries.
+
+Previous conversation messages should remain available after a failed request.
+
+The issue should be tested across all four agents:
+
+Store Manager Agent
+
+Finance Agent
+
+Legal Agent
+
+Technical Agent
+
+**Impact**
+Users cannot reliably interact with the chatbot or retrieve business-related information. Repeated HTTP 502 errors affect chatbot functionality and reduce application reliability.
+
+**Issue Type: Bug**
+
+**Priority: High**
+
+**Module: LightRAG – Chatbot / Store Manager Agent**
+
+**Environment: QA**
+
+**URL: https://qa-knowledgeforge.dealwallet.com/webui/**
+
+**Evidence: Attached screenshot showing HTTP 502 after submitting the question "Which are my top 5 best-selling products last month?"**
+
+**BUG : 12**
+**Title :**Comprehensive Embedding Testing – Positive, Negative & Edge Test Cases
+
+**Description**
+Perform comprehensive QA testing of the LightRAG embedding pipeline to validate document processing, embedding generation, vector database storage, semantic search, retrieval accuracy and RAG response quality.
+
+The testing will cover positive, negative and edge scenarios to ensure embeddings are generated correctly, stored properly and retrieved accurately based on user queries.
+
+**Testing will also verify data isolation and retrieval behavior across all four AI agent categories:**
+
+Store Manager Agent
+
+Finance Agent
+
+Legal Agent
+
+Technical Agent
+
+**Scope of Testing**
+**1. Document Extraction & Chunking – 2 SP**
+Verify document extraction for supported file formats.
+
+Validate text extraction and chunk creation.
+
+Verify empty, corrupted and unsupported documents.
+
+Test large documents and special characters.
+
+**2. Embedding Generation – 2 SP**
+Verify successful embedding generation.
+
+Validate embedding dimensions and data types.
+
+Test empty text, null input and invalid content.
+
+Verify duplicate and long-text handling.
+
+Validate embedding generation failures and retry behavior.
+
+**3. Vector Database Validation – 2 SP**
+Verify successful embedding storage.
+
+Validate vector dimensions and metadata.
+
+Test duplicate records and missing metadata.
+
+Verify update and deletion operations.
+
+Validate database connection failures.
+
+**4. Semantic Search & Retrieval – 1 SP**
+Validate relevant document retrieval.
+
+Test exact-match and semantic-match queries.
+
+Verify similarity scores and ranking.
+
+Test irrelevant, ambiguous and empty queries.
+
+Validate top-K retrieval and threshold behavior.
+
+**5. RAG Response Validation – 1 SP**
+Verify responses against uploaded document content.
+
+Validate factual accuracy and contextual relevance.
+
+Test hallucination and unsupported-answer scenarios.
+
+Verify responses for missing information.
+
+Validate consistency across repeated queries.
+
+**6. Agent Isolation Testing – 1 SP**
+Verify Store Manager, Finance, Legal and Technical agent isolation.
+
+Ensure each agent retrieves information from its assigned knowledge base.
+
+Test cross-agent data leakage.
+
+Validate category-specific query handling.
+
+**Acceptance Criteria**
+All 60 test cases are documented and executed.
+
+Positive test cases pass successfully.
+
+Negative scenarios are handled gracefully.
+
+Edge cases do not cause unexpected application failures.
+
+Embedding dimensions and vector formats are validated.
+
+Embeddings are stored and retrieved correctly.
+
+Semantic search returns relevant results.
+
+RAG responses are grounded in the uploaded documents.
+
+Agent-specific knowledge isolation works correctly.
+
+No unauthorized cross-agent data retrieval occurs.
+
+All identified defects are documented as separate GitHub issues.
+
+Final QA execution report is prepared.
+
+**Test Deliverables**
+Embedding QA Test Case Excel Sheet (60 test cases).
+
+Positive, Negative and Edge Case Execution Results.
+
+Defect Reports with screenshots and evidence.
+
+Final QA Summary Report.
+
+**Story Point Estimation**
+Testing Module	Story Points
+Document Extraction & Chunking	2
+Embedding Generation	2
+Vector Database Validation	2
+Semantic Search & Retrieval	1
+RAG Response Validation	1
+Agent Isolation Testing	1
+Total	09 SP
+Priority
+High
+
+**Labels**
+QA Embedding-Testing LightRAG RAG-Testing AI-Testing Positive-Testing Negative-Testing Edge-Testing
+
+**Environment**
+Application: LightRAG
+
+**Module: Document Management & Chatbot**
+
+**Testing Type: Functional, Integration and AI/RAG Validation**
+
+**Environment: QA**
+
+**Expected Outcome**
+Ensure the LightRAG embedding pipeline generates reliable embeddings, stores vectors correctly, retrieves relevant information and produces accurate, context-aware responses across all four AI agent categories.
+
+**Estimated Effort: 09 Story Points**
