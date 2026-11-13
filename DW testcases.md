@@ -133,4 +133,4 @@ Screen resolution: As shown in attached screenshot
 The issue does not block functionality, but it affects the visual consistency, layout quality, and overall UI polish of the Home page.
 
 **Evidence:**
-Attached screenshot showing the Discover More section and the inconsistent positioning of the supporting text.
+Attached screenshot showing the Discover More section and the inconsistent positioning of the supporting text..
