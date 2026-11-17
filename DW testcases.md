@@ -342,3 +342,193 @@ Attached screenshot shows the issue:
 4.Popular Stores heading without visible content
 5.Best Credit Cards heading without visible content
 6.Large empty spaces between sections
+
+**Testcase 5**
+**Title**:“View All” Redirects to Store Page but Displays “Something Went Wrong” After Loading
+
+**Description**
+1.When the user clicks the “View All” button from the Home page, the application redirects to the expected store/listing URL. However, after a few seconds, the destination page fails to load correctly and displays:
+          **Something went wrong!**
+2.Please try again. If it keeps happening, refresh the page.
+3.The issue occurs even though the user's internet connection is working normally.
+
+**Preconditions**
+1.User can access the DealWallet Home page.
+2.Home page is loaded successfully.
+3.The View All button is available.
+4.Internet connection is active.
+
+**Steps to Reproduce**
+1.Open the DealWallet Home page.
+2.Navigate to the relevant section containing the View All button.
+3.Click View All.
+4.Verify that the browser redirects to the store/listing page.
+5.Wait for a few seconds.
+6.Observe the destination page.
+
+**Actual Result**
+1.The View All button redirects the user to a store/listing URL.
+2.After a few seconds, the destination page displays:
+      **“Something went wrong!”**
+3.“Please try again. If it keeps happening, refresh the page.”
+4.The expected store/product listing content is not displayed.
+
+**Expected Result**
+**After clicking View All:**
+1.User should be redirected to the correct listing/store page.
+2.The destination page should load successfully.
+3.Relevant stores/products should be displayed.
+4.The page should not show a generic error when valid data is available.
+5.If the backend/API fails, the application should display an appropriate user-friendly error and log the technical failure for debugging.
+
+**Internet Connectivity Evidence**
+**The internet speed test performed during testing shows approximately:**
+**Metric**                         	**Result**
+Download	                            67.07 Mbps
+Upload	                            14.48 Mbps
+Ping	                               19 ms
+**This indicates that the test environment had an active internet connection with reasonable latency and bandwidth at the time of testing.**
+
+Therefore, the issue should **not be immediately classified as an internet connectivity problem.** The frontend/API/backend request should be investigated.
+
+**Priority**
+**High**
+
+**Labels**
+bug
+qa
+frontend
+backend
+api
+home-page
+view-all
+store-page
+navigation
+high-priority    
+
+**Environment**
+**Field**   	                           **Details**
+Application	                               DealWallet
+Module	                                  Home Page → View All
+Browser	                                  Google Chrome
+OS	                                        Windows
+Environment	                               QA
+Device	                                  Desktop
+Connection	                               Internet connected
+Download Speed	                            67.07 Mbps
+Upload Speed	                            14.48 Mbps
+Ping	                                     19 ms
+
+**Impact**
+**High – Functional Impact**
+Users are unable to access the content through the **View All** navigation.
+
+This can result in:
+1.Users being redirected to a page that fails to load.
+2.Store/product listings becoming inaccessible.
+3.Loss of navigation flow from the Home page.
+4.Poor user experience.
+5.Potential loss of engagement when users try to explore additional deals/stores.
+
+**Evidence**
+**Screenshot 1:** Destination page showing:
+    **Something went wrong!**
+
+after clicking **View All.**
+
+**Screenshot 2:** Internet speed test showing:
+1.Download: **67.07 Mbps**
+2.Upload: **14.48 Mbps**
+3.Ping: **19 ms**
+The second screenshot can be attached as supporting evidence that the failure occurred while the internet connection was active.
+
+**Testcase 6**
+**Title**:Product Search Returns “No Data Found” for Existing Products
+
+**Description**
+1.The product search functionality is not returning results for products that are already available on the Home page.
+2.When searching for **“t shirts”**, the search component displays **“No data found.”** However, multiple T-shirt products are visible in the Home page product listings.
+3.This indicates that the search functionality may not be correctly matching the entered keyword against the available product names/data.
+
+**Preconditions**
+1.DealWallet Home page is accessible.
+2.Product data is available.
+3.T-shirt products are present in the product listings.
+4.Search functionality is enabled.
+
+**Steps to Reproduce**
+1.Open the DealWallet Home page.
+2.Locate the search bar.
+3.Enter:
+     **t shirts**
+4.Observe the search suggestions/results popup.
+5.Verify that it displays:
+    **“No data found.”**
+6.Close the search popup.
+7.Browse the Home page product listings.
+8.Observe that multiple T-shirt products are available.
+
+**Actual Result**
+The search returns:
+          **No data found.**
+However, T-shirt products are available on the Home page.
+Examples visible in the screenshot:
+1.Men's T-Shirt
+2.Men's Running T-Shirt
+3.Men's Cotton Blend Polo T-Shirt
+4.Men's Cotton Regular Fit Half Sleeves Crew Neck T-Shirt
+5.Athleisure Men's Polo T-Shirt
+
+**Expected Result**
+When the user searches for:
+    **t shirts**
+the search functionality should return relevant products whose names or searchable fields match the keyword.
+
+For example:
+ Search: t shirts
+
+Results:
+✓ Men's T-Shirt
+✓ Men's Running T-Shirt
+✓ Men's Cotton Blend Polo T-Shirt
+✓ Athleisure Men's Polo T-Shirt
+...
+The search should not display **“No data found”** when matching products are available.
+
+**Priority**
+**High**
+
+**Labels**
+bug
+qa
+search
+product-search
+frontend
+backend
+api
+high-priority
+
+**Environment**
+**Field**   	                                 **Details**
+Application	                                    DealWallet
+Page	                                          Home
+Feature	                                       Product Search
+Browser	                                       Google Chrome
+OS	                                             Windows
+Environment	                                    QA
+Search Keyword	                                 t shirts
+Device	                                       Desktop
+
+**Impact**
+**High – Functional Impact**
+Users may be unable to discover products through search even though those products are available in the application.
+This can cause:
+1.Incorrect “No data found” messages.
+2.Users missing available products.
+3.Reduced product discoverability.
+4.Search functionality becoming unreliable.
+5.Poor user experience.
+
+**Evidence**
+**Screenshot 1:** Searching for t shirts displays:
+      **No data found.**
