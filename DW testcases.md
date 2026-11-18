@@ -532,3 +532,417 @@ This can cause:
 **Evidence**
 **Screenshot 1:** Searching for t shirts displays:
       **No data found.**
+
+**Testcase 7**
+**Title**:Redesign Blog Page with Professional Dark and Light Mode UI
+
+**Description**
+1.Redesign the existing DealWallet Blog page to provide a more professional, modern, and consistent blog experience.
+2.The current Blog page has a basic layout with a large empty content area, simple search/filter controls, and blog cards with limited information.
+**The new design should introduce a structured Blog experience with:**
+1.Professional Blog hero section
+2.Improved Blog heading and description
+3.Blog search
+5.Category filters
+6.Sort By functionality
+7.Grid/List view option
+8.Improved blog cards
+9.Blog category badges
+10.Blog metadata
+11.Reading time
+12.Read More CTA
+13.Favorite/save icon
+14.Pagination
+15.Consistent Dark Mode
+16.Matching Light Mode
+17.Responsive layout
+The **same structure and functionality should be maintained between Dark and Light modes,** with only the theme styling changing.
+
+**Old vs New Comparison**
+**Feature	                    Current / Old	                                      New / Proposed**
+Blog Header	                  Basic DealWallet Blogs heading	                 Professional DealWallet Blog hero section
+Header Description	          Simple description	                             Clear Blog tagline and supporting text
+Hero Section	              ❌ No dedicated hero design                       ✅ Dedicated Blog hero banner
+Search	                      Basic search box	                                 Prominent article/search bar
+Search Placeholder	          Search electronics blogs...	                     Search articles, guides & shopping tips...
+Search CTA	                  Search icon	                                     Search button + icon
+Categories	                  Basic dropdown	                                 Category chips/buttons
+Categories Available	      All Categories	                                 All Categories, Electronics, Buying            Guide,Tips & Tricks, Reviews, News
+Sort	                      Basic dropdown	                                 Improved Sort By control
+View Mode	                  ❌ Not available	                               ✅ Grid/List view
+Blog Count	                  Showing 10 Blog(s)	                             Retained and visually improved
+Blog Cards	                  Basic cards	                                     Professional structured cards
+Blog Image	                  Basic/placeholder                                  appearance	Large visual blog image
+Category	                  ❌ Limited/not clearly displayed	               ✅ Category badge
+Blog Title	                  Basic	                                             Strong visual hierarchy
+Description	                  Limited	                                         Short article summary
+Date	                      ❌ Not clearly shown	                           ✅ Publication date
+Reading Time	              ❌ Not shown	                                   ✅ Reading time
+Favorite	                  Heart icon	                                     Save/favorite icon maintained and styled
+CTA	                          ❌ Limited	                                       ✅ Read More →
+Pagination	                  ❌ Not clearly available	                       ✅ Pagination
+Dark Mode	                  Existing dark theme	                             Redesigned professional dark theme
+Light Mode	                  Not properly represented	                         ✅ Dedicated light theme
+Responsive UI	              Needs validation	                                 Must support desktop/tablet/mobile
+Visual Consistency	          Basic	                                             Consistent professional design system
+
+**Preconditions**
+1.DealWallet application is accessible.
+2.User can access the Blog page.
+3.Blog data is available.
+4.Dark mode and light mode are available in the application or theme support is implemented.
+5.Existing blog functionality should continue working after redesign.
+
+**Proposed New Layout**
+**Dark Mode**
+┌─────────────────────────────────────────────────────────────┐
+│ DealWallet    Home Deals Stores Coupons Blog Forum   Login │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│              BLOG                                           │
+│              DealWallet Blog                                │
+│              Your guide to smarter shopping, latest trends  │
+│              and insights in electronics.                   │
+│                                                             │
+│   🔍 Search articles, guides & shopping tips     Search    │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+
+[All Categories] [Electronics] [Buying Guide]
+[Tips & Tricks] [Reviews] [News]
+
+Showing 10 Blogs                         Sort By: Latest
+                                         Grid | List
+
+Latest Blogs
+
+┌────────────┐ ┌────────────┐ ┌────────────┐ ┌────────────┐
+│   Image    │ │   Image    │ │   Image    │ │   Image    │
+│ Electronics│ │Buying Guide│ │  Reviews   │ │Tips & Tricks│
+│            │ │            │ │            │ │            │
+│ Blog Title │ │ Blog Title │ │ Blog Title │ │ Blog Title │
+│ Description│ │ Description│ │ Description│ │ Description│
+│ Date · 5m  │ │ Date · 6m  │ │ Date · 4m  │ │ Date · 5m  │
+│ Read More →│ │ Read More →│ │ Read More →│ │ Read More →│
+└────────────┘ └────────────┘ └────────────┘ └────────────┘
+
+                    ← 1 2 3 ... 5 →
+
+**Light Mode**
+**The same layout should be maintained, but with:**
+1.White/light background
+2.Dark text
+3.Light cards
+4.Subtle borders/shadows
+5.Blue primary CTA
+6.Light category badges
+7.Proper contrast
+The **layout should not change between Dark and Light mode.**
+
+Only the visual theme should change.
+
+**Steps to Implement / Verify**
+**Step 1 — Open Blog page**
+Navigate to:
+      **DealWallet → Blog***
+
+**Step 2 — Verify Blog Hero**
+Verify:
+1.Blog label
+2.Blog title
+3.Description
+4.Hero background
+5.Search field
+6.Search button
+
+**Step 3 — Verify Search**
+Search using a valid keyword.
+Example:
+                **electronics**
+Verify relevant blogs are displayed.
+
+**Step 4 — Verify Categories**
+Check:
+1.All Categories
+2.Electronics
+3.Buying Guide
+4.Tips & Tricks
+5.Reviews
+6.News
+Verify selecting a category filters the blog results correctly.
+
+**Step 5 — Verify Sorting**
+Verify:
+     **Latest**
+and any other supported sorting options.
+
+**Step 6 — Verify View Mode**
+Test:
+    **Grid View**
+    **List View**
+Verify that both layouts display blog information correctly.
+
+**Step 7 — Verify Blog Card**
+Each card should contain:
+1.Image
+2.Category
+3.Title
+4.Description
+5.Date
+6.Reading time
+7.Favorite/save
+8.Read More
+
+**Step 8 — Verify Pagination**
+Verify:
+Previous
+1
+2
+3
+...
+5
+Next
+Pagination should correctly load the corresponding blogs.
+
+**Step 9 — Verify Dark Mode**
+Check:
+1.Background
+2.Text
+3.Cards
+4.Borders
+5.Buttons
+6.Category badges
+7.Icons
+8.Search
+9.Pagination
+
+**Step 10 — Verify Light Mode**
+Switch to Light Mode and verify the same components.
+
+**Step 11 — Responsive Testing**
+Test:
+1.Desktop
+2.Tablet
+3.Mobile
+No text, cards, buttons, images, or controls should be cut off.
+
+**Expected Result**
+1.The Blog page should have a **consistent professional design in both Dark and Light modes.**
+2.All existing Blog functionality should continue working:
+a.Search
+b.Category filtering
+c.Sorting
+d.Blog navigation
+e.Favorite/save
+f.Read More
+g.Pagination
+3.The redesign should improve the visual hierarchy without breaking existing functionality.
+
+**Priority**
+**Medium**
+This is a UI/UX feature improvement rather than a blocking functional issue.
+
+**Labels**
+  **rren**
+
+**Environment**
+**Field	                                  Details**
+Application	                             DealWallet
+Module	                                 Blog
+Environment	                             QA
+Browser	                                 Google Chrome
+OS	                                     Windows
+Device	                                 Desktop
+Theme 1	                                 Dark Mode
+Theme 2	                                 Light Mode
+Responsive	                             Desktop / Tablet / Mobile
+
+**Impact**
+**Current**
+The existing Blog page has:
+1.Excessive empty space
+2.Basic visual hierarchy
+3.Limited blog metadata
+4.Basic filtering UI
+5.Limited navigation controls
+6.Less consistent card presentation
+
+**After redesign**
+The new design provides:
+1.Better content discovery
+2.Clearer Blog navigation
+3.Better article information
+4.Improved search/filter experience
+5.Better visual consistency
+6.Consistent Dark/Light mode
+7.More professional presentation
+8.Better responsive experience
+
+**QA Acceptance Criteria**
+**Blog Header**
+1.Blog hero section is displayed.
+2.DealWallet Blog title is displayed.
+3.Supporting description is displayed.
+4.Hero design is consistent with DealWallet branding.
+
+**Search**
+1.Search field is visible.
+2.Search icon is visible.
+3.Search button is visible.
+4.Search returns relevant blogs.
+5.Empty search result is handled correctly.
+
+**Categories**
+1.All Categories works.
+2.Electronics works.
+3.Buying Guide works.
+4.Tips & Tricks works.
+5.Reviews works.
+6.News works.
+
+**Sorting**
+1.Sort By is available.
+2.Latest sorting works.
+3.Additional supported sorting options work.
+
+**Blog Cards**
+1..Blog image displays correctly.
+2.Category badge displays correctly.
+3.Title displays correctly.
+4.Description displays correctly.
+5.Date displays correctly.
+6.Reading time displays correctly.
+7.Favorite icon works.
+8.Read More works.
+
+**View**
+1.Grid view works.
+2.List view works.
+3.Switching views does not lose filters/search state unless specified.
+
+**Pagination**
+1.Page numbers work.
+2.Previous works.
+3.Next works.
+4.Correct blogs load for each page.
+
+**Dark Mode**
+1.No text visibility issues.
+2.No contrast issues.
+3.Cards are properly styled.
+4.Buttons are visible.
+5.Icons are visible.
+6.Search is readable.
+7.Pagination is readable.
+
+**Light Mode**
+1.No text visibility issues.
+2.Cards are properly styled.
+3.Borders/shadows are visible.
+4.Buttons are readable.
+5.Icons are visible.
+6.Search is readable.
+7.Pagination is readable.
+
+**Responsive**
+1.Desktop layout works.
+2.Tablet layout works.
+3.Mobile layout works.
+4.No horizontal overflow.
+5.No content is cut off.
+6.No overlapping elements.
+7.Blog cards resize correctly.
+
+**Testcase 8**
+**Title**:Add Food Category Products to the Thundering Deal Section
+
+**Description**
+1.The Food category is currently displayed under the **Thundering Deal** section on the DealWallet Home page, but there are no Food-related products available under this category.
+2.Food-related products need to be added and correctly mapped to the **Food** category so that selecting the Food category displays relevant products.
+
+**Preconditions**
+1.DealWallet Home page is accessible.
+2.Thundering Deal section is available.
+3.Food category is configured and displayed.
+4.Product management/admin access is available to add products.
+
+**Steps to Reproduce**
+1.Open the DealWallet Home page.
+2.Scroll to the **Thundering Deal** section.
+3.Select the **Food** category.
+4.Observe the product listing.
+
+**Actual Result**
+The **Food** category is displayed, but there are currently **no Food products** available under it.
+
+**Expected Result**
+Food-related products should be added to the product catalog and mapped to the **Food** category.
+
+After the products are added:
+1.Click Food.
+2.Food-related products should be displayed.
+3.Each product should have valid:
+    1.Product image
+    2.Product name
+    3.Category
+    4.Price
+    5.Discount, if applicable
+    6.Rating, if applicable
+    7.Buy Now/CTA
+Products should appear correctly within the **Thundering Deal** section.
+
+**Example Food Products**
+Products could include categories such as:
+1.Snacks
+2.Biscuits
+3.Chocolates
+4.Dry Fruits
+5.Cooking Essentials
+6.Beverages
+7.Packaged Foods
+8.Instant Foods
+
+**Priority**
+**Medium**
+
+**Labels**
+feature
+product-data
+food
+category
+thundering-deal
+home-page
+qa
+
+**Environment**
+**Field	                                                 Details**
+Application	                                            DealWallet
+Module	                                                Home Page
+Section	                                                Thundering Deal
+Category	                                            Food
+Environment	                                            QA
+Browser	                                                Google Chrome
+OS	                                                    Windows
+Device	                                                Desktop
+
+**Impact**
+Currently, the **Food** category provides no products to users.
+Adding products will ensure that:
+  1.Food category has meaningful content.
+  2.Users can browse Food deals.
+  3.Category selection works as expected.
+  4.Thundering Deal has complete category coverage.
+  5.The Home page provides a consistent experience across categories.
+
+**Acceptance Criteria**
+1.Food products are added to the product catalog.
+2.Products are correctly mapped to the **Food** category.
+3.Food products appear when the Food category is selected.
+4.Product images load correctly.
+5.Product names are displayed correctly.
+6.Prices are displayed correctly.
+7.Discounts display correctly where applicable.
+8.Product cards follow the existing DealWallet design.
+9.Buy Now functionality works.
+10.Food products do not appear under unrelated categories.
+11.Existing categories continue to work without regression.
