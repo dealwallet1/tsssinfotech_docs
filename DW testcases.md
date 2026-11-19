@@ -946,3 +946,181 @@ Adding products will ensure that:
 9.Buy Now functionality works.
 10.Food products do not appear under unrelated categories.
 11.Existing categories continue to work without regression.
+
+**Testcase 9**
+**Title**:Fashion & Lifestyle Category Is Missing Description in Shop by Category Section
+
+**Description**
+1.In the **Shop by Category** section on the DealWallet Home page, category cards display a short description below the category name.
+2.However, the **Fashion & Lifestyle category** does not have a description, while other categories such as **Beauty, Home Appliances, Makeup, and Bags** display descriptions.
+3.This results in an inconsistent presentation across the category cards.
+
+**Preconditions**
+1.DealWallet Home page is accessible.
+2.**Shop by Category** section is available.
+3.Category cards are loaded.
+
+**Steps to Reproduce**
+1.Open the DealWallet Home page.
+2.Scroll to the **Shop by Category** section.
+3.Observe the category cards.
+4.Compare the **Fashion & Lifestyle** card with other category cards such as:
+      1.Beauty
+      2.Home Appliances
+      3.Makeup
+      4.Bags
+5.Observe the content displayed below each category name.
+
+**Actual Result**
+The **Fashion & Lifestyle** category displays:
+   1.Category image 
+   2.Category name
+   3.Deal count
+But the category description is missing.
+
+Other category cards contain descriptions, for example:
+**Beauty**
+**Skincare, haircare, and personal grooming products...**
+
+**Home Appliances**
+**Electrical devices like ACs, fridges, and washing machines...**
+
+**Expected Result**
+The Fashion & Lifestyle category should also contain a relevant category description consistent with the other category cards.
+
+Example:
+
+**Fashion & Lifestyle**
+**Fashion, clothing, accessories, footwear, and lifestyle products for everyday style...**
+
+The description should follow the same:
+1.Font style
+2.Font size
+3.Color
+4.Spacing
+5.Maximum text length
+6.Position
+as the descriptions used for the other category cards.
+
+**Priority**
+**Medium**
+
+**Labels**
+bug
+qa
+ui
+home-page
+shop-by-category
+content
+category
+frontend
+
+**Environment**
+**Field	                                Details**
+Application	                            DealWallet
+Page	                                Home
+Section	                                Shop by Category
+Category	                            Fashion & Lifestyle
+Environment	                            QA
+Browser	                                Google Chrome
+OS	                                    Windows
+Device	                                Desktop
+
+**Impact**
+**Low–Medium – UI Consistency Impact**
+
+The issue does not prevent users from accessing the category, but it causes:
+ 1.Inconsistent category card presentation.
+ 2.Uneven information hierarchy.
+ 3.Reduced visual consistency.
+ 4.Fashion & Lifestyle card appears different from the other category cards.
+
+**Evidence**
+The screenshot shows the **Shop by Category** section.
+1.**Fashion & Lifestyle:** Description is missing.
+2.**Other categories:** Description is displayed.
+
+**Testcase 10**
+**Title**:Ajio Store Card Is Missing Category Label in Top Weekly Deals
+
+**Description**
+1.In the **Top Weekly Deals** section on the DealWallet Home page, the Ajio store card does not display its category label.
+2.Other store cards in the same section display their respective category labels, resulting in an inconsistent presentation of store information.
+
+**Preconditions**
+1.DealWallet Home page is accessible.
+2.Top Weekly Deals section is available.
+3.Ajio store is displayed in the Top Weekly Deals section.
+4.Other store cards with category information are available.
+
+**Steps to Reproduce**
+1.Open the DealWallet Home page.
+2.Scroll to the **Top Weekly Deals** section.
+3.Locate the **Ajio** store card.
+4.Compare the Ajio card with the other store cards.
+5.Observe the category information below each store name.
+
+**Actual Result**
+The **Ajio** card displays:
+1.Ajio logo
+2.Ajio store name
+3.Deals count
+4.Coupons count
+5.Shop button
+However, the **category label** is missing.
+
+Other stores display category information, for example:
+Croma
+Electronics & Technology
+
+Snapdeal
+Baby & Kids
+
+ZOP
+Baby & Kids
+
+Flipkart
+E-commerce Marketplace
+
+**Expected Result**
+1.The Ajio store card should display its appropriate category label below the store name, consistent with the other Top Weekly Deals cards.
+2.For example:
+**Ajio**
+**Fashion & Lifestyle**
+3.The exact category should be based on the category configured for Ajio in the application data.
+
+**Priority**
+**Medium**
+
+**Labels**
+bug
+qa
+ui
+home-page
+top-weekly-deals
+store
+category
+data-consistency
+
+**Environment**
+**Field	                             Details**
+Application	                         DealWallet
+Page	                             Home
+Section	                             Top Weekly Deals
+Store	                             Ajio
+Environment	                         QA
+Browser	                             Google Chrome
+OS	                                 Windows
+Device	                             Desktop
+
+**Impact**
+**Medium – UI/Data Consistency**
+The issue does not prevent users from opening or shopping from Ajio, but it creates an inconsistent store-card layout and results in incomplete store information.
+
+**Evidence**
+The attached screenshot shows:
+1.**Ajio:** category label missing.
+2.**Croma:** Electronics & Technology displayed.
+3.**Snapdeal:** Baby & Kids displayed.
+4.**ZOP:** Baby & Kids displayed.
+5.**Flipkart:** E-commerce Marketplace displayed.
