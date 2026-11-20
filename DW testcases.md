@@ -1124,3 +1124,164 @@ The attached screenshot shows:
 3.**Snapdeal:** Baby & Kids displayed.
 4.**ZOP:** Baby & Kids displayed.
 5.**Flipkart:** E-commerce Marketplace displayed.
+
+**Testcase 11**
+**Title**:Share Popup Overlaps Store Card Content on Stores Page
+
+**Description**
+1.On the DealWallet Stores page, clicking the Share icon on a store card opens the share popup in an incorrect position. The popup overlaps the store card content and is partially clipped by the card/container.
+2.The share popup should be positioned clearly without covering or being clipped by the store card content.
+
+**Preconditions**
+1.DealWallet Stores page is accessible.
+2.Store cards are displayed.
+3.Share icon is available on the store card.
+
+**Steps to Reproduce**
+1.Open the DealWallet Stores page.
+2.Locate any store card.
+3.Click the Share icon.
+4.Observe the share popup.
+5.Check its position relative to the store card and surrounding content.
+
+**Actual Result**
+1.Share popup overlaps the store card.
+2.Share content is partially clipped.
+3.The popup appears within the card/container instead of being displayed cleanly.
+4.Some share options are difficult to view or interact with.
+
+**Expected Result**
+The share popup should:
+1.Open in a clearly visible position.
+2.Not overlap important store-card content unnecessarily.
+3.Not be clipped by the card/container.
+4.Display all available share options completely.
+5.Remain within the viewport.
+6.Automatically reposition when there is insufficient space.
+
+**Priority**
+**Medium**
+
+**Labels**
+bug
+qa
+ui
+ux
+stores
+share
+popup
+responsive-ui
+frontend
+
+**Environment**
+**Field	                                  Details**
+Application	                              DealWallet
+Page	                                  Stores
+Feature	                                  Store Share
+Environment	                              QA
+Browser	                                  Google Chrome
+OS	                                      Windows
+Device	                                  Desktop
+Theme	                                  Dark Mode
+
+**Impact**
+**Medium – UI/UX Impact**
+Users may have difficulty accessing the share options because the popup is partially hidden and overlaps the store card.
+
+**Evidence**
+Attached screenshot showing the share popup overlapping the **Meesho** store card.
+
+**Likely Owner**
+**Frontend/UI team**
+1.The issue is most likely related to popup positioning, CSS overflow, z-index, or the popup's positioning logic.
+2.Developers should check:
+       position
+       z-index
+       overflow
+       top / bottom / left / right
+       viewport boundaries
+
+**QA Acceptance Criteria**
+1.Share popup opens correctly.
+2.Popup does not get clipped.
+3.All share options are visible.
+4.Popup does not incorrectly cover store-card content.
+5.Popup stays within the browser viewport.
+6.Popup repositions when near the screen edge.
+7.Share functionality works correctly.
+8.Same behavior works for other store cards.
+9.Desktop and responsive layouts are verified.
+
+**Testcase 12**
+**Title**:Ajio Store Redirects to Invalid Cuelinks URL and Displays Not Found Error
+
+**Description**
+1.When the user clicks the Ajio store from the Top Weekly Deals section on the DealWallet Home page, the application redirects to an incorrect Cuelinks URL.
+2.Instead of navigating to the intended Ajio store/affiliate destination, the browser opens:
+        **dealwallet.com/www.cuelinks.com**
+3.The destination page then displays a Not Found error.
+
+**Preconditions**
+1.DealWallet Home page is accessible.
+2.Top Weekly Deals section is displayed.
+3.Ajio store is available in the section.
+4.Ajio store has a configured store/affiliate URL.
+
+**Steps to Reproduce**
+1.Open the DealWallet Home page.
+2.Scroll to the Top Weekly Deals section.
+3.Locate the Ajio store card.
+4.Click the Ajio store/card or its Shop action.
+5.Observe the URL after redirection.
+6.Observe the destination page.
+
+**Actual Result**
+1.The user is redirected to an invalid URL similar to:
+      **https://dealwallet.com/www.cuelinks.com**
+2.The page displays:
+   **Not Found**
+       **Could not find requested resource**
+3.The Ajio store page is not opened.
+
+**Expected Result**
+1.Clicking the Ajio store should redirect the user to the **correct configured Ajio store/affiliate URL.**
+2.The URL should be handled as a valid external URL rather than being appended as a relative path to dealwallet.com.
+3.The destination should load successfully without a **Not Found** error.
+
+**Priority**
+**High**
+
+**Labels**
+bug
+qa
+high-priority
+navigation
+redirect
+affiliate-link
+store
+ajio
+cuelinks
+home-page
+top-weekly-deals
+
+**Environment**
+**Field	                    Details**
+Application	                DealWallet
+Page	                    Home
+Section	                    Top Weekly Deals
+Store	                    Ajio
+Environment	                QA
+Browser	                    Google Chrome
+OS	                        Windows
+Device	                    Desktop
+Theme	                    Dark Mode
+
+**Impact**
+**High – Functional Impact**
+1.Users cannot access the Ajio store through the Top Weekly Deals section.
+2.This can result in:
+     1.Broken store navigation.
+     2.Users seeing a Not Found page.
+     3.Ajio deals becoming inaccessible.
+     4.Affiliate/store tracking potentially not working as intended.
+     5.Loss of the intended shopping flow.
