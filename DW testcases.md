@@ -1285,3 +1285,160 @@ Theme	                    Dark Mode
      3.Ajio deals becoming inaccessible.
      4.Affiliate/store tracking potentially not working as intended.
      5.Loss of the intended shopping flow.
+
+**Testcase 13**
+**Title**:Standardize Button Colors Across Home Page
+
+**Description**
+1.On the DealWallet Home page, different sections are using different colors for primary action buttons.
+2.For example:
+   1.Buy Now buttons on product cards use one blue shade.
+   2.Shop buttons in the Top Weekly Deals section use another blue shade.
+3.This creates an inconsistent visual theme across the Home page.
+4.All primary action buttons should follow a single standardized button color/theme throughout the application.
+
+**Preconditions**
+1.DealWallet Home page is accessible.
+2.Product cards are displayed.
+3.Top Weekly Deals section is displayed.
+
+**Steps to Reproduce**
+1.Open the DealWallet Home page.
+2.Scroll to a product listing section.
+3.Observe the Buy Now button on a product card.
+4.Scroll to the Top Weekly Deals section.
+5.Observe the Shop button on the store cards.
+6.Compare the button colors.
+
+**Actual Result**
+1.Different primary action buttons use different blue shades/styles.
+**Product card:**
+          **Buy Now → darker blue**
+**Top Weekly Deals:**
+          **Shop → brighter blue**
+2.This makes the CTA styling inconsistent across the Home page.
+
+**Expected Result**
+1.All primary CTA buttons should use the same standardized theme color.
+2.For example:
+  Primary CTA
+
+┌─────────────────────┐
+│      Buy Now        │
+└─────────────────────┘
+
+┌─────────────────────┐
+│       Shop          │
+└─────────────────────┘
+3.Both should have the same:
+   1.Background color
+   2.Hover color
+   3.Text color
+   4.Border radius
+   5.Typography
+   6.Shadow/elevation
+   7.Disabled state, where applicable
+4.Only the button text/icon should differ based on the action.
+
+**Recommended Design**
+1.Use the existing brighter DealWallet blue used by the Top Weekly Deals Shop button as the standard primary CTA color, provided it meets the application's contrast requirements.
+2.Example:
+**Primary Button**
+       1.Blue background
+       2.White text
+       3.Rounded corners
+       4.Consistent hover state
+       5.Consistent focus state
+
+**Priority**
+**Medium**
+
+**Labels**
+bug
+qa
+ui
+ux
+design-system
+button
+home-page
+frontend
+consistency
+
+**Environment**
+**Field	                          Details**
+Application	                      DealWallet
+Page	                          Home
+Environment	                      QA
+Browser	                          Google Chrome
+OS	                              Windows
+Device	                          Desktop
+Theme	                          Dark Mode
+
+**Impact**
+**Medium – UI Consistency**
+1.Inconsistent CTA colors can:
+        1.Reduce visual consistency.
+        2.Make the application look less polished.
+        3.Make different actions appear to have different importance.
+        4.Create inconsistency in the overall design system.
+
+**Testcase 14**
+**Title**:Fix Back Button Overlapping Credit Card Landing Page Banner
+
+**Description**
+1.On the DealWallet Home page, when a user clicks a credit card from the Best Credit Cards section, they are redirected to the credit card landing/details page.
+2.On the landing page, the ← Back button is positioned over the top-left area of the hero/banner section, causing it to overlap with the banner content.
+
+**Steps to Reproduce**
+1.Open the DealWallet Home page.
+2.Scroll to the Best Credit Cards section.
+3.Click any credit card.
+4.Observe the credit card landing/details page.
+5.Check the position of the ← Back button.
+
+**Actual Result**
+1.The ← Back button overlaps the credit card hero/banner section.
+2.The button appears on top of the banner instead of having its own proper spacing/position.
+
+**Expected Result**
+1.The ← Back button should have a dedicated position above the hero banner with sufficient spacing.
+2.**Recommended layout:**
+← Back
+
+┌───────────────────────────────────────────────┐
+│                                               │
+│          Credit Card Hero Banner              │
+│                                               │
+│   Unlock Premium Benefits       [Card Image]  │
+│                                               │
+└───────────────────────────────────────────────┘
+3.The Back button should not overlap or cover any banner content.
+
+**UI Requirements**
+1.Move the Back button outside the hero/banner container.
+2.Maintain consistent spacing between the Back button and banner.
+3.Keep the Back button clearly visible in both Dark Mode and Light Mode.
+4.Ensure the button remains properly positioned on different screen sizes.
+5.Maintain the existing Back button functionality.
+5.Ensure the hero banner content is not shifted, hidden, or covered.
+
+**Acceptance Criteria**
+1.Back button does not overlap the hero banner.
+2.Back button appears above the banner with proper spacing.
+3.Banner content is completely visible.
+4.Layout works correctly on desktop.
+5.Layout remains responsive on tablet/mobile.
+6.Dark Mode is verified.
+7.Light Mode is verified.
+8.Back navigation functionality remains unchanged.
+9.No regression on other credit card landing pages.
+
+**Priority**
+**Medium**
+
+**Type / Labels**
+bug qa ui ux responsive credit-cards frontend
+
+**Evidence**
+1.**Actual issue:**The ← Back button is visually overlapping the top-left portion of the credit card hero/banner on the landing page.
+2.**Expected:**The Back button should be positioned separately above the banner with proper spacing.
