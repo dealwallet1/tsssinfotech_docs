@@ -1442,3 +1442,120 @@ bug qa ui ux responsive credit-cards frontend
 **Evidence**
 1.**Actual issue:**The ← Back button is visually overlapping the top-left portion of the credit card hero/banner on the landing page.
 2.**Expected:**The Back button should be positioned separately above the banner with proper spacing.
+
+**Testcase 15**
+**Title**:Fix Myntra “Visit Store” Button Redirecting to All Stores Page
+
+**Description**
+1.On the DealWallet Home page, the Exclusive Stores banner contains a Myntra store card with a “Visit Store” button.
+2.When the user clicks the “Visit Store” button, it should navigate directly to the Myntra store page. Instead, it currently redirects the user to the generic All Stores page.
+
+**Preconditions**
+1.DealWallet website is accessible.
+2.User is on the Home page.
+3.The Exclusive Stores banner is visible.
+4.Myntra store data is available on the website.
+
+**Steps to Reproduce**
+1.Open the DealWallet Home page.
+2.Locate the Exclusive Stores banner section.
+3.Locate the Myntra banner/card.
+4.Click the “Visit Store” button.
+5.Observe the page to which the user is redirected.
+
+**Actual Result**
+Clicking “Visit Store” for Myntra redirects the user to the All Stores page (/stores) instead of the Myntra-specific store page.
+
+**Expected Result**
+1.Clicking “Visit Store” should redirect the user directly to the Myntra store details page, similar to selecting Myntra from the Stores section.
+2.Example expected navigation:
+              Home
+               ↓
+           Exclusive Stores → Myntra
+               ↓
+           Visit Store
+               ↓
+           Myntra Store Page
+
+**Priority**
+**High**
+
+**Labels**
+bug qa frontend navigation routing home-page stores myntra
+
+**Environment**
+1.**Application:** DealWallet
+2.**Environment:** QA / Web
+3.**Browser:** Google Chrome
+4.**Platform:** Windows 10/11
+5.**Page:** Home Page → Exclusive Stores → Myntra
+6.**Theme:** Dark Mode
+
+**Impact**
+1.Users cannot directly access the Myntra store from the promotional banner.
+2.The “Visit Store” CTA does not perform the expected navigation.
+3.Creates unnecessary navigation steps and may cause users to miss the intended store.
+4.The banner CTA behavior is inconsistent with its purpose.
+
+**Evidence**
+**Screenshot 1 – Home Page:**
+Myntra is displayed under the Exclusive Stores banner with the “Visit Store” button.
+**Screenshot 2 – Actual Redirect:**
+After clicking “Visit Store”, the user is redirected to the generic Online Shopping Stores / All Stores page instead of the Myntra store page.
+
+**Testcase 16**
+**Title**:Blurred Images Displayed for Electronics, Medical Pharmacy, and Mobile Accessories Categories
+
+**Description**
+1.On the DealWallet Shop by Category section, the category images for Electronics, Medical Pharmacy, and Mobile Accessories appear visibly blurred/low-resolution compared with the other category images.
+2.The inconsistent image quality affects the visual consistency and professional appearance of the category section.
+
+**Preconditions**
+1.DealWallet website is accessible.
+2.User is on the Home page.
+3.Shop by Category section is available.
+4.Category images are loaded successfully.
+
+**Steps to Reproduce**
+1.Open the DealWallet Home page.
+2.Scroll to the Shop by Category section.
+3.Locate the following categories:
+     1.Electronics
+     2.Medical Pharmacy
+     3.Mobile Accessories
+4.Compare their images with the other category images.
+5.Observe the image quality.
+
+**Actual Result**
+The images for Electronics, Medical Pharmacy, and Mobile Accessories appear blurred/pixelated and lower quality compared with the other category images.
+
+**Expected Result**
+1.All category images should be displayed with consistent, clear, and high-quality resolution.
+2.The images for Electronics, Medical Pharmacy, and Mobile Accessories should have comparable visual quality to the other category images.
+
+**Priority**
+**Medium**
+
+**Labels**
+bug qa ui ux image-quality frontend shop-by-category
+
+**Environment**
+1.**Application:** DealWallet
+2.**Environment:** QA / Web
+3.**Browser:** Google Chrome
+4.**Platform:** Windows
+5.**Page:** Home → Shop by Category
+6.**Theme:** Light Mode
+
+**Impact**
+1.Reduces the visual quality and consistency of the Home page.
+2.Makes the affected categories look unfinished compared with other categories.
+3.May negatively affect the overall professional appearance of the website.
+4.Category images are an important visual element for helping users identify categories quickly.
+
+**Evidence**
+1.The provided screenshot shows that the following category images are visibly blurred/low-resolution:
+      1.Mobile Accessories
+      2.Electronics
+      3.Medical Pharmacy
+2.The remaining category images appear comparatively sharper and clearer.
