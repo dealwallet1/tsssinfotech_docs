@@ -34,7 +34,22 @@ Go to `Time Off` → `Management` → `Time Off`, open the request and approve i
 
 ## 4. View the Report
 
+### Step 1: Open the report
+
 Go to `Time Off` → `Reporting` → `Compensatory Leave Report`. It shows the employee, compensatory date, worked date and status.
+
+### Step 2: Choose a date range
+
+At the top right, click `Date Range` and choose a period:
+
+- `All`
+- `Today`
+- `This Month`
+- `This Quarter`
+- `This Year`
+- `Custom Range`
+
+> The report opens with `Today` selected. If it shows `No compensatory leave requests found`, choose `All` or `This Month`.
 
 
 ## 5. Dashboard
