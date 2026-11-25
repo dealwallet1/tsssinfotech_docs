@@ -1559,3 +1559,129 @@ bug qa ui ux image-quality frontend shop-by-category
       2.Electronics
       3.Medical Pharmacy
 2.The remaining category images appear comparatively sharper and clearer.
+
+**Testcase 17**
+**Title**:Remove Arrow Icons from Shop Buttons on Landing Page and Top Weekly Deals Section
+
+**Description**
+1.On the DealWallet Home page, the Shop buttons in the Top Weekly Deals section currently display an arrow (→) icon.
+2.The same arrow icon is also displayed on the Shop buttons on the related store/landing page.
+3.For UI consistency, the arrow icons should be removed from these buttons, leaving only the “Shop” text.
+
+**Preconditions**
+1.DealWallet website is accessible.
+2.User is on the Home page.
+3.Top Weekly Deals section is available.
+4.At least one store is available in the section.
+
+**Steps to Reproduce**
+1.Open the DealWallet Home page.
+2.Scroll to the Top Weekly Deals section.
+3.Observe the Shop → buttons.
+4.Click/open a store from the Top Weekly Deals section.
+5.Navigate to the corresponding store/landing page.
+6.Observe the Shop → button there as well.
+
+**Actual Result**
+1.The Shop buttons display an arrow icon:
+2.**Shop →**
+3.The arrow is present in both:
+  1.Top Weekly Deals section.
+  2.Related store/landing page.
+
+**Expected Result**
+1.The arrow icon should be removed from both locations.
+2.The buttons should display only:
+3.**Shop**
+4.The same button styling, size, spacing, and theme should be maintained after removing the arrow.
+
+**Priority**
+**Low**
+
+**Labels**
+ui ux qa frontend button design-consistency home-page stores
+
+**Environment**
+1.**Application:** DealWallet
+2.**Environment:** QA / Web
+3.**Browser:** Google Chrome
+4.**Platform:** Windows
+5.**Page:** Home → Top Weekly Deals → Store/Landing Page
+6.**Theme:** Dark Mode
+
+**Impact**
+1.Creates unnecessary visual elements in the Shop buttons.
+2.Causes inconsistent button styling if the arrow is not part of the approved design.
+3.Removing the icon will provide a cleaner and more consistent CTA appearance across the related pages.
+
+**Evidence**
+1.The provided screenshot shows the Shop → buttons in the Top Weekly Deals section.
+2.The arrow icon should be removed so the final button appears as:
+3.**Shop**
+4.The same change should be applied to the corresponding Shop button on the store/landing page.
+
+**Testcase 18**
+**Title**:Category Deal Cards Missing Store Name and Discount Badge Is Misplaced
+
+**Description**
+1.When a user selects a category from the Shop by Category section on the Home page, the user is redirected to the category landing page containing category-specific deals.
+2.On the category deal cards:
+       1.The store name is not displayed, whereas store names are displayed on other deal cards across the application.
+       2.The discount percentage badge is positioned inconsistently and should be displayed above the price/price-history area for better visibility and consistency with the expected card layout.
+
+**Preconditions**
+1.DealWallet application is accessible.
+2.Category-wise deals are available.
+3.User is on the Home page.
+4.At least one category contains active deals.
+
+**Steps to Reproduce**
+1.Open the DealWallet Home page.
+2.Scroll to Shop by Category.
+3.Select any category, for example Beauty.
+4.Verify that the category landing page opens.
+5.Scroll through the category-wise deal cards.
+6.Compare the category deal cards with deal cards displayed in other store/deal sections.
+7.Check the information displayed around the product name, store name, discount, and price.
+
+**Actual Result**
+1.Category-wise deal cards do not display the store name.
+2.The discount percentage is not positioned consistently above the price/price-history section.
+3.This creates an inconsistent deal-card layout compared with other sections of the application.
+
+**Expected Result**
+1.Every category-wise deal card should display the store name associated with the product/deal.
+2.The discount percentage badge should be positioned above the price/price-history area.
+3.The deal card layout should remain consistent across:
+    1.Store-wise deals
+    2.Category-wise deals
+    3.Home page deals
+    4.Other deal listing sections
+
+**Priority**
+**Medium (P2)**
+
+**Reason: The issue does not prevent users from viewing or purchasing deals, but it causes inconsistent information presentation and makes it harder for users to identify the merchant/store.**
+
+**Labels**
+bug ui frontend deal-card category data-display ux
+
+**Environment**
+1.**Application:** DealWallet
+2.**Page:** Home → Shop by Category → Category Landing Page
+3.**Browser:** Google Chrome
+4.**OS:** Windows
+5.**Mode:** Dark theme
+6.**Environment:** QA/Web
+
+**Impact**
+1.Users cannot immediately identify which store/merchant is offering a category-wise deal.
+2.Users may need to open the deal to determine the store.
+3.Inconsistent discount placement reduces visual consistency across deal cards.
+4.The issue affects the clarity and usability of category-wise deal browsing.
+
+**Evidence**
+**Screenshots provided:**
+1.Category landing page showing category-wise deal cards without store names.
+2.Home page showing Shop by Category.
+3.Store-wise deal section showing store names on deal cards for comparison.
