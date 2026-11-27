@@ -1685,3 +1685,101 @@ bug ui frontend deal-card category data-display ux
 1.Category landing page showing category-wise deal cards without store names.
 2.Home page showing Shop by Category.
 3.Store-wise deal section showing store names on deal cards for comparison.
+
+**Testcase: 19**
+**Title**:RBL Bank IOCL XTRA Fuel Card Banner Image Missing in Home Page Credit Cards Section
+
+**Description**
+1.In the Home Page → Best Credit Cards section, the RBL Bank – IOCL XTRA Fuel Card card is displayed, but its corresponding promotional banner image is missing.
+2.The card/logo is visible at the top, but the main promotional banner area below it is blank, while other credit card entries display their banner images correctly.
+
+**Preconditions**
+1.DealWallet application is accessible.
+2.Credit card data is available.
+3.User is on the DealWallet Home page.
+4.Best Credit Cards section is displayed.
+
+**Steps to Reproduce**
+1.Open the DealWallet Home page.
+2.Scroll to the Best Credit Cards section.
+3.Locate the RBL Bank – IOCL XTRA Fuel Card entry.
+4.Observe the promotional banner area associated with the card.
+
+**Actual Result**
+The RBL Bank – IOCL XTRA Fuel Card logo/card image is displayed, but the corresponding promotional banner image is missing, leaving a large blank area.
+
+**Expected Result**
+The RBL Bank – IOCL XTRA Fuel Card should display its corresponding promotional banner image correctly, consistent with the other credit cards in the Best Credit Cards section.
+
+**Priority**
+**Medium (P2)**
+
+**Labels**
+bug frontend ui credit-cards image-missing home-page
+
+**Environment**
+1.**Application:** DealWallet
+2.**Page:** Home Page
+3.**Section:** Best Credit Cards
+4.**Browser:** Google Chrome
+5.**OS:** Windows
+6.**Theme:** Dark Mode
+7.**Environment:** QA/Web
+
+**Impact**
+1.Creates an incomplete/blank visual area in the credit card carousel.
+2.Reduces consistency with other credit card promotional cards.
+3.Users cannot view the promotional information associated with the IOCL XTRA Fuel Card.
+4.Makes the Home page credit-card section look visually broken.
+
+**Evidence**
+**Screenshot:** The provided screenshot shows the RBL Bank – IOCL XTRA Fuel Card logo at the top, while the corresponding promotional banner area underneath is blank. Other cards in the same section display their promotional banners correctly.
+
+**Testcase: 20**
+**Title**:Profile Page Remains Stuck on Loading and Profile Details Are Not Displayed
+
+**Description**
+On the DealWallet Profile page, when the user clicks/selects the Profile section, the page remains in a continuous loading state. The profile content is not loaded or displayed even after waiting.
+
+**Preconditions**
+1.User is logged in to DealWallet.
+2.User account is active.
+3.DealWallet application is accessible.
+4.Profile page is available.
+
+**Steps to Reproduce**
+1.Log in to the DealWallet application.
+2.Navigate to the Profile page.
+3.Click on the Profile tab.
+4.Wait for the profile information to load.
+5.Observe the page.
+
+**Actual Result**
+The Profile section remains stuck on the loading indicator and no profile information is displayed.
+
+**Expected Result**
+The Profile section should load successfully and display the user's profile information without remaining in a continuous loading state.
+
+**Priority**
+**High (P1)**
+
+**Labels**
+bug frontend profile loading ui user-account
+
+**Environment**
+1.**Application:** DealWallet
+2.**Page:** User Profile
+3.**URL:** /user/profile
+4.**Browser:** Google Chrome
+5.**OS:** Windows
+6.**Theme:** Dark Mode
+7.**Environment:** QA/Web
+
+Impact
+1.Users cannot view their profile information.
+2.Profile functionality is effectively unavailable.
+3.Users may assume the application is unresponsive.
+4.This can affect access to other account-related information or actions.
+
+**Evidence**
+**Screenshot provided:** The Profile page shows the user's header information and navigation tabs, but the main content area remains empty with a continuous loading indicator.
